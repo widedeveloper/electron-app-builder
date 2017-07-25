@@ -1,0 +1,930 @@
+
+html {
+	font-family: sans-serif; /* 1 */
+	-ms-text-size-adjust: 100%; /* 2 */
+	-webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+	margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+	display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+
+audio,
+canvas,
+progress,
+video {
+	display: inline-block; /* 1 */
+	vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+
+[hidden],
+template {
+	display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+
+a {
+	background-color: transparent;
+}
+
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+
+a:active,
+a:hover {
+	outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+
+b,
+strong {
+	font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+
+dfn {
+	font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+
+h1 {
+	font-size: 2em;
+	margin: .67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+	background: #ff0;
+	color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+	font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -.5em;
+}
+
+sub {
+	bottom: -.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+
+img {
+	border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+
+svg:not(:root) {
+	overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+
+figure {
+	margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+
+pre {
+	overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	color: inherit; /* 1 */
+	font: inherit; /* 2 */
+	margin: 0; /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+
+button {
+	overflow: visible;
+}
+
+
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+
+button,
+select {
+	text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	-webkit-appearance: button; /* 2 */
+	cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+	cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+input {
+	line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box; /* 1 */
+	padding: 0; /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+ */
+
+input[type="search"] {
+	-webkit-appearance: textfield; /* 1 */
+	box-sizing: content-box; /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+	border: 1px solid #c0c0c0;
+	margin: 0 2px;
+	padding: .35em .625em .75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+	border: 0; /* 1 */
+	padding: 0; /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+
+textarea {
+	overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+
+optgroup {
+	font-weight: bold ;
+}
+
+
+/*!
+ *  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+
+/*////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////////*/
+
+
+body {
+    line-height: 1.42857143;
+    color: #2c393d ;
+    font: 15px/1.2 "proxima_nova", "Arial", "Helvetica", sans-serif ;
+    background: #f2f8fa ;
+	min-width: 320px;
+
+}
+.form-control {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #d2d6de;
+}
+
+#wrapper {
+   height: 100vh;
+position: relative;
+margin: auto;
+
+}
+
+/*#wrapper{
+	
+	margin: 100px auto;
+	padding: 0;
+	
+	background: #fff;
+	border-radius: 6px;
+	color: #1e2933;
+
+}*/
+/*#wrapper.signup-page {
+	white-space: nowrap;
+	text-align: center;
+}
+
+#wrapper.signup-page:after {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	width: 0;
+	min-height: inherit;
+}
+
+#wrapper.signup-page > * {
+	white-space: normal;
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 99%;
+}*/
+
+header .header-content{
+	position: relative;
+}
+
+header .logo{
+	width: 150px;
+	top:30px;
+	left:30px;
+	position: absolute;
+	z-index: 10;
+}
+header .close{
+	float: right;
+	padding: 15px;
+}
+
+header .logo img {
+	width: 100%;
+	max-width: inherit;
+	height: auto;
+	display: block;
+}
+
+#wrapper a {
+	text-decoration: none;
+}
+#content-wrapper{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background-color: white;
+	border-radius: 6px;
+}
+
+
+
+
+/*Section visible and hidden*/
+
+/*	// section #1: select-role
+	// section #2:email_regist
+	// section #3:user_detail
+	// section #4:provider_detail
+	// section #5:create_account*/
+
+section {
+	display: none;
+}
+
+
+
+/*Register First page*/
+/*===============================================*/
+
+section {
+	box-shadow: 0px 7px 20px 0px rgb(195, 195, 195);
+}
+
+#select-role{
+	/*position: relative;
+	padding: 30px 0px;*/
+}
+
+#select-role .title{
+	
+	text-align: center;
+	margin: 50px 0 20px;
+}
+#select-role .title a{
+	font-size: 34px;
+	font-family: "ProximaNova";
+	color: rgb( 78, 79, 82 );
+	text-align: center;
+	
+}
+
+#select-role .selection{
+	/*width: 1086px;*/
+	margin: 65px 30px;
+	position: relative;
+	
+}
+
+
+.selection .select_pannel .sel_div{
+	padding: 20px;
+}
+.selection .select_pannel .sel_div.active{
+	
+	box-shadow: 0px 7px 20px 0px rgb(195, 195, 195);
+}
+
+
+.selection .select_pannel .img img{
+	margin: 20px 0;
+	width:100%;
+
+}
+.sel_div .user_type{
+	text-align: center;
+	margin: 15px 0;
+}
+.sel_div .user_type a{
+	font-size: 19px;
+	/*font-family: "ProximaNova";*/
+	color: #1e2933;
+	text-align: center;
+}
+.sel_div.active .user_type a{
+	color: rgb( 106, 187, 234 );
+}
+
+.sel_div .desc{
+	text-align: center;
+	margin: 15px 0;
+}
+.sel_divl .desc a{
+	font-size: 16px;
+	/*font-family: "ProximaNova";*/
+	color: rgb( 144, 155, 165 );
+	text-align: center;
+	text-decoration: none;
+}
+
+/*.sel_div.active button{
+	color: #fff;
+	background-color: #5bc0de;
+	border-color: #46b8da;
+	border-radius: 2px;
+	box-shadow: 0px 7px 20px 0px rgb(195, 195, 195);
+	width: 100%;
+	padding: 15px;
+	margin-top: 40px;
+}*/
+.sel_div button {
+	/*background-color: #fff;*/
+	/*border-color: #fff;*/
+	border-radius: 2px;
+	box-shadow: 0px 7px 20px 0px rgb(195, 195, 195);
+	width: 100%;
+	padding: 15px;
+	margin-top: 40px;
+}
+
+.sel_div button a{
+	font-size: 19px;
+	font-family: "ProximaNova";
+	color: rgb( 39, 53, 66 );
+	text-align: center;
+}
+.sel_div button.min-width{
+	display:none;
+}
+.sel_div button.incre_width{
+	display:block;
+}
+.button-row .btn{
+	margin-left:15px;
+	padding:10px 50px;border-radius: 3px;
+}
+
+.alert.alert-error{
+	padding:8px 35px 8px 12px;
+	margin: 0;
+}
+/*Register First Page*/
+/*=========================================================*/
+/*Register second page*/
+.bg-panel{
+	background-image: url('../images/bg-color.png');
+	padding:50px;
+	height: 100%;
+	padding: 200px 0;
+}
+.bg-panel img{
+	width: 100%;
+	padding: 50px;
+
+}
+ 
+ .lk-logo{
+ 	text-align: center;
+ }
+
+ .right-side .mail-input-box{
+ 	 margin: 30px 0 0;
+ }
+.right-side .mail-input-box  .title{
+	margin-bottom: 5px;
+}
+.right-side .mail-input-box .email-label{
+	margin-bottom: 15px;
+}
+
+.right-side .mail-input-box .input-area{
+	height:300px;
+}
+#provider_detail .right-side .mail-input-box .input-area .form-group{
+		margin:5px 0;
+}
+
+.alert-sms{
+	background: whitesmoke;
+	padding: 1px;
+
+}
+.email_alert_div,.pass_len_alert,.pass_match_alert{
+	display: none;
+}
+.provider_detail_message{
+	text-align: center;
+	background: #f6f6f6;
+	margin: 40px 60px;
+	padding: 30px 10px;
+	border-radius: 5px;
+
+}
+label.error {color: red}
+ input.error,select.error{
+	border-color: red;
+}
+
+
+
+/*margin style setting*/
+/*margin-bottom*/
+.margin-bottom-5{margin-bottom: 5px; !important}
+.margin-bottom-10{margin-bottom: 10; !important}
+.margin-bottom-20{margin-bottom: 20px; !important}
+.margin-bottom-30{margin-bottom: 30px; !important}
+.margin-bottom-40{margin-bottom: 40px; !important}
+.margin-bottom-50{margin-bottom: 50px; !important}
+.margin-bottom-60{margin-bottom: 60px; !important}
+
+/*margin-top*/
+.margin-top-5{margin-bottom: 5px; !important}
+.margin-top-10{margin-bottom: 10px; !important}
+.margin-top-20{margin-bottom: 20px; !important}
+.margin-top-30{margin-bottom: 30px; !important}
+.margin-top-40{margin-bottom: 40px; !important}
+.margin-top-50{margin-bottom: 50px; !important}
+.margin-top-60{margin-bottom: 60px; !important}
+
+/*margin-left*/
+.margin-left-5{margin-bottom: 5px; !important}
+.margin-left-10{margin-bottom: 10px; !important}
+.margin-left-20{margin-bottom: 20px; !important}
+.margin-left-30{margin-bottom: 30px; !important}
+.margin-left-40{margin-bottom: 40px; !important}
+.margin-left-50{margin-bottom: 50px; !important}
+.margin-left-60{margin-bottom: 60px; !important}
+
+/*margin-right*/
+.margin-right-5{margin-bottom: 5px; !important}
+.margin-right-10{margin-bottom: 10px; !important}
+.margin-right-20{margin-bottom: 20px; !important}
+.margin-right-30{margin-bottom: 30px; !important}
+.margin-right-40{margin-bottom: 40px; !important}
+.margin-right-50{margin-bottom: 50px; !important}
+.margin-right-60{margin-bottom: 60px; !important}
+
+/*Register second page*/
+
+
+
+
+
+
+
+
+
+/*responsive the register page*/
+@media (max-width: 480px) {
+	header .logo img {
+		margin:0 37px;
+	}
+	#content-wrapper{
+		vertical-align: middle;
+		width: 290px;
+	}
+	#select-role .selection {
+	    margin: 5px 5px;
+	    position: relative;
+	}
+	.selection .select_pannel .sel_div {
+	    padding: 20px;
+	    border: solid 1px #f2eaea;
+	}
+	
+	.sel_div .img,.sel_div .user_type,.sel_div .desc {display:none;}
+	.sel_div button{margin:3px;padding:8px; font-size: 14px}
+
+	/*//*/
+	section .left-side,section .lk-logo{
+		display: none;
+	}
+	.right-side .mail-input-box{
+		margin:100px 0 0;
+		padding: 0 30px;
+		text-align: center;
+	}
+	.right-side .mail-input-box .input-area {
+
+	    height: 200px;
+	}
+	#email_regist .button-row{
+		padding:0 37px;
+	}
+	#provider_detail .button-row{
+		padding:0 40px;
+	}
+	#user_detail .button-row{
+		padding:0 55px;
+	}
+	#create_account .button-row{
+		padding: 0 20px;
+		text-align: center;
+	}
+	.button-row .btn {
+	   margin: 0 5px;
+	    padding: 6px 25px;
+	    border-radius: 3px;
+	    margin-bottom: 20px;
+	}
+	.sel_div button.min-width{
+		display:block;
+	}
+	.sel_div button.incre_width{
+		display:none;
+	}
+	.button-row .btn.email_prev {float: left;}
+	.button-row .btn.email_next {float: right;}
+
+	/*/*/
+	#provider_detail .right-side .mail-input-box .input-area {
+	    height: 300px;
+	}
+	#provider_detail .right-side .mail-input-box .input-area .form-group{
+		margin:5px 0;
+	}
+	.provider_detail_message {display:none;}
+
+
+
+}
+@media  (min-width :480px) and (max-width: 768px){
+	section .left-side,section .lk-logo{
+		display: none;
+	}
+	.right-side .mail-input-box{
+		margin:100px 0 0;
+		padding: 0 30px;
+		text-align: center;
+	}
+	#content-wrapper{
+		width: 400px;
+	}
+	#select-role .selection {
+	    margin: 0px 5px;
+	    position: relative;
+	}
+	.selection .select_pannel .sel_div {
+	    padding: 20px;
+	    border: solid 1px #f0f0f0;
+	}
+	.sel_div .img{
+	    width: 122px;
+	    float: right;
+	}
+	.selection .select_pannel .img img {
+	    margin: 7px 0;
+	    width: 100%;
+	}
+	.sel_div .user_type {
+	    text-align: center;
+	    margin: 15px 0;
+	    width: 54%;
+	}
+	.sel_div .desc {
+		display: none;
+	}
+	.sel_div button {
+	    font-size: 14px;
+		box-shadow: 3px 1px 4px 0px rgb(195, 195, 140);
+	    width: 50%;
+	    padding: 8px;
+	    margin: 0;
+	}
+	.sel_div .user_type a {
+		font-size: 14px;
+	}
+	#email_regist .button-row{
+		padding:0 37px;
+	}
+	#provider_detail .button-row{
+		padding:0 40px;
+	}
+	#user_detail .button-row{
+		padding:0 55px;
+	}
+	#create_account .button-row{
+		padding: 0 20px;
+		text-align: center;
+	}
+	.button-row {
+	    text-align: center;
+	}
+
+	.button-row .btn {
+	   margin: 0 5px;
+	    padding: 6px 25px;
+	    border-radius: 3px;
+	    margin-bottom: 20px;
+	}
+	#provider_detail .right-side .mail-input-box .input-area .form-group{
+		margin:3px 0;
+	}
+	.provider_detail_message {display:none;}
+
+}
+@media (min-width: 768px) and (max-width: 1024px){
+	#content-wrapper{
+		width: 730px;
+	}
+	.lk-logo img{width: 60px;}
+	#select-role .selection {
+		margin: 0px ;
+	}
+	.sel_div button {
+		padding:8px;
+		font-size: 16px;
+	}
+	.sel_div .user_type a {
+	    font-size: 16px;
+	}
+	section .form-group input,section .form-group select{
+		width: 120%;
+	}
+	#create_account .button-row .btn {
+	    margin-left: 23px;
+	    padding: 8px 33px;
+	    border-radius: 3px;
+	}
+
+}
+@media (min-width: 1024px) {
+    #content-wrapper{
+		width: 960px;
+	}
+}
+@media (min-width: 1150px) {
+#wrapper{
+		
+	}
+}
+@media (min-width: 1350px) {
+	#wrapper{
+		
+	}
+}
+

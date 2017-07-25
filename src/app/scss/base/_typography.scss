@@ -1,0 +1,464 @@
+// Typography
+html {
+	&.resize-active {
+		*, *:before, *:after {
+			transition: none !important;
+		}
+	}
+}
+body {
+	@include media('<desktop') {
+		&.sidebar-active {
+			overflow: hidden;
+		}
+	}
+	@include media('<tablet') {
+		overflow-y: auto;
+		
+		&.nav-active{
+			height: 100vh;
+			overflow: hidden;
+		}
+	}
+}
+a,
+.btn,
+input {
+	text-decoration: none;
+	transition: all ease-in-out $animation-speed;
+
+	&:focus,
+	&:active {
+		outline: none;
+	}
+}
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+.h {
+	font-family: $headings-font-family;
+	font-weight: normal;
+	margin: 0 0 0.5em;
+	color: $headings-color;
+	
+	a {
+		color: inherit;
+		
+		&:hover {
+			color: $blue-light;
+		}
+	}
+}
+
+h1, .h1 {
+	font-size: $h1-small-font-size;
+	
+	@include media('>=tablet') {
+		font-size: $h1-font-size;
+	}
+}
+
+h2, .h2 {
+	font-size: $h2-small-font-size;
+	
+	@include media('>=tablet') {
+		font-size: $h2-font-size;
+	}
+}
+
+h3, .h3 {
+	font-size: $h3-small-font-size;
+	
+	@include media('>=tablet') {
+		font-size: $h3-font-size;
+	}
+}
+
+h4, .h4 {
+	font-size: $h4-small-font-size;
+	
+	@include media('>=tablet') {
+		font-size: $h4-font-size;
+	}
+}
+
+h5, .h5 {
+	font-size: $h5-small-font-size;
+	
+	@include media('>=tablet') {
+		font-size: $h5-font-size;
+	}
+}
+
+h6, .h6 {
+	font-size: $h6-small-font-size;
+	
+	@include media('>=tablet') {
+		font-size: $h6-font-size;
+	}
+}
+
+p {
+	margin: 0 0 1em;
+	
+	&:last-child {
+		margin: 0;
+	}
+}
+
+a {
+	color: $base-link-color;
+	
+	&:hover {
+		color: $base-link-hover-color;
+	}
+	&:hover,
+	&:focus {
+		text-decoration: none;
+	}
+}
+.container {
+	max-width: $base-max-width;
+	padding: 0 15px;
+	margin: 0 auto;
+	position: relative;
+	@extend %clearfix;
+}
+.list-unstyled {
+	@extend %listreset;
+}
+.text-left { text-align: left;}
+.text-center { text-align: center;}
+.text-right { text-align: right;}
+.btn {
+	min-width: 125px;
+	@include inline(top);
+	font-size: $btn-font-size;
+	line-height: 20px;
+	font-weight: 500;
+	text-transform: uppercase;
+	text-align: center;
+	color: $btn-color;
+	padding: $btn-padding;
+	background: $btn-background;
+	border: none;
+	border-radius: 17px;
+	
+	@include media('>=tablet') {
+		font-size: 19px;
+		line-height: 25px;
+		padding: 9px 18px 7px;
+		border-radius: 19px;
+	}
+	&:hover {
+		color: $btn-color;
+		background: darken($btn-background, 10%);
+	}
+	&.large {
+		max-width: 400px;
+		min-width: inherit;
+		display: block;
+		margin: 0 auto 15px;
+		padding: 16px 15px 14px;
+		border-radius: 3px;
+		
+		@include media('>=tablet') {
+			min-width: 307px;
+			max-width: inherit;
+			@include inline(top);
+		}
+	}
+	&.blue {
+		background: $blue-light;
+		
+		&:hover {
+			background: darken($blue-light, 10%);
+		}
+	}
+	&.red {
+		background: $red;
+		
+		&:hover {
+			background: darken($red, 10%);
+		}
+	}
+}
+sup {
+	@include inline(middle);
+}
+.table {
+	width: 100%;
+	
+	tr {
+		&:nth-child(even){
+			td {
+				background: $mostly-white;
+			}
+		}
+	}
+	th,
+	td {
+		height: 59px;
+		padding: 6px 10px 5px;
+		text-align: left;
+		font-weight: normal;
+		
+		@include media('>=widescreen') {
+			padding: 6px 10px 5px 15px;
+		}
+		&:first-child {
+			border: none;
+			padding-left: 20px;
+		}
+	}
+	th {
+		color: $white;
+		background: $green;
+		text-transform: capitalize;
+		border-left: 1px solid rgba($white,0.25);
+		
+	}
+	td {
+		border-left: 1px solid transparent;
+	}
+	a {
+		color: inherit;
+		
+		&:hover {
+			color: $green;
+		}
+		&.remove {
+			@include inline(top);
+			font-size: 18px;
+			color: $green;
+			
+			&:hover {
+				color: $red;
+			}
+			i {
+				display: block;
+			}
+		}
+		&.pdf {
+			font-size: 28px;
+			color: $green;
+			
+			@include media('>=tablet') {
+				font-size: 38px;
+			}
+			&:hover {
+				color: $blue-light;
+			}
+			i {
+				display: block;
+			}
+		}
+		&.btn {
+			color: $white;
+		}
+	}
+	&.responsive-table {
+		@include media('<tablet') {
+			width:100%;
+			display: block;
+			overflow:hidden;
+			border-top:1px solid $clr6;
+			
+			tbody,
+			td,
+			tr {
+				display:block;
+			}
+			tbody {
+				display:block;
+				border-left:140px solid $green;
+				float:left;
+				width:100%;
+				padding:0 1px 0 1px;
+				background: $clr6;
+			}
+			tr {
+				float:left;
+				width:100%;
+				background:$white;
+				clear:both;
+				
+				&:nth-child(even){
+					td {
+						background: rgba($clr2,0.1);
+					}
+				}
+				&.empty {
+					display: none;
+				}
+			}
+			td {
+				width: 100% !important;
+				height: auto !important;
+				padding:5px 0 5px 140px;
+				margin:0 -1px 0 -141px;
+				border-bottom: 1px solid $clr6;
+				float:left;
+				clear:both;
+				white-space:nowrap;
+				border-top:0;
+				box-sizing: content-box;
+				
+				&:before {
+					width:120px;
+					@include inline(middle);
+					content:attr(data-title);
+					padding: 5px 10px;
+					color: $white;
+					margin:0 0 0 -140px;
+					position:relative;
+					white-space:normal;
+					text-transform: capitalize;
+				}
+				.txt {
+					@include inline(middle);
+					white-space:normal;
+					padding:5px 10px;
+					box-sizing: content-box;
+				}
+			}
+			thead {display:none;}
+		}
+	}
+}
+.pager {
+	font-size: 18px;
+	line-height: 26px;
+	letter-spacing: -0.32em;
+	text-align: center;
+	
+	.prev,
+	.next {
+		@include size(26px);
+		padding: 7px 5px;
+		@include inline(middle);
+		letter-spacing: normal;
+		border-radius: 100%;
+		text-align: center;
+		font-size: 10px;
+		line-height: 1;
+		color: $white;
+		background: $blue-light;
+		
+		&:hover {
+			background: $green;
+		}
+		&.disabled {
+			background: #e6ebed;
+			pointer-events: none;
+		}
+	}
+	.next {
+	}
+	ul {
+		@extend %listreset;
+		padding: 0 10px;
+		@include inline(middle);
+		
+		@include media('>=tablet') {
+			padding: 0 18px;
+		}
+		li {
+			@include inline(top);
+			letter-spacing: normal;
+			padding: 0 5px;
+			
+			@include media('>=tablet') {
+				padding: 0 10px;
+			}
+			a {
+				display: block;
+				color: $gray;
+			}
+			a:hover,
+			&.active a {
+				color: $blue-light;
+			}
+		}
+	}
+}
+.search-message {
+	max-width: 320px;
+	padding: 20px 0;
+	margin: 0 auto;
+	text-align: center;
+	
+	@include media('>=tablet') {
+		padding: 35px 0;
+	}
+	@include media('>=desktop') {
+		padding: 50px 0;
+	}
+	[class*="icon-"] {
+		@include size(150px);
+		padding: 25px 10px;
+		display: block;
+		margin: 0 auto 20px;
+		font-size: 100px;
+		line-height: 1;
+		color: $clr9;
+		background: $white;
+		border-radius: 100%;
+		
+		@include media('>=tablet') {
+			@include size(196px);
+			padding: 33px 20px;
+			margin: 0 auto 39px;
+			font-size: 130px;
+		}
+	}
+	h2,
+	h3 {
+		font-size: 20px;
+		color: $gray-dark;
+		margin: 0 0 5px;
+		
+		@include media('>=tablet') {
+			font-size: 22px;
+			margin: 0 0 9px;
+		}
+	}
+	.note {
+		display: block;
+		font-style: italic;
+		font-size: 16px;
+		line-height: 1.2;
+		color: $gray-light;
+		margin: 0 0 25px;
+		
+		@include media('>=tablet') {
+			font-size: 18px;
+			margin: 0 0 42px;
+		}
+		&:last-child {
+			margin: 0;
+		}
+	}
+	.btn {
+		min-width: 122px;
+		padding: 8px 10px 7px;
+		font-size: 15px;
+		line-height: 21px;
+		box-shadow: 0 3px 2px rgba(0,88,91,.13);
+		text-transform: capitalize;
+		
+		@include media('>=tablet') {
+			padding: 10px;
+		}
+	}
+}
+/* tabset required styles for hidden tabs */
+.js-tab-hidden {
+	display:block !important;
+	left:-9999px !important;
+	position: absolute !important;
+	top:-9999px !important;
+}

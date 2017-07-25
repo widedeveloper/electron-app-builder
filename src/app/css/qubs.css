@@ -1,0 +1,407 @@
+  /* prevents selection when left click dragging */
+  
+  .disable-selection {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  /* prevents cursor from changing to the i bar on the overlays*/
+  
+  .noIbar {
+    cursor: default;
+  }
+  /*Thumbnails*/
+  
+  .csthumbnail {
+    color: white;
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    border: 0px;
+    padding: 0px;
+  }
+  
+  .sk-folding-cube {
+    margin: 20px auto;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    display: none;
+    -webkit-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
+  }
+  
+  .sk-folding-cube .sk-cube {
+    float: left;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    /*black*/
+    /*
+  background-color: #273542;// 
+*/
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  
+  .sk-folding-cube .sk-cube2 {
+    /*blue*/
+    /*
+    background-color: #6bbbe8; 
+  */
+    -webkit-transform: scale(1.1) rotateZ(90deg);
+    transform: scale(1.1) rotateZ(90deg);
+  }
+  
+  .sk-folding-cube .sk-cube3 {
+    /*green*/
+    /*
+     background-color: #4ec0c6;
+     */
+    -webkit-transform: scale(1.1) rotateZ(180deg);
+    transform: scale(1.1) rotateZ(180deg);
+  }
+  
+  .sk-folding-cube .sk-cube4 {
+    /*red*/
+    /*
+     background-color: #e11860; 
+     */
+    -webkit-transform: scale(1.1) rotateZ(270deg);
+    transform: scale(1.1) rotateZ(270deg);
+  }
+  
+  .sk-folding-cube .sk-cube:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #273542;
+    -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+    animation: sk-foldCubeAngle 2.4s infinite linear both;
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+  
+  .sk-folding-cube .sk-cube2:before {
+    background-color: #6bbbe8;
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+  }
+  
+  .sk-folding-cube .sk-cube3:before {
+    background-color: #4ec0c6;
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+  }
+  
+  .sk-folding-cube .sk-cube4:before {
+    background-color: #e11860;
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+  }
+  
+  @-webkit-keyframes sk-foldCubeAngle {
+    0%,
+    10% {
+      -webkit-transform: perspective(140px) rotateX(-180deg);
+      transform: perspective(140px) rotateX(-180deg);
+      opacity: 0;
+    }
+    25%,
+    75% {
+      -webkit-transform: perspective(140px) rotateX(0deg);
+      transform: perspective(140px) rotateX(0deg);
+      opacity: 1;
+    }
+    90%,
+    100% {
+      -webkit-transform: perspective(140px) rotateY(180deg);
+      transform: perspective(140px) rotateY(180deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes sk-foldCubeAngle {
+    0%,
+    10% {
+      -webkit-transform: perspective(140px) rotateX(-180deg);
+      transform: perspective(140px) rotateX(-180deg);
+      opacity: 0;
+    }
+    25%,
+    75% {
+      -webkit-transform: perspective(140px) rotateX(0deg);
+      transform: perspective(140px) rotateX(0deg);
+      opacity: 1;
+    }
+    90%,
+    100% {
+      -webkit-transform: perspective(140px) rotateY(180deg);
+      transform: perspective(140px) rotateY(180deg);
+      opacity: 0;
+    }
+  }
+  
+  .manage-patient,
+  .img-opened .patient-list,
+  .img-opened .search-form,
+  .img-opened #nav {
+    display: none;
+  }
+  
+  .manage-patient.show,
+  .img-opened .manage-patient {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .manage-patient .holder {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
+  
+  .manage-patient .img-preview .img-head {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .manage-patient .img-preview .img-holder {
+    text-align: center;
+    overflow: hidden;
+  }
+  /*Dicom image holder*/
+  
+  .manage-patient .img-preview .img-holder .dicom-img-holder {
+    position: relative;
+    color: white;
+    display: inline-block;
+    border-style: solid;
+    border-color: black;
+  }
+  
+  .manage-patient .img-preview .img-holder .dicom-img-holder .dicom-img {
+    top: 0px;
+    left: 0px;
+    position: absolute;
+  }
+  
+  .table tr:hover {
+    cursor: pointer;
+  }
+  
+  .table .txt {
+    pointer-events: none;
+  }
+  
+  .table .txt a {
+    pointer-events: auto;
+  }
+  
+  .manage-patient .img-bar .thumbnails {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  
+  .manage-patient .img-bar .thumbnails a {
+    /*width: 25%;*/
+    display: block;
+    /*padding: 0 2px 20px;*/
+  }
+  
+  .manage-patient .img-bar .csthumbnail {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #fff;
+    display: block;
+    background-color: #fff;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 0 auto 5px;
+  }
+  
+  .manage-patient .img-bar .csthumbnail canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  .img-opened .manage-patient .img-bar .csthumbnail {
+    background-color: #222426;
+    border-color: #222426;
+  }
+  
+  .manage-patient .img-bar .text-center {
+    font-weight: normal;
+    font-size: 13px;
+    color: #1e2933;
+    -webkit-transition: all ease-in-out .3s;
+            transition: all ease-in-out .3s;
+  }
+  
+  .img-opened .manage-patient .img-bar .text-center {
+    color: #fff;
+  }
+  
+  .manage-patient .img-bar .text-center:hover {
+    color: #6abbea;
+  }
+
+
+  @media only screen and (max-width: 480px) {
+     .manage-patient .img-bar .thumbnails a {
+      /*padding: 0 5px 20px;*/
+     
+     
+    }
+    .manage-patient .img-bar .img-holder {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 10px;
+    }
+    .manage-patient .img-bar .text-center {
+      font-size: 14px;
+    }
+    .manage-patient .img-bar, .manage-patient .thumbs, .refferal-result .img-bar, .refferal-result .thumbs {
+      margin: 0 0px 15px;
+    }
+  }
+  @media only screen and (min-width: 480px) {
+    .manage-patient .img-bar .thumbnails a {
+      /*padding: 0 5px 20px;*/
+      /*width: 150px;*/
+     
+    }
+    .manage-patient .img-bar .img-holder {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 10px;
+    }
+    .manage-patient .img-bar .text-center {
+      font-size: 14px;
+    }
+    .manage-patient .img-bar, .manage-patient .thumbs, .refferal-result .img-bar, .refferal-result .thumbs {
+      margin: 0 0px 15px;
+    }
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .manage-patient .img-bar .thumbnails a {
+      /*width: 150px;*/
+      /*padding: 0 15px 20px;*/
+      /*width: auto;*/
+    }
+    .manage-patient .img-bar .img-holder {
+      width: 112px;
+      height: 111px;
+    }
+    .table tr:hover td {
+      background: #fafcfc;
+    }
+    .table tr:nth-child(2n):hover td {
+      background: #edf3f5;
+    }
+    .manage-patient .img-bar, .manage-patient .thumbs, .refferal-result .img-bar, .refferal-result .thumbs {
+      margin: 0 0px 15px;
+    }
+  }
+  
+  @media only screen and (min-width: 1024px) {
+    
+    
+    .img-opened .manage-patient .img-preview {
+      width: calc(100% - 154px);
+    }
+    .manage-patient .img-bar .thumbnails {
+      display: block;
+    }
+    .manage-patient .img-bar .thumbnails a {
+      /*padding: 0 0 27px;*/
+    /*width: 160px;*/
+    }
+    .manage-patient .img-bar, .manage-patient .thumbs, .refferal-result .img-bar, .refferal-result .thumbs {
+      margin: 0 0px 15px;
+    }
+   
+  }
+  
+  @media only screen and (min-width: 1150px) {
+    .img-opened .manage-patient .img-preview {
+      width: auto;
+    }
+     .img-opened .manage-patient .img-bar .csthumbnail {
+      width: 158px;
+      height: 158px;
+    }
+    
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .img-opened #main {
+      background: #0d0d0d;
+    }
+    .manage-patient .img-preview .img-holder,
+    .manage-patient .img-preview .img-holder .disable-selection,
+    #dicomImage {
+      width: 290px !important;
+      height: 290px !important;
+    }
+  }
+
+.img-editor .nav ul.view li.layout{
+  postion:relative !important;
+}
+.img-editor .nav ul.view li.layout ul li{
+  padding-top: 8px; 
+}
+
+
+  .img-editor .nav ul.view li.layout ul li:hover{
+  background:  #f2f2f2;
+}
+.img-editor .nav ul.view li.layout ul.pull-right.dropdown-menu{
+    /*right: 0;*/
+    width: 89px;
+    /*float: right !important;*/
+    position: absolute;
+    top: 100%;
+    /*left: 0;*/
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 89px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 16px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    height: 150px;
+    border-radius: 6px;
+
+}
+
+.img-editor .nav ul.view li.layout ul.pull-right.dropdown-menu li a{
+    padding: 0px 20px;
+    margin: 0;
+    color: gray;
+
+}
+.grid_view{
+  display: block !important;
+}

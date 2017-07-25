@@ -1,0 +1,610 @@
+/* lightbox styles */
+.popup-holder {
+	position: relative;
+	overflow: hidden;
+	height: 0;
+}
+div.lightbox {
+	
+	h3 {
+		margin: 0 0 10px;
+	}
+	p {
+		margin: 0;
+	}
+}
+.form-popup {
+	max-width: 356px;
+	padding: 0 20px 20px;
+	text-align: center;
+	overflow: hidden;
+	
+	@include media('>=tablet') {
+		padding: 0 39px 35px;
+	}
+	&.card-info {
+		max-width: 427px;
+		padding-bottom: 15px;
+		
+		@include media('>=tablet') {
+			padding-bottom: 55px;
+		}
+	}
+	&.notification-popup {
+		max-width: 447px;
+		padding: 0;
+	}
+	h3 {
+		padding: 15px;
+		margin: 0 -20px 20px;
+		line-height: 25px;
+		font-weight: normal;
+		text-transform: capitalize;
+		color: $white;
+		background: $blue-light;
+		text-align: center;
+		
+		@include media('>=tablet') {
+			padding: 23px;
+			margin: 0 -39px 34px;
+		}
+	}
+	.close {
+		font-size: 13px;
+		color: $gray-dark;
+		position: absolute;
+		top: 25px;
+		right: 20px;
+		z-index: 99;
+		
+		@include media('>=tablet') {
+			top: 32px;
+			right: 39px;
+		}
+		&:hover {
+			color: $green;
+		}
+	}
+	.form-group {
+		font-size: 15px;
+		line-height: 17px;
+		
+		label {
+			color: $gray-dark;
+			margin: 0 0 4px;
+		}
+	}
+	.btn {
+		min-width: 102px;
+		padding: 8px 10px 7px;
+		font-size: 15px;
+		line-height: 21px;
+		box-shadow: 0 3px 2px rgba(0,88,91,.13);
+		text-transform: capitalize;
+		
+		@include media('>=tablet') {
+			margin: 16px 0 0;
+			padding: 10px;
+		}
+	}
+	.card-valid {
+		margin: 0 -11px;
+		display: flex;
+		flex-flow: row wrap;
+		
+		@include media('>=tablet') {
+			margin: 0 -11px 20px;
+		}
+		.form-group {
+			padding: 0 11px;
+			
+			&:first-child {
+				width: 50%;
+				
+				@include media('>=tablet') {
+					width: 32.43%;
+				}
+			}
+			&:nth-child(2) {
+				width: 50%;
+				
+				@include media('>=tablet') {
+					width: 37.83%;
+				}
+			}
+			&:nth-child(3) {
+				width: 100%;
+				
+				@include media('>=tablet') {
+					width: 29.74%;
+				}
+			}
+		}
+		.jcf-select .jcf-select-text {
+			font-size: 15px;
+			margin-left: 15px;
+		}
+		input[type="text"] {
+			font-size: 15px;
+			
+			@include media('>=tablet') {
+				padding-left: 15px;
+			}
+		}
+	}
+	.card-no {
+		@include placeholder {
+			font-size: 25px;
+			line-height: 36px;
+			
+			@include media('>=tablet') {
+				font-size: 31px;
+			}
+		}
+	}
+}
+.notification-popup {
+	h3 {
+		margin: 0 0 3px !important;
+		padding: 20px 40px 20px 15px;
+		text-align: left;
+		color: $gray-dark;
+		background: $mostly-white;
+		
+		@include media('>=tablet') {
+			padding: 30px 55px 30px 38px;
+		}
+	}
+	.tabset {
+		@extend %listreset;
+		padding: 0 12px;
+		font-size: 18px;
+		border-bottom: 1px solid #e3ecef;
+		letter-spacing: -0.32em;
+		text-align: left;
+		
+		li {
+			@include inline(top);
+			margin: 0 15px;
+			padding: 15px 0;
+			letter-spacing: normal;
+			position: relative;
+			
+			@include media('>=tablet') {
+				margin: 0 25px;
+				padding: 22px 0;
+			}
+			&.tab-active {
+				&:after {
+					height: 2px;
+					@include pseudo-elements(auto,0,-1px);
+					background: $blue-light;
+				}
+				a {
+					color: $gray-dark;
+				}
+			}
+			a {
+				display: block;
+				color: $gray;
+				
+				&:hover {
+					color: $gray-dark;
+				}
+			}
+		}
+	}
+	.tab-content {
+		min-height: 140px;
+		padding: 20px 15px 0;
+		border-bottom: 1px solid #e3ecef;
+		
+		@include media('>=tablet') {
+			min-height: 170px;
+			padding: 51px 46px 0 44px;
+		}
+	}
+	textarea {
+		height: 77px;
+		resize: none;
+	}
+	.btn-holder {
+		padding: 10px 15px;
+		text-align: right;
+		
+		@include media('>=tablet') {
+			padding: 21px 46px 24px;
+		}
+		.btn {
+			min-width: 80px;
+			margin: 0;
+		}
+	}
+}
+.upload-file {
+	@include media('>=tablet') {
+		width: 647px;
+	}
+	form {
+		padding: 25px;
+		text-align: center;
+		background: $mostly-white;
+		
+		@include media('>=tablet') {
+			padding: 35px 30px 33px;
+		}
+		.btn {
+			min-width: 120px;
+			padding: 8px 10px 7px;
+			font-size: 15px;
+			line-height: 21px;
+			box-shadow: 0 3px 2px rgba(0,88,91,.13);
+			text-transform: none;
+			
+			@include media('>=tablet') {
+				min-width: 208px;
+				font-size: 18px;
+				line-height: 21px;
+				padding: 10px;
+			}
+		}
+	}
+	.upload-area {
+		@include size(166px, 120px);
+		padding: 60px 20px 10px;
+		display: block;
+		font-size: 18px;
+		line-height: 1.2;
+		margin: 0 auto 20px;
+		color: #7b858e;
+		border: 2px dashed #b6bec4;
+		background: $white;
+		position: relative;
+		
+		@include media('>=tablet') {
+			@include size(166px);
+			padding: 100px 20px 10px;
+			margin: 0 auto 30px;
+		}
+		&:hover {
+			color: $green;
+			border-color: $green;
+		}
+		i {
+			font-size: 30px;
+			color: $green;
+			position: absolute;
+			top: 20px;
+			left: 50%;
+			transform: translateX(-50%);
+			
+			@include media('>=tablet') {
+				font-size: 40px;
+				top: 39px;
+			}
+		}
+	}
+	ul {
+		font-size: 16px;
+		line-height: 21px;
+		padding: 20px 15px 10px;
+		
+		@include media('>=tablet') {
+			font-size: 18px;
+			padding: 57px 57px 30px 64px;
+		}
+		li {
+			margin: 0 0 15px;
+			padding: 0 40px 10px 0;
+			position: relative;
+			
+			@include media('>=tablet') {
+				margin: 0 0 39px;
+				padding: 0 50px 10px 0;
+			}
+		}
+		.title {
+			@include inline(top);
+			color: $gray-darker;
+			padding: 0 0 0 30px;
+			position: relative;
+			
+			@include media('>=tablet') {
+				padding: 0 0 0 35px;
+			}
+			&:hover {
+				color: $green;
+			}
+			i {
+				font-size: 15px;
+				line-height: 21px;
+				color: $green;
+				position: absolute;
+				top: -2px;
+				left: 0;
+				
+				@include media('>=tablet') {
+					font-size: 17px;
+				}
+				&.icon-gallery {
+					font-size: 21px;
+				}
+			}
+		}
+	}
+	.progress {
+		@include size(100%,3px);
+		background: $gray-lighter;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		
+		&-bar {
+			background: $green;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+		}
+		.percentage {
+			font-weight: normal;
+			position: absolute;
+			right: 2px;
+			bottom: 100%;
+			margin: 0 0 8px;
+		}
+	}
+}
+/*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
+.fancybox-wrap,
+.fancybox-skin,
+.fancybox-outer,
+.fancybox-inner,
+.fancybox-image,
+.fancybox-wrap iframe,
+.fancybox-wrap object,
+.fancybox-nav,
+.fancybox-nav span,
+.fancybox-tmp
+{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	outline: none;
+	vertical-align: top;
+}
+
+.fancybox-wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 8020;
+}
+
+.fancybox-skin {
+	position: relative;
+	background: $white;
+	text-shadow: none;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.fancybox-opened {
+	z-index: 8030;
+}
+
+.fancybox-opened .fancybox-skin {
+	box-shadow: 0 0 10px rgba($black,.1);
+}
+
+.fancybox-outer, .fancybox-inner {
+	position: relative;
+}
+
+.fancybox-inner {
+	overflow: hidden;
+}
+
+.fancybox-type-iframe .fancybox-inner {
+	-webkit-overflow-scrolling: touch;
+}
+
+.fancybox-error {
+	color: #444;
+	font: 14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin: 0;
+	padding: 15px;
+	white-space: nowrap;
+}
+
+.fancybox-image, .fancybox-iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.fancybox-image {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+	background-image: url('../images/fancybox/fancybox_sprite.png');
+}
+
+#fancybox-loading {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -22px;
+	margin-left: -22px;
+	background-position: 0 -108px;
+	opacity: 0.8;
+	cursor: pointer;
+	z-index: 8060;
+}
+
+#fancybox-loading div {
+	width: 44px;
+	height: 44px;
+	background: url('../images/fancybox/fancybox_loading.gif') center center no-repeat;
+}
+
+.fancybox-close {
+	position: absolute;
+	top: -18px;
+	right: -18px;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+	z-index: 8040;
+}
+
+.fancybox-nav {
+	position: absolute;
+	top: 0;
+	width: 40%;
+	height: 100%;
+	cursor: pointer;
+	text-decoration: none;
+	background: transparent url('../images/fancybox/blank.gif'); /* helps IE */
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	z-index: 8040;
+}
+
+.fancybox-prev {
+	left: 0;
+}
+
+.fancybox-next {
+	right: 0;
+}
+
+.fancybox-nav span {
+	position: absolute;
+	top: 50%;
+	width: 36px;
+	height: 34px;
+	margin-top: -18px;
+	cursor: pointer;
+	z-index: 8040;
+	visibility: hidden;
+}
+
+.fancybox-prev span {
+	left: 10px;
+	background-position: 0 -36px;
+}
+
+.fancybox-next span {
+	right: 10px;
+	background-position: 0 -72px;
+}
+
+.fancybox-nav:hover span {
+	visibility: visible;
+}
+
+.fancybox-tmp {
+	position: absolute;
+	top: -99999px;
+	left: -99999px;
+	visibility: hidden;
+	max-width: 99999px;
+	max-height: 99999px;
+	overflow: visible !important;
+}
+
+/* Overlay helper */
+
+.fancybox-lock {
+    overflow: hidden !important;
+    width: auto;
+}
+
+.fancybox-lock body {
+    overflow: hidden !important;
+}
+
+.fancybox-lock-test {
+    overflow-y: hidden !important;
+}
+
+.fancybox-overlay {
+	min-width: 320px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	display: none;
+	z-index: 8010;
+	background: url('../images/fancybox/fancybox_overlay.png');
+}
+
+.fancybox-overlay-fixed {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
+
+.fancybox-lock .fancybox-overlay {
+	overflow: auto;
+	overflow-y: scroll;
+}
+
+/* Title helper */
+
+.fancybox-title {
+	visibility: hidden;
+	font: normal 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+	position: relative;
+	text-shadow: none;
+	z-index: 8050;
+}
+
+.fancybox-opened .fancybox-title {
+	visibility: visible;
+}
+
+.fancybox-title-float-wrap {
+	position: absolute;
+	bottom: 0;
+	right: 50%;
+	margin-bottom: -35px;
+	z-index: 8050;
+	text-align: center;
+}
+
+.fancybox-title-float-wrap .child {
+	display: inline-block;
+	margin-right: -100%;
+	padding: 2px 20px;
+	background: transparent; /* Fallback for web browsers that doesn't support RGBa */
+	background: rgba(0, 0, 0, 0.8);
+	border-radius: 15px;
+	text-shadow: 0 1px 2px #222;
+	color: $white;
+	font-weight: bold;
+	line-height: 24px;
+	white-space: nowrap;
+}
+
+.fancybox-title-outside-wrap {
+	position: relative;
+	margin-top: 10px;
+	color: $white;
+}
+
+.fancybox-title-inside-wrap {
+	padding-top: 10px;
+}
+
+.fancybox-title-over-wrap {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	color: $white;
+	padding: 10px;
+	background: #000;
+	background: rgba(0, 0, 0, .8);
+}

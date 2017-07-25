@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>QUBS</title>
+	<link media="all" rel="stylesheet" href="css/main.css">
+	<link media="all" rel="stylesheet" href="css/qubs.css">
+	<link media="all" rel="stylesheet" href="js/toastr/toastr.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script> -->
+	<script>
+		window.jQuery || document.write('<script src="js/jquery-1.12.4.min.js"><\/script>')
+	</script>
+	<script type="text/javascript" src="js/jquery.main.js" defer></script>
+	<script>
+	  window.intercomSettings = {
+	    app_id: "xcwvx5ob"
+	  };
+	</script>
+	<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/xcwvx5ob';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+	
+</head>
+
+<body>
+	<div id="wrapper">
+		<div class="w1">
+			<header id="header">
+				<div class="logo">
+					<a href="pacs.html">
+						<img src="images/logo-white.svg" width="117" alt="QUBS">
+						<img src="images/logo-black.svg" width="117" alt="QUBS" class="black">
+					</a>
+				</div>
+				<a href="#" class="search-opener"><i class="icon-search"></i></a>
+				<form class="search-form" id="search-form">
+					<div class="fields">
+						<div class="form-group">
+							<input id="search-first-name" type="text" placeholder="First Name">
+						</div>
+						<div class="form-group">
+							<input id="search-last-name" type="text" placeholder="Last Name">
+						</div>
+						<div class="form-group">
+							<input id="search-dob" type="text" placeholder="DOB" data-datepicker="">
+						</div>
+					</div>
+					<button id="patient-search-button" type="button" class="btn red">Search</button>
+					<a href="#adv-search" class="btn blue lightbox">Advanced Search</a>
+				</form>
+				<a href="#" class="nav-opener"><span></span></a>
+				<nav id="nav">
+					<a href="#" class="author"></a>
+					<ul>
+						<li>
+							<a href="account.html" class="">Account</a>
+							<!-- <ul class="dropdown">
+								<li><a href="#">Profile</a></li>
+								<li><a href="#">Billing</a></li>
+								<li><a href="#">Sites</a></li>
+								<li><a href="#">Settings</a></li>
+							</ul> -->
+						</li>
+						<li>
+							<a href="https://help.qubs.com/" class="">Help</a>
+							<!-- <ul class="dropdown">
+								<li><a href="#">Option 1</a></li>
+								<li><a href="#">Option 2</a></li>
+								<li><a href="#">Option 3</a></li>
+								<li><a href="#">Option 4</a></li>
+							</ul> -->
+						</li>
+						<li><a href="#" class="logout" id="logout">Logout</a></li>
+					</ul>
+				</nav>
+			</header>
+			<main id="main" class="flex-box">
+				<div id="content" class="flex-box">
+					<section class="patient-list">
+						<header class="header">
+							<h1></h1>
+							<select id="period_search">
+								<option value="n_week">This Week</option>
+								<option value="l_week">Last Week</option>
+								<option value="n_month">This Month</option>
+								<option value="l_month">Last Month</option>
+							</select>
+						</header>
+						<table class="table responsive-table">
+							<thead>
+								<tr>
+									<th>Patient Name</th>
+									<th>Patient ID</th>
+									<th>Birthdate</th>
+									<th>Descriptions</th>
+									<th>Accession</th>
+									<th>Date</th>
+									<th>Modality</th>
+									<th>Images</th>
+								</tr>
+							</thead>
+							<tbody id="patients-table">
+								<!--
+								<tr>
+									<td data-title="Patient Name"><span class="txt"><a href="#">John Doe</a></span></td>
+									<td data-title="Patient ID"><span class="txt">109886</span></td>
+									<td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11">18/11/1985</time></span></td>
+									<td data-title="Descriptions"><span class="txt">US Pelvis</span></td>
+									<td data-title="Accession"><span class="txt">333001</span></td>
+									<td data-title="Date"><span class="txt"><time datetime="2017-05-11">21/03/2017</time></span></td>
+									<td data-title="Modality"><span class="txt">US</span></td>
+									<td data-title="Images"><span class="txt">35</span></td>
+								</tr>
+-->
+							</tbody>
+						</table>
+
+						<div class="search-message">
+							<div class="sk-folding-cube" id="patients-loading-indicator">
+								<div class="sk-cube1 sk-cube"></div>
+								<div class="sk-cube2 sk-cube"></div>
+								<div class="sk-cube4 sk-cube"></div>
+								<div class="sk-cube3 sk-cube"></div>
+							</div>
+							<div id="table-empty-state">
+								<i class="icon-noresults"></i>
+								<h2>Nothing to see here</h2>
+								<span class="note">Your search returned no results</span>
+								<a href="#" class="btn blue">Search Again</a>
+							</div>
+						</div>
+
+						<div class="pager">
+							<!-- <a href="#" class="prev disabled"><i class="icon-arrow-left"></i></a>
+							<ul>
+								<li class="active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">6</a></li>
+							</ul>
+							<a href="#" class="next"><i class="icon-arrow-right"></i></a> -->
+
+						</div>
+
+
+					</section>
+					<section class="manage-patient">
+
+						<div class="holder" id="holder">
+
+							<!-- Thumbnails  -->
+							<div id="seriesHolder" class="custom-style" >
+								<div class="img-bar" id="seriesList">
+									<div class="thumbnails list-group">
+										<!-- <ul class="thumbnails_ul">
+										</ul> -->
+									</div>
+								</div>
+							</div>
+							<div class="img-editor">
+								<a href="#" class="btn-img-close">CLOSE <i class="icon-close"></i></a>
+								<a href="#" class="menu-opener"><i class="icon-menu"></i></a>
+								<nav class="nav">
+									<ul>
+										<li><a id="btn_ww" href="javascript:void(0)" data-title="Brightness"><i class="icon-setting"></i></a></li>
+										<li><a id="btn_invert" href="javascript:void(0)" data-title="Invert"><i class="icon-invert"></i></a></li>
+										<li><a id="btn_zoom" href="javascript:void(0)" data-title="Zoom"><i class="icon-search"></i></a></li>
+										<li><a id="btn_pan" href="javascript:void(0)" data-title="Pan"><i class="icon-move"></i></a></li>
+										<li><a id="btn_scroll" href="javascript:void(0)" data-title="Scroll"><i class="icon-menu"></i></a></li>
+									</ul>
+									<ul>
+										<li><a id="btn_length" href="javascript:void(0)" data-title="Line"><i class="icon-resize"></i></a></li>
+										<li><a id="btn_angle" href="javascript:void(0)" data-title="Angle"><i class="icon-arrow-left"></i></a></li>
+										<li><a id="btn_probe" href="javascript:void(0)" data-title="Ajust"><i class="icon-adjust"></i></a></li>
+										<li><a id="btn_eroi" href="javascript:void(0)" data-title="circle"><i class="icon-circle"></i></a></li>
+										<li><a id="btn_rroi" href="javascript:void(0)" data-title="square"><i class="icon-square"></i></a></li>
+									</ul>
+									<ul class="view">
+										<li><a id="btn_play" href="javascript:void(0)" data-title="Play"><i class="icon-play"></i></a></li>
+										<li><a id="btn_stop" href="javascript:void(0)" data-title="Stop"><i class="icon-stop"></i></a></li>
+										<li><a id="fullscreen" href="javascript:void(0)" data-title="Full screen"><i class="icon-fullscreen"></i></a></li>
+										<li class="layout" style="position: relative;margin: 0;padding: 10px 0;"><a id="grid" href="javascript:void(0)" data-title="Grid">
+											<i class="icon-grid"></i>
+											</a>
+											<ul class="pull-right dropdown-menu choose-layout" role="menu">
+					                            <li><a href="#" data-title="1x1">1x1</a></li>
+					                            <li><a href="#" data-title="2x1">2x1</a></li>
+					                            <li><a href="#" data-title="1x2">1x2</a></li>
+					                            <li><a href="#" data-title="2x2">2x2</a></li>
+					                        </ul>    
+										</li>
+<!-- 
+										<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-container='body' data-toggle="dropdown" aria-expanded="false" data-placement="top" title="Layout"><span class="fa fa-th-large"></span></button> -->
+					                        
+
+									</ul>
+								</nav>
+							</div>
+
+							<div class="img-preview">
+								<div class="img-head">
+									<a href="#" class="btn-fullscreen">Full Screen</a>
+									<div class="numbers">
+										<span class="current-num" id="current-num">1</span>
+										<span class="total-num" id="total-num">0</span>
+									</div>
+									<div class="progress" id="progress-bar-holder">
+										<span class="progress-bar" id="progress-bar" style="width: 0%; display:none;"></span>
+									</div>
+									<div id="loadProgress">Loading please wait</div>
+								</div>
+
+								<div class="img-holder">
+									<div class="dicom-img-holder" id="dicom-img-holder" oncontextmenu="return false" class='disable-selection noIbar' unselectable='on' onselectstart='return false;' onmousedown='return false;'>
+										<div class="dicom-img" id="dicomImage">
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+
+							<div class="img-layout-preview">
+
+							</div>
+
+						</div>
+					</section>
+				</div>
+				<a href="#" class="sidebar-opener">Patient <i class="icon-info"></i></a>
+				<aside id="sidebar">
+					<div class="search-message" id="sidebar-empty-state">
+						<i class="icon-noselected"></i>
+						<h2>No patient selected</h2>
+						<span class="note">Please search for a patient <br>and select a patient to see more info</span>
+					</div>
+
+					<div id="sidebar-details" style="display:none;">
+						<div class="author-info">
+							<div class="img-holder">
+								<img src="images/patient-img.jpg" alt="John DOE">
+							</div>
+							<h2 id="patient-name"> John DOE <span class="age">(37y F)</span></h2>
+							<strong class="center" id="company-name">My radiology Centre</strong>
+						</div>
+						<ul class="author-contact">
+							<li><a class="email lightbox" href="#notification-popup" id="email">&#106;&#111;&#104;&#110;&#064;&#100;&#111;&#101;&#046;&#099;&#111;&#109;</a></li>
+							<li id="phone"><a class="tel" href="tel:0452222222">04 5222 2222</a></li>
+						</ul>
+						<ul class="author-detail">
+							<li><a id="study-report" href="javascript:void(0)"><i class="icon-report"></i>Report<span id="reportButton" class="authorised">Authorised</span></a></li>
+							<li><a id="study-images" href="javascript:void(0)"><i class="icon-gallery"></i>Images<span id="imageCount">35</span></a></li>
+
+							<li><a id="study-download" href="javascript:void(0)"><i class="icon-download"></i>Download</a></li>
+							<li><a id="study-referral" href="javascript:void(0)"><i class="icon-attachments"></i>Referral</a></li>
+							<li><a id="study-share" href="#"><i class="icon-share"></i>Share</a></li>
+
+							<!--
+							<li><a id="study-activity" href="javascript:void(0)"><i class="icon-activity"></i>Activity</a></li>
+							<li><a id="study-manage" href="javascript:void(0)"><i class="icon-manage"></i>Manage</a></li>
+							-->
+
+						</ul>
+						<div class="widget author-history">
+							<h3>History</h3>
+							<div class="widget-holder">
+								<ul id="patient-history">
+									<li>
+										<strong class="depart"><span>US</span></strong>
+										<div class="text">
+											<h4><a href="#">Ultrasound pregnancy less than 12 weeks</a></h4>
+											<time datetime="2017-05-11">4 weeks ago</time>
+										</div>
+									</li>
+									<li>
+										<strong class="depart"><span>XR</span></strong>
+										<div class="text">
+											<h4><a href="#">XR billateral foot</a></h4>
+											<time datetime="2017-05-11">2 months ago</time>
+										</div>
+									</li>
+									<li>
+										<strong class="depart"><span>CT</span></strong>
+										<div class="text">
+											<h4><a href="#">CT IAM (Petrous) +/- Brain</a></h4>
+											<time datetime="2017-05-11">6 months ago</time>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="widget author-access">
+							<h3>Users</h3>
+							<div class="widget-holder">
+								<dl id="usersList">
+									<dt><a href="#">John Doe</a></dt>
+									<dd>Patient</dd>
+									<dt><a href="#">Sam Smith</a></dt>
+									<dd>Referring Doctor</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</aside>
+			</main>
+			<footer id="footer">
+				<p>&copy; 2017 <a href="#">QUBS</a></p>
+			</footer>
+		</div>
+
+		<!-- inline lightbox structure example -->
+		<div class="popup-holder">
+			<form action="#" id="adv-search" class="lightbox form-popup">
+				<h3>Advanced Search</h3>
+				<div class="form-group">
+					<label for="fname">First Name</label>
+					<input type="text" id="fname">
+				</div>
+				<div class="form-group">
+					<label for="lname">Last Name</label>
+					<input type="text" id="lname">
+				</div>
+				<div class="form-group">
+					<label for="dob">Birthdate</label>
+					<input type="text" id="birthdate" data-datepicker="">
+				</div>
+				<div class="form-group">
+					<label for="from-date">From Date</label>
+					<input type="text" id="from-date">
+				</div>
+				<div class="form-group">
+					<label for="to-date">To Date</label>
+					<input type="text" id="to-date">
+				</div>
+				<div class="form-group">
+					<label for="description">Last Description</label>
+					<input type="text" id="description">
+				</div>
+				<div class="form-group">
+					<label for="patient-id">Patient ID</label>
+					<input type="text" id="patient-id">
+				</div>
+				<div class="form-group">
+					<label for="accession">Accession</label>
+					<input type="text" id="accession">
+				</div>
+				<button type="submit" id="advanced-search-button" class="btn blue">Search</button>
+			</form>
+			<form action="#" id="notification-popup" class="lightbox form-popup notification-popup">
+				<h3>John Doe</h3>
+				<a href="#" class="close"><i class="icon-close"></i></a>
+				<ul class="tabset">
+					<li class="tab-active"><a href="#email-tab">Email</a></li>
+					<li><a href="#sms-tab">SMS</a></li>
+					<li><a href="#link-tab">Link</a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="email-tab">
+						<div class="form-group">
+							<label for="notification-email">Enter email address</label>
+							<input type="email" id="notification-email">
+						</div>
+					</div>
+					<div id="sms-tab">
+						<div class="form-group">
+							<label for="notification-sms">Enter Message</label>
+							<textarea id="notification-sms"></textarea>
+						</div>
+					</div>
+					<div id="link-tab">
+						<div class="form-group">
+							<label for="notification-link">Enter Link</label>
+							<input type="url" id="notification-link">
+						</div>
+					</div>
+				</div>
+				<div class="btn-holder">
+					<button type="submit" class="btn blue">Send</button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+
+	<!-- include aws -->
+	<script type="text/javascript" src="js/aws/aws-cognito-sdk.min.js"></script>
+	<script type="text/javascript" src="js/aws/amazon-cognito-identity.min.js"></script>
+
+	<script type="text/javascript" src="js/qubs/login.js"></script>
+	<script type="text/javascript" src="js/qubs/patients.js"></script>
+
+
+	<!-- include the hammer.js library for touch gestures-->
+	<script src="js/cornerstone/hammer.min.js"></script>
+
+	<!-- include the cornerstone library -->
+	<script src="js/cornerstone/cornerstone.js"></script>
+	<script src="js/cornerstone/cornerstoneMath.js"></script>
+
+	<!-- include the cornerstone tools library -->
+	<script src="js/cornerstone/cornerstoneTools.js"></script>
+
+	<!-- include the dicomParser library -->
+	<script src="js/cornerstone/dicomParser.js"></script>
+
+	<!-- BEGIN Optional Codecs -->
+
+	<!-- OpenJPEG based jpeg 2000 codec -->
+	<script src="js/cornerstone/codecs/openJPEG-FixedMemory.js"></script>
+
+	<!-- PDF.js based jpeg 2000 codec -->
+	<!-- NOTE: do not load the OpenJPEG codec if you use this one -->
+	<!-- <script src="../../codecs/jpx.min.js"></script> -->
+
+	<!-- JPEG-LS codec -->
+	<script src="js/cornerstone/codecs/charLS-FixedMemory-browser.js"></script>
+
+	<!-- JPEG Lossless codec -->
+	<script src="js/cornerstone/codecs/jpegLossless.js"></script>
+
+	<!-- JPEG Baseline codec -->
+	<script src="js/cornerstone/codecs/jpeg.js"></script>
+
+	<!-- Deflate transfer syntax codec -->
+	<script src="js/cornerstone/codecs/pako.min.js"></script>
+
+	<!-- END Optional Codecs -->
+
+
+
+	<!-- include the cornerstoneWADOImageLoader library -->
+	<script src="js/cornerstone/cornerstoneWADOImageLoader.js"></script>
+
+	<script type="text/javascript" src="js/qubs/studies.js"></script>
+
+	<script type="text/javascript" src="js/toastr/toastr.min.js"></script>
+
+</body>
+
+</html>

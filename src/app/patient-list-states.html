@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QUBS</title>
+	<link media="all" rel="stylesheet" href="css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.12.4.min.js"><\/script>')</script>
+	<script type="text/javascript" src="js/jquery.main.js" defer></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="w1">
+			<header id="header">
+				<div class="logo">
+					<a href="#"><img src="images/logo-white.svg" width="117" alt="QUBS"></a>
+				</div>
+				<a href="#" class="search-opener"><i class="icon-search"></i></a>
+				<form action="#" class="search-form">
+					<div class="fields">
+						<div class="form-group">
+							<input type="text" placeholder="First Name">
+						</div>
+						<div class="form-group">
+							<input type="text" placeholder="Last Name">
+						</div>
+						<div class="form-group">
+							<input type="text" placeholder="Birthday" data-datepicker="">
+						</div>
+					</div>
+					<button type="submit" class="btn red">Search</button>
+					<a href="#adv-search" class="btn blue lightbox">Advanced Search</a>
+				</form>
+				<a href="#" class="nav-opener"><span></span></a>
+				<nav id="nav">
+					<a href="#" class="author">Dr John</a>
+					<ul>
+						<li>
+							<a href="#" class="opener">Account</a>
+							<ul class="dropdown">
+								<li><a href="#">Profile</a></li>
+								<li><a href="#">Billing</a></li>
+								<li><a href="#">Sites</a></li>
+								<li><a href="#">Settings</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#" class="opener">Help</a>
+							<ul class="dropdown">
+								<li><a href="#">Option 1</a></li>
+								<li><a href="#">Option 2</a></li>
+								<li><a href="#">Option 3</a></li>
+								<li><a href="#">Option 4</a></li>
+							</ul>
+						</li>
+						<li><a href="#" class="logout">Logout</a></li>
+					</ul>
+				</nav>
+			</header>
+			<main id="main" class="flex-box">
+				<div id="content" class="flex-box">
+					<section class="patient-list no-search">
+						<header class="header">
+							<h1>Dr John Doe’s Patient List</h1>
+							<select>
+								<option>This Week</option>
+								<option>This Month</option>
+								<option>Last Month</option>
+								<option>Next Month</option>
+							</select>
+						</header>
+						<table class="table responsive-table">
+							<thead>
+								<tr>
+									<th>Patient Name</th>
+									<th>Patient ID</th>
+									<th>Birthdate</th>
+									<th>Descriptions</th>
+									<th>Accession</th>
+									<th>Date</th>
+									<th>Modality</th>
+									<th>Images</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="search-message">
+							<i class="icon-noresults"></i>
+							<h2>Nothing to see here</h2>
+							<span class="note">Your search returned no results</span>
+							<a href="#" class="btn blue">Search Again</a>
+						</div>
+					</section>
+				</div>
+				<a href="#" class="sidebar-opener">Patient <i class="icon-info"></i></a>
+				<aside id="sidebar" class="no-search">
+					<div class="search-message">
+						<i class="icon-noselected"></i>
+						<h2>No patient selected</h2>
+						<span class="note">Please search for a patient <br>and select a patient to see more info</span>
+					</div>
+				</aside>
+			</main>
+			<footer id="footer">
+				<p>&copy; 2017 <a href="#">QUBS</a></p>
+			</footer>
+		</div>
+		<!-- inline lightbox structure example -->
+		<div class="popup-holder">
+			<form action="#" id="adv-search" class="lightbox form-popup">
+				<h3>Advanced Search</h3>
+				<div class="form-group">
+					<label for="fname">First Name</label>
+					<input type="text" id="fname">
+				</div>
+				<div class="form-group">
+					<label for="lname">Last Name</label>
+					<input type="text" id="lname">
+				</div>
+				<div class="form-group">
+					<label for="dob">Birthdate</label>
+					<input type="text" id="dob" data-datepicker="">
+				</div>
+				<div class="form-group">
+					<label for="study-date">Study Date</label>
+					<input type="text" id="study-date">
+				</div>
+				<div class="form-group">
+					<label for="description">Last Description</label>
+					<input type="text" id="description">
+				</div>
+				<div class="form-group">
+					<label for="patient-id">Patient ID</label>
+					<input type="text" id="patient-id">
+				</div>
+				<div class="form-group">
+					<label for="accession">Accession</label>
+					<input type="text" id="accession">
+				</div>
+				<button type="submit" class="btn blue">Search</button>
+			</form>
+			<form action="#" id="notification-popup" class="lightbox form-popup notification-popup">
+				<h3>John Doe</h3>
+				<a href="#" class="close"><i class="icon-close"></i></a>
+				<ul class="tabset">
+					<li class="tab-active"><a href="#email-tab">Email</a></li>
+					<li><a href="#sms-tab">SMS</a></li>
+					<li><a href="#link-tab">Link</a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="email-tab">
+						<div class="form-group">
+							<label for="notification-email">Enter email address</label>
+							<input type="email" id="notification-email">
+						</div>
+					</div>
+					<div id="sms-tab">
+						<div class="form-group">
+							<label for="notification-sms">Enter Message</label>
+							<textarea id="notification-sms"></textarea>
+						</div>
+					</div>
+					<div id="link-tab">
+						<div class="form-group">
+							<label for="notification-link">Enter Link</label>
+							<input type="url" id="notification-link">
+						</div>
+					</div>
+				</div>
+				<div class="btn-holder">
+					<button type="submit" class="btn blue">Send</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

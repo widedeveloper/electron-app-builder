@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QUBS</title>
+	<link media="all" rel="stylesheet" href="css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.12.4.min.js"><\/script>')</script>
+	<script type="text/javascript" src="js/jquery.main.js" defer></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="w1">
+			<header id="header">
+				<div class="logo">
+					<a href="#"><img src="images/logo-white.svg" width="117" alt="QUBS"></a>
+				</div>
+				<a href="#" class="search-opener"><i class="icon-search"></i></a>
+				<form action="#" class="search-form">
+					<div class="fields">
+						<div class="form-group">
+							<input type="text" placeholder="First Name">
+						</div>
+						<div class="form-group">
+							<input type="text" placeholder="Last Name">
+						</div>
+						<div class="form-group">
+							<input type="text" placeholder="Birthday" data-datepicker="">
+						</div>
+					</div>
+					<button type="submit" class="btn red">Search</button>
+					<a href="#adv-search" class="btn blue lightbox">Advanced Search</a>
+				</form>
+				<a href="#" class="nav-opener"><span></span></a>
+				<nav id="nav">
+					<a href="#" class="author">Hashitha</a>
+					<ul>
+						<li>
+							<a href="#" class="opener">Account</a>
+							<ul class="dropdown">
+								<li><a href="#">Profile</a></li>
+								<li><a href="#">Billing</a></li>
+								<li><a href="#">Sites</a></li>
+								<li><a href="#">Settings</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#" class="opener">Help</a>
+							<ul class="dropdown">
+								<li><a href="#">Option 1</a></li>
+								<li><a href="#">Option 2</a></li>
+								<li><a href="#">Option 3</a></li>
+								<li><a href="#">Option 4</a></li>
+							</ul>
+						</li>
+						<li><a href="#" class="logout">Logout</a></li>
+					</ul>
+				</nav>
+			</header>
+			<main id="main" class="flex-box">
+				<div id="content" class="flex-box">
+					<section class="patient-list">
+						<header class="header">
+							<h1>Dr John Doe’s Patient List</h1>
+							<select>
+								<option>This Week</option>
+								<option>This Month</option>
+								<option>Last Month</option>
+								<option>Next Month</option>
+							</select>
+						</header>
+						<table class="table responsive-table">
+							<thead>
+								<tr>
+									<th>Patient Name</th>
+									<th>Patient ID</th>
+									<th>Birthdate</th>
+									<th>Descriptions</th>
+									<th>Accession</th>
+									<th>Date</th>
+									<th>Modality</th>
+									<th>Images</th>
+								</tr>
+							</thead>
+							<tr>
+								<td data-title="Patient Name"><span class="txt"><a href="#">John Doe</a></span></td>
+								<td data-title="Patient ID"><span class="txt">109886</span></td>
+								<td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11">18/11/1985</time></span></td>
+								<td data-title="Descriptions"><span class="txt">US Pelvis</span></td>
+								<td data-title="Accession"><span class="txt">333001</span></td>
+								<td data-title="Date"><span class="txt"><time datetime="2017-05-11">21/03/2017</time></span></td>
+								<td data-title="Modality"><span class="txt">US</span></td>
+								<td data-title="Images"><span class="txt">35</span></td>
+							</tr>
+							<tr class="empty">
+								<td data-title="Patient Name"><span class="txt"></span></td>
+								<td data-title="Patient ID"><span class="txt"></span></td>
+								<td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Descriptions"><span class="txt"></span></td>
+								<td data-title="Accession"><span class="txt"></span></td>
+								<td data-title="Date"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Modality"><span class="txt"></span></td>
+								<td data-title="Images"><span class="txt"></span></td>
+							</tr>
+							<tr class="empty">
+								<td data-title="Patient Name"><span class="txt"></span></td>
+								<td data-title="Patient ID"><span class="txt"></span></td>
+								<td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Descriptions"><span class="txt"></span></td>
+								<td data-title="Accession"><span class="txt"></span></td>
+								<td data-title="Date"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Modality"><span class="txt"></span></td>
+								<td data-title="Images"><span class="txt"></span></td>
+							</tr>
+							<tr class="empty">
+								<td data-title="Patient Name"><span class="txt"></span></td>
+								<td data-title="Patient ID"><span class="txt"></span></td>
+								<td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Descriptions"><span class="txt"></span></td>
+								<td data-title="Accession"><span class="txt"></span></td>
+								<td data-title="Date"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Modality"><span class="txt"></span></td>
+								<td data-title="Images"><span class="txt"></span></td>
+							</tr>
+							<tr class="empty">
+								<td data-title="Patient Name"><span class="txt"></span></td>
+								<td data-title="Patient ID"><span class="txt"></span></td>
+								<td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Descriptions"><span class="txt"></span></td>
+								<td data-title="Accession"><span class="txt"></span></td>
+								<td data-title="Date"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Modality"><span class="txt"></span></td>
+								<td data-title="Images"><span class="txt"></span></td>
+							</tr>
+							<tr class="empty">
+								<td data-title="Patient Name"><span class="txt"></span></td>
+								<td data-title="Patient ID"><span class="txt"></span></td>
+								<td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Descriptions"><span class="txt"></span></td>
+								<td data-title="Accession"><span class="txt"></span></td>
+								<td data-title="Date"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Modality"><span class="txt"></span></td>
+								<td data-title="Images"><span class="txt"></span></td>
+							</tr>
+							<tr class="empty">
+								<td data-title="Patient Name"><span class="txt"></span></td>
+								<td data-title="Patient ID"><span class="txt"></span></td>
+								<td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Descriptions"><span class="txt"></span></td>
+								<td data-title="Accession"><span class="txt"></span></td>
+								<td data-title="Date"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Modality"><span class="txt"></span></td>
+								<td data-title="Images"><span class="txt"></span></td>
+							</tr>
+							<tr class="empty">
+								<td data-title="Patient Name"><span class="txt"></span></td>
+								<td data-title="Patient ID"><span class="txt"></span></td>
+								<td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Descriptions"><span class="txt"></span></td>
+								<td data-title="Accession"><span class="txt"></span></td>
+								<td data-title="Date"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Modality"><span class="txt"></span></td>
+								<td data-title="Images"><span class="txt"></span></td>
+							</tr>
+							<tr class="empty">
+								<td data-title="Patient Name"><span class="txt"></span></td>
+								<td data-title="Patient ID"><span class="txt"></span></td>
+								<td data-title="Birthdate"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Descriptions"><span class="txt"></span></td>
+								<td data-title="Accession"><span class="txt"></span></td>
+								<td data-title="Date"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+								<td data-title="Modality"><span class="txt"></span></td>
+								<td data-title="Images"><span class="txt"></span></td>
+							</tr>
+						</table>
+						<div class="pager">
+							<a href="#" class="prev disabled"><i class="icon-arrow-left"></i></a>
+							<ul>
+								<li class="active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">6</a></li>
+							</ul>
+							<a href="#" class="next"><i class="icon-arrow-right"></i></a>
+						</div>
+					</section>
+				</div>
+				<a href="#" class="sidebar-opener">Patient <i class="icon-info"></i></a>
+				<aside id="sidebar">
+					<div class="author-info">
+						<div class="img-holder">
+							<img src="images/patient-img.jpg" alt="John DOE">
+						</div>
+						<h2><a href="#">John DOE <span class="age">(37y F)</span></a></h2>
+						<strong class="center">My radiology Centre</strong>
+					</div>
+					<ul class="author-contact">
+						<li><a class="email lightbox" href="#notification-popup">&#106;&#111;&#104;&#110;&#064;&#100;&#111;&#101;&#046;&#099;&#111;&#109;</a></li>
+						<li><a class="tel" href="tel:0452222222">04 5222 2222</a></li>
+					</ul>
+					<ul class="author-detail">
+						<li><a href="#"><i class="icon-report"></i>Report <span class="authorised">Authorised</span></a></li>
+						<li><a href="#"><i class="icon-gallery"></i>Images <span>35</span></a></li>
+						<li><a href="#"><i class="icon-download"></i>Download</a></li>
+						<li><a href="#"><i class="icon-share"></i>Share</a></li>
+						<li><a href="#"><i class="icon-activity"></i>Activity</a></li>
+						<li><a href="#"><i class="icon-manage"></i>Manage</a></li>
+						<li><a href="#"><i class="icon-referral"></i>Referral</a></li>
+						<li><a href="#"><i class="icon-attachments"></i>Attachments</a></li>
+					</ul>
+					<div class="widget author-history">
+						<h3>History</h3>
+						<div class="widget-holder">
+							<ul>
+								<li>
+									<strong class="depart"><span>US</span></strong>
+									<div class="text">
+										<h4><a href="#">Ultrasound pregnancy less than 12 weeks</a></h4>
+										<time datetime="2017-05-11">4 weeks ago</time>
+									</div>
+								</li>
+								<li>
+									<strong class="depart"><span>XR</span></strong>
+									<div class="text">
+										<h4><a href="#">XR billateral foot</a></h4>
+										<time datetime="2017-05-11">2 months ago</time>
+									</div>
+								</li>
+								<li>
+									<strong class="depart"><span>CT</span></strong>
+									<div class="text">
+										<h4><a href="#">CT IAM (Petrous) +/- Brain</a></h4>
+										<time datetime="2017-05-11">6 months ago</time>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="widget author-access">
+						<h3>User With Access</h3>
+						<div class="widget-holder">
+							<dl>
+								<dt><a href="#">John Doe</a></dt>
+								<dd>Patient</dd>
+								<dt><a href="#">Sam Smith</a></dt>
+								<dd>Referring Doctor</dd>
+							</dl>
+						</div>
+					</div>
+				</aside>
+			</main>
+			<footer id="footer">
+				<p>&copy; 2017 <a href="#">QUBS</a></p>
+			</footer>
+		</div>
+		<!-- inline lightbox structure example -->
+		<div class="popup-holder">
+			<form action="#" id="adv-search" class="lightbox form-popup">
+				<h3>Advanced Search</h3>
+				<div class="form-group">
+					<label for="fname">First Name</label>
+					<input type="text" id="fname">
+				</div>
+				<div class="form-group">
+					<label for="lname">Last Name</label>
+					<input type="text" id="lname">
+				</div>
+				<div class="form-group">
+					<label for="dob">Birthdate</label>
+					<input type="text" id="dob" data-datepicker="">
+				</div>
+				<div class="form-group">
+					<label for="study-date">Study Date</label>
+					<input type="text" id="study-date">
+				</div>
+				<div class="form-group">
+					<label for="description">Last Description</label>
+					<input type="text" id="description">
+				</div>
+				<div class="form-group">
+					<label for="patient-id">Patient ID</label>
+					<input type="text" id="patient-id">
+				</div>
+				<div class="form-group">
+					<label for="accession">Accession</label>
+					<input type="text" id="accession">
+				</div>
+				<button type="submit" class="btn blue">Search</button>
+			</form>
+			<form action="#" id="notification-popup" class="lightbox form-popup notification-popup">
+				<h3>John Doe</h3>
+				<a href="#" class="close"><i class="icon-close"></i></a>
+				<ul class="tabset">
+					<li class="tab-active"><a href="#email-tab">Email</a></li>
+					<li><a href="#sms-tab">SMS</a></li>
+					<li><a href="#link-tab">Link</a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="email-tab">
+						<div class="form-group">
+							<label for="notification-email">Enter email address</label>
+							<input type="email" id="notification-email">
+						</div>
+					</div>
+					<div id="sms-tab">
+						<div class="form-group">
+							<label for="notification-sms">Enter Message</label>
+							<textarea id="notification-sms"></textarea>
+						</div>
+					</div>
+					<div id="link-tab">
+						<div class="form-group">
+							<label for="notification-link">Enter Link</label>
+							<input type="url" id="notification-link">
+						</div>
+					</div>
+				</div>
+				<div class="btn-holder">
+					<button type="submit" class="btn blue">Send</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

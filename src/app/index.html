@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QUBS - Login</title>
+	<link media="all" rel="stylesheet" href="css/main.css">
+	<link media="all" rel="stylesheet" href="css/qubs.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	
+	<script>
+		window.jQuery || document.write('<script src="js/jquery-1.12.4.min.js"><\/script>')
+	</script>
+	<script type="text/javascript" src="js/jquery.main.js" defer></script>
+	
+</head>
+
+<body>
+	<div id="wrapper" class="login-page">
+		<form id="login-form" class="login-form form-validation">
+			<div class="logo">
+				<a href=""><img src="images/logo.svg" alt="QUBS"></a>
+			</div>
+
+
+			<div class="sk-folding-cube" id="progress">
+				<div class="sk-cube1 sk-cube"></div>
+				<div class="sk-cube2 sk-cube"></div>
+				<div class="sk-cube4 sk-cube"></div>
+				<div class="sk-cube3 sk-cube"></div>
+			</div>
+
+			<div class="form-group">
+				<input type="email" placeholder="Email" id="email" data-required="true" data-type="email">
+				<span class="help-text">Please enter correct email</span>
+			</div>
+
+			<div class="form-group">
+				<input type="password" placeholder="Password" id="password" data-required="true" data-type="password">
+				<span class="help-text">Please enter password</span>
+			</div>
+
+			<div class="help">
+				<a href="register.html">Sign Up</a>
+				<a href="">Forgot Password?</a>
+			</div>
+
+			<div>
+				<span id="info" class="help-text">Please enter password</span>
+			</div>
+
+
+			<button type="submit" class="btn" id="login-button">SIGN IN</button>
+			<p>&copy; 2017 <a href="">QUBS</a></p>
+			<!--<a href="#new-password-popup" class="btn lightbox">ADD</a> -->
+
+
+		</form>
+
+	</div>
+
+	<!-- inline lightbox structure example -->
+	<div class="popup-holder">
+
+		<form id="new-password-popup" class="lightbox form-popup form-validation">
+			<h3>Create new password</h3>
+			<div class="form-group">
+				<label for="new-passward">New password</label>
+				<input type="password" id="password1" data-required="true" data-type="password">
+				<span class="help-text">This field is required"</span>
+			</div>
+			<div class="form-group">
+				<label for="confirm-password">Confirm Password</label>
+				<input type="password" id="password2" data-required="true" data-type="password">
+				<span class="help-text">This field is required</span>
+			</div>
+			<div>
+				<span class="help-text" id="passinfo"></span>
+			</div>
+			<button type="submit" class="btn blue" id="new-password-save-button">Save</button>
+		</form>
+	</div>
+
+
+	<!-- include aws -->
+	<script type="text/javascript" src="js/aws/aws-cognito-sdk.min.js"></script>
+	<script type="text/javascript" src="js/aws/amazon-cognito-identity.min.js"></script>
+
+
+	<script type="text/javascript" src="js/jquery.main.js" defer></script>
+	<script type="text/javascript" src="js/qubs/login.js"></script>
+	
+	<script>
+
+		$("#login-form").submit(function(e) {
+			e.preventDefault();
+		});
+		
+
+		var email = document.getElementById('email');
+		var password = document.getElementById('password');
+		var loginButton = document.getElementById('login-button');
+		var info = document.getElementById('info');
+		loginButton.addEventListener('click', login);
+		var progress = document.getElementById('progress');
+
+
+		var newPasswordButton = document.getElementById('new-password-save-button');
+		newPasswordButton.addEventListener('click', loginWithNewpassword);
+		var newPassword1 = document.getElementById('password1');
+		var newPassword2 = document.getElementById('password2');
+
+		email.addEventListener("keyup", function(event) {
+			event.preventDefault();
+			if (event.keyCode == 13) {
+				login();
+			}
+		});
+
+		password.addEventListener("keyup", function(event) {
+			event.preventDefault();
+			if (event.keyCode == 13) {
+				login();
+			}
+		});
+
+		function login() {
+			info.style.visibility = 'hidden';
+			info.style.display = 'none';
+			cognitoAuthentication(email.value, password.value, info, progress, null)
+		}
+
+		function loginWithNewpassword() {
+			info.style.visibility = 'hidden';
+			passinfo.style.visibility = 'hidden';
+
+			//check if passwords are same
+			if (newPassword1.value.length < 8) {
+				passinfo.innerHTML = 'Password needs to be 8 or more characters';
+				passinfo.style.visibility = 'visible'
+			} else {
+				if (newPassword1.value == newPassword2.value) {
+					passinfo.innerHTML = 'Success, Logging in..';
+					passinfo.style.visibility = 'visible'
+					cognitoAuthentication(email.value, password.value, info, progress, newPassword1.value);
+				} else {
+					passinfo.innerHTML = 'Passwords are different';
+					passinfo.style.visibility = 'visible'
+				}
+			}
+		}
+	</script>
+
+</body>
+
+</html>

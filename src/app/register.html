@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QUBS - SignUp</title>
+	<link media="all" rel="stylesheet" href="css/bootstrap.css">
+	<link media="all" rel="stylesheet" href="css/register.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	
+	<script>
+		window.jQuery || document.write('<script src="js/jquery-1.12.4.min.js"><\/script>')
+	</script>
+	
+</head>
+
+<body>
+
+	<div id="wrapper" >
+
+		
+			<!-- first section -->
+		<div id="content-wrapper">
+		<header class="main-header">
+			<div class="header-content">
+				<div class="logo">
+					<a href=""><img src="images/logo.svg" alt="QUBS" width="157"></a>
+				</div>
+				<div class="close">
+					<a href="index.html"><i class="fa fa-close"></i></a>
+				</div>
+			</div>
+		</header>
+			<section id = "select-role" class="content" >
+			<div  style="padding:30px 0;">
+				<input type = "hidden" name="user_type" />
+				<div class="row">
+					<div class="title">
+						<a href="" >I am a:</a>
+					</div>
+				</div>
+
+				<div class="row selection">
+					<div class="select_pannel patient_reg col-lg-4" >
+						<div class="sel_div">
+							<div class="img" >
+								<img src="images/reg-patient.png" />
+							</div>
+
+							<div class="user_type"><a href="#">PATIENT</a></div>
+
+							<div class="desc">Get access to view your own images and reports online.</div>
+
+							<button type="button" usertype="patients" class="btn btn-lg select_user incre_width">SELECT</button>
+							<button type="button" usertype="patients" class="btn btn-lg select_user min-width">PATIENT</button>
+						</div>
+
+					</div>
+
+					<div class="select_pannel patient_reg col-lg-4">
+						<div class="sel_div">
+							<div class="img" >
+								<img src="images/reg-doctor.png" />
+							</div>
+
+							<div class="user_type"><a href="#">REFERRING DOCTOR</a></div>
+
+							<div class="desc">Get access to view your report and images of your patients onli</div>
+							<button type="button" usertype="patients" class="btn btn-lg select_user incre_width">SELECT</button>
+							<button type="button" usertype="doctor" class="btn btn-lg select_user min-width">REFERRING DOCTOR</button>
+						</div>
+
+					</div>
+
+					<div class="select_pannel patient_reg col-lg-4">
+						<div class="sel_div">
+							<div class="img" >
+								<img src="images/reg-specialist.png" />
+							</div>
+
+							<div class="user_type"><a href="#">SPECIALIST</a></div>
+
+							<div class="desc">Get access to view reports and images of patients.</div>
+							<button type="button" usertype="patients" class="btn btn-lg select_user incre_width">SELECT</button>
+							<button type="button" usertype="specialty" class="btn btn-lg select_user min-width">SPECIALIST</button>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			</section>
+			<!-- Second Section -mail input -->
+			<section id="email_regist"  class="content">
+				<div class="row" >
+					<div class="left-side col-lg-4" >
+						<div class="bg-panel">
+							<img src="images/get_start_img.png" />
+						</div>
+				    </div>
+
+				    <div class="right-side col-lg-8" >
+				    	<div class="lk-logo">
+							<img src="images/radiology_logo.png" style=""/>
+						</div>
+						<div class="row">
+							<div class="form-group mail-input-box">
+								
+								<div class="box box-info">
+						            <div class="box-header with-border title">
+						              <h3 class="box-title">Les't Get Started.</h3>
+						            </div>
+
+						            <div class="box-header with-border email-label" >
+						            	<span >Enter Your Email:</span>
+						            </div>
+						        
+						            <div class="form-horizontal input-area" >
+						             	<div class="box-body">
+						                    <div class="form-group">
+							                    <div class="col-sm-4">
+							                        <input type="email" class="form-control  " id="email" placeholder="Email" />
+							                    </div>
+							                  					                  
+							                    <div class="col-sm-5 email_alert_div">
+								                    <div class="alert alert-danger alert-dismissible alert-error" >
+										                <span><i class="icon fa fa-close"></i> Incorrect Email entered!</span>
+								                	</div>
+								                </div>
+						                	</div>
+						          
+						           		 </div>
+						          	</div>
+			           
+					            </div>  
+								<hr>
+							</div>
+
+							
+						</div>
+
+						<div class="row button-row">
+							<div class="" >
+								<button type="button" class="btn  btn-info email_prev"><i class="fa fa-fw fa-long-arrow-left"></i>PREV</button>
+								<button type="button" class="btn  btn-info email_next">NEXT<i class="fa fa-fw fa-long-arrow-right"></i></button>
+															
+							</div>
+						</div>
+				    </div>
+
+					
+				</div>
+			</section>
+			<!-- 3th section Detail input -->
+
+			<section id="user_detail" >
+				<div class="row" >
+					<div class="left-side col-lg-4" >
+						<div class="bg-panel">
+							<img src="images/get_start_img.png" />
+						</div>
+				    </div>
+
+				    <div class="right-side col-lg-8" >
+				    	<div class="lk-logo">
+							<img src="images/radiology_logo.png" style=""/>
+						</div>
+						<div class="row">
+							<div class="form-group mail-input-box">
+								
+								<div class="box box-info">
+						            <div class="box-header with-border title">
+						              <h3 class="box-title">Enter your contact information.</h3>
+						            </div>
+
+						            <div class="box-header with-border email-label" >
+						            	<span >We need to verify who you are.</span>
+						            </div>
+						        
+						            <div class="form-horizontal input-area" >
+						            <form id="signup_user_form" action="#" />
+						              	<div class="box-body">
+							                <div class="form-group">
+							                    <div class="col-sm-4">
+							                        <input type="text" name="firstname" class="form-control " id="firstname" placeholder="First Name">
+							                    </div>
+							                </div>
+							                <div class="form-group">
+							                  	<div class="col-sm-4">
+							                    	<input type="text" name="lastname" class="form-control " id="lastname" placeholder="Last Name">
+							                  	</div>
+							                </div>
+							                <div class="form-group">
+							                 	<div class="col-sm-4">
+							                   		 <input type="text" name="mobile" class="form-control  " id="mobile" placeholder="Mobile">
+							                 	</div>
+							                  	<div class="col-sm-5 ">
+							                 	  	<div class="alert-sms" >
+										                <span>We will MS you a verification code on this number</span>
+								                	</div>
+								                </div>
+							                </div>
+							                <div class="form-group">
+							                  	<div class="col-sm-4">
+							                    	<select class="form-control" id="specialty" name="specialty">
+									                    <option value="">Select Specialty</option>
+									                    <option value="1">Specialty 1</option>
+									                    <option value="2">Specialty 2</option>
+									                    <option value="3">Specialty 3</option>
+									                    <option value="4">Specialty 4</option>
+									                </select>
+							                 	 </div>
+							                </div>
+							          
+							            </div>
+							            </form>
+							        </div>
+								<hr>
+								</div>
+
+							
+							</div>
+
+							<div class="row button-row">
+								<div class="" >
+									<button type="button" class="btn  btn-info detail_prev"><i class="fa fa-fw fa-long-arrow-left"></i>PREV</button>
+									<button type="button" class="btn  btn-info detail_next">NEXT<i class="fa fa-fw fa-long-arrow-right"></i></button>
+																
+								</div>
+							</div>
+				    	</div>
+				   </div>
+					
+				</div>
+			</section>
+
+			<!-- 4th section Detail input -->
+			<section id="provider_detail" >
+				<div class="row" >
+					<div class="left-side col-lg-4" >
+						<div class="bg-panel">
+							<img src="images/get_start_img.png" />
+						</div>
+				    </div>
+
+				    <div class="right-side col-lg-8" >
+				    	<div class="lk-logo">
+							<img src="images/radiology_logo.png" style=""/>
+						</div>
+						<div class="row">
+							<div class="form-group mail-input-box">
+								
+								<div class="box box-info">
+						            <div class="box-header with-border title">
+						              <h3 class="box-title">Enter your contact information.</h3>
+						            </div>
+
+						            <div class="box-header with-border email-label" >
+						            	<span >We need to verify who you are.</span>
+						            </div>
+						        
+						            <div class="form-horizontal input-area " >
+						            <form id="signup_provider_form" action="#" />
+						              	<div class="box-body col-sm-4">
+							                <div class="form-group">
+							                    <div class="">
+							                        <input type="text" class="form-control" name="provider_number" id="provider_number" placeholder="Provider Number">
+							                    </div>
+							                </div>
+							                <div class="form-group">
+							                    <div class="">
+							                    	<input type="text" class="form-control" name="clinic_name" id="clinic_name" placeholder="Clinic Name">
+							                    </div>
+							                </div>
+							                <div class="form-group">
+							                    <div class="">
+							                   		 <input type="text" class="form-control  " name="clinic_phone" id="clinic_phone" placeholder="Clinic Phone">
+							                    </div>
+							                </div>
+							                <div class="form-group">
+							                    <div class="">
+							                        <input type="text" class="form-control  " name="clinic_fax" id="clinic_fax" placeholder="Clinic Fax">
+							                    </div>
+							                </div>
+							                <div class="form-group">
+							                    <div class="">
+							                        <input type="text" class="form-control  " name="clinic_address" id="clinic_address" placeholder="Clinic Address">
+							                    </div>
+							                </div>
+							                <div class="form-group">
+							                    <div class="">
+							                        <input type="text" class="form-control  " name="suburb" id="suburb" placeholder="Suburb">
+							                    </div>
+							                </div>
+
+							                <div class="form-group">
+							                  	<div class="">
+							                    	<select class="form-control" id="state" name="state">
+									                    <option value="">State</option>
+									                    <option value="1">State 1</option>
+									                    <option value="2">State 2</option>
+									                    <option value="3">State 3</option>
+									                    <option value="4">State 4</option>
+									                </select>
+							                 	 </div>
+							                </div>
+							                <div class="form-group">
+							                    <div class="">
+							                        <input type="text" class="form-control  " name="postal_code" id="postal_code" placeholder="Postal Code">
+							                    </div>
+							                </div>
+
+							          
+							            </div>
+
+							            <div class="box-body col-sm-8">
+							            	<div class="provider_detail_message" >
+								                <span>You can add more provider numbers and clinics under settings on.</span>
+						                	</div>
+							            </div>
+							        </form>
+							        </div>
+									<hr>
+								</div>
+							</div>
+							
+						</div>
+
+						<div class="row button-row">
+							<div class="" >
+								<button type="button" class="btn  btn-info prov_prev"><i class="fa fa-fw fa-long-arrow-left"></i>PREV</button>
+								<button type="button" class="btn  btn-info prov_next">NEXT<i class="fa fa-fw fa-long-arrow-right"></i></button>
+															
+							</div>
+						</div>
+				    </div>
+
+					
+				</div>
+			</section>
+
+			<!-- last section post detail -->
+			<section id="create_account"  class="content" >
+				<div class="row" >
+					<div class="left-side col-lg-4" >
+						<div class="bg-panel">
+							<img src="images/get_start_img.png" />
+						</div>
+				    </div>
+
+				    <div class="right-side col-lg-8" >
+				    	<div class="lk-logo">
+							<img src="images/radiology_logo.png" style=""/>
+						</div>
+						<div class="row">
+							<div class="form-group mail-input-box">
+								
+								<div class="box box-info">
+						            <div class="box-header with-border title">
+						              <h3 class="box-title margin-bottom-30">Create Password</h3>
+						            </div>
+						        
+						            <div class="form-horizontal input-area" >
+						              <div class="box-body">
+						                <div class="form-group">
+						                  <div class="col-sm-4">
+						                    <input type="password" name="password" class="form-control  " id="password" placeholder="Password">
+						                  </div>
+						                  <div class="col-sm-5 pass_match_alert">
+							                   <div class="alert alert-danger alert-dismissible alert-error" >
+									                <span><i class="icon fa fa-close"></i> Passwords Match</span>
+							                	</div>
+							                </div>
+						                </div>
+
+						                <div class="form-group">
+						                  <div class="col-sm-4">
+						                    <input type="password" class="form-control " name="repassword" id="repassword" placeholder="Re-enter Password">
+						                  </div>
+						                  <div class="col-sm-5 pass_len_alert">
+							                   <div class="alert alert-success alert-dismissible alert-error" >
+									                <span><i class="icon fa fa-check"></i> Longer than 8 Characters</span>
+							                	</div>
+							               </div>
+						                </div>
+						          
+						            </div>
+						        </div>
+			           
+								<hr>
+							</div>
+
+							</div>
+						</div>
+
+						<div class="row button-row">
+							<div class="" >
+								<button type="button" class="btn  btn-info create_prev"><i class="fa fa-fw fa-long-arrow-left"></i>PREV</button>
+								<button type="button" class="btn  btn-info create_account">CREATE YOUR <strong>QUBS</strong> ACCOUNT</button>
+															
+							</div>
+						</div>
+				    </div>
+
+					
+				</div>
+			</section>
+
+			
+
+		</div>
+	</div>
+
+	<script>
+
+	// section #1: select-role
+	// section #2:email_regist
+	// section #3:user_detail
+	// section #4:provider_detail
+	// section #5:create_account
+	$(document).ready(function () {
+		$("#select-role").css('display','block');
+
+		$(".select_pannel").hover(
+		    function() {
+		        $( this ).find(".sel_div").addClass("active");
+		        $(this).find("button").addClass("btn-info");
+		    }, function() {
+		        $( this ).find(".sel_div").removeClass("active");
+		        $(this).find("button").removeClass("btn-info");
+		    }
+		);
+
+		// first page === select user
+		$(".select_user").click(function(){
+			var usertype = $(this).attr("usertype");
+			$("input[name=user_type]").val(usertype);
+			$("#select-role").css('display','none');
+			$("#email_regist").css('display','block');
+		});
+
+		// email register page
+		$(".email_next").click(function(){
+			var email = $("#email").val();
+			if(email_validation(email)){
+				$("#email_regist").css('display','none');
+				$("#user_detail").css('display','block');
+			}
+		});
+
+		$(".email_prev").click(function(){
+			$("#email_regist").css('display','none');
+			$("#select-role").css('display','block');
+		});
+
+		//user detail register page
+		$(".detail_next").click(function(){
+
+			if(user_detail_validation()){
+				$("#user_detail").css('display','none');
+				$("#provider_detail").css('display','block');
+			}
+
+		});
+		$(".detail_prev").click(function(){
+			$("#user_detail").css('display','none');
+			$("#email_regist").css('display','block');
+		});
+
+		// provider_detail register page
+		$(".prov_next").click(function(){
+			if(provider_detail_validation()){
+				$("#provider_detail").css('display','none');
+				$("#create_account").css('display','block');
+			}
+		});
+		$(".prov_prev").click(function(){
+			$("#provider_detail").css('display','none');
+			$("#user_detail").css('display','block');
+		});
+
+		//create account page
+
+		$(".create_account").click(function(){
+			if(password_validation()){
+				create_json_user_data();
+			}
+		});
+
+		$(".create_prev").click(function(){
+			$("#provider_detail").css('display','block');
+			$("#create_account").css('display','none');
+		});
+	});
+	</script>
+	<!-- inline lightbox structure example -->	
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/qubs/register.js"></script>
+
+	<!-- include aws -->
+	<script type="text/javascript" src="js/aws/aws-cognito-sdk.min.js"></script>
+	<script type="text/javascript" src="js/aws/amazon-cognito-identity.min.js"></script>
+
+</body>
+
+</html>

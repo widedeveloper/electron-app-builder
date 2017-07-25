@@ -1,0 +1,30 @@
+
+// footer 
+#footer {
+	min-width: $base-min-width;
+	padding: 5px 15px;
+	font-size: 12px;
+	line-height: 19px;
+	color: $white;
+	background: $gray-darker;
+	text-transform: uppercase;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9;
+	
+	.img-opened & {
+		display: none;
+	}
+	@include media('>=tablet') {
+		padding: 10px 19px;
+	}
+	a {
+		color: inherit;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

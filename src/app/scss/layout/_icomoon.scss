@@ -1,0 +1,55 @@
+
+@font-face { @include fontface (icomoon, icomoon); }
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon-activity:before { content: "\e900"; }
+.icon-adjust:before { content: "\e901"; }
+.icon-arrow-down:before { content: "\e902"; }
+.icon-arrow-left:before { content: "\e903"; }
+.icon-arrow-right:before { content: "\e904"; }
+.icon-attachments:before { content: "\e905"; }
+.icon-authorised:before { content: "\e906"; }
+.icon-card:before { content: "\e907"; }
+.icon-caret-down:before { content: "\e908"; }
+.icon-circle:before { content: "\e909"; }
+.icon-close:before { content: "\e90a"; }
+.icon-download:before { content: "\e90b"; }
+.icon-edit:before { content: "\e90c"; }
+.icon-envelope:before { content: "\e90d"; }
+.icon-forward:before { content: "\e90e"; }
+.icon-fullscreen:before { content: "\e90f"; }
+.icon-fullscreen-exit:before { content: "\e910"; }
+.icon-gallery:before { content: "\e911"; }
+.icon-grid:before { content: "\e912"; }
+.icon-info:before { content: "\e913"; }
+.icon-invert:before { content: "\e914"; }
+.icon-manage:before { content: "\e915"; }
+.icon-menu:before { content: "\e916"; }
+.icon-move:before { content: "\e917"; }
+.icon-noinvoices:before { content: "\e918"; }
+.icon-noresults:before { content: "\e919"; }
+.icon-noselected:before { content: "\e91a"; }
+.icon-pdf-file:before { content: "\e91b"; }
+.icon-phone:before { content: "\e91c"; }
+.icon-play:before { content: "\e91d"; }
+.icon-referral:before { content: "\e91e"; }
+.icon-remove:before { content: "\e91f"; }
+.icon-report:before { content: "\e920"; }
+.icon-resize:before { content: "\e921"; }
+.icon-search:before { content: "\e922"; }
+.icon-setting:before { content: "\e923"; }
+.icon-share:before { content: "\e924"; }
+.icon-square:before { content: "\e925"; }
+.icon-stop:before { content: "\e926"; }
+.icon-tick:before { content: "\e927"; }
+.icon-upload:before { content: "\e928"; }
+.icon-video:before { content: "\e929"; }

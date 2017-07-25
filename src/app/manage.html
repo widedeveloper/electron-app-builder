@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QUBS</title>
+	<link media="all" rel="stylesheet" href="css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.12.4.min.js"><\/script>')</script>
+	<script type="text/javascript" src="js/jquery.main.js" defer></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="w1">
+			<header id="header">
+				<div class="logo">
+					<a href="#"><img src="images/logo-white.svg" width="117" alt="QUBS"></a>
+				</div>
+				<a href="#" class="search-opener"><i class="icon-search"></i></a>
+				<form action="#" class="search-form">
+					<div class="fields">
+						<div class="form-group">
+							<input type="text" placeholder="First Name">
+						</div>
+						<div class="form-group">
+							<input type="text" placeholder="Last Name">
+						</div>
+						<div class="form-group">
+							<input type="text" placeholder="Birthday" data-datepicker="">
+						</div>
+					</div>
+					<button type="submit" class="btn red">Search</button>
+					<a href="#adv-search" class="btn blue lightbox">Advanced Search</a>
+				</form>
+				<a href="#" class="nav-opener"><span></span></a>
+				<nav id="nav">
+					<a href="#" class="author">Hashitha</a>
+					<ul>
+						<li>
+							<a href="#" class="opener">Account</a>
+							<ul class="dropdown">
+								<li><a href="#">Profile</a></li>
+								<li><a href="#">Billing</a></li>
+								<li><a href="#">Sites</a></li>
+								<li><a href="#">Settings</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#" class="opener">Help</a>
+							<ul class="dropdown">
+								<li><a href="#">Option 1</a></li>
+								<li><a href="#">Option 2</a></li>
+								<li><a href="#">Option 3</a></li>
+								<li><a href="#">Option 4</a></li>
+							</ul>
+						</li>
+						<li><a href="#" class="logout" id="logout">Logout</a></li>
+					</ul>
+				</nav>
+			</header>
+			<main id="main" class="flex-box">
+				<div id="content" class="flex-box">
+					<section class="manage-patient">
+						<header class="header">
+							<div class="menu">
+								<a href="#" class="opener">menu</a>
+								<ul class="dropdown list-unstyled">
+									<li><a href="#upload-file" class="lightbox">UPLOAD FILE</a></li>
+									<li><a href="#">DELETE STUDY</a></li>
+									<li><a href="#">DELETE SERIES</a></li>
+									<li><a href="#">EDIT PATIENT ID</a></li>
+									<li><a href="#" class="img-opener">EDIT ACCESSION</a></li>
+								</ul>
+							</div>
+						</header>
+						<div class="holder">
+							<ul class="img-bar list-unstyled">
+								<li>
+									<a href="#" class="img-opener">
+										<span class="img-holder" style="background-image: url(images/img01.jpg);"></span>
+										<strong class="title">PA Portrait</strong>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="img-holder" style="background-image: url();"><i class="icon-gallery"></i></span>
+										<strong class="title">PA Portrait</strong>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="img-holder" style="background-image: url();"><i class="icon-gallery"></i></span>
+										<strong class="title">PA Portrait</strong>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="img-holder" style="background-image: url();"><i class="icon-gallery"></i></span>
+										<strong class="title">PA Portrait</strong>
+									</a>
+								</li>
+							</ul>
+							<div class="table-holder">
+								<div class="table-wrap">
+									<table class="table responsive-table">
+										<thead>
+											<tr>
+												<th>InstanceUid</th>
+												<th>Last Update Time</th>
+												<th>Size</th>
+												<th>Modality</th>
+												<th colspan="2">Sender AETitle</th>
+											</tr>
+										</thead>
+										<tr>
+											<td data-title="InstanceUid"><span class="txt">1.2.840.11378566.56.374.7.4.22345.323</span></td>
+											<td data-title="Last Update Time"><span class="txt"><time datetime="2017-05-11">29/09/2016</time></span></td>
+											<td data-title="Size"><span class="txt">4.5mb</span></td>
+											<td data-title="Modality"><span class="txt">DR</span></td>
+											<td data-title="Sender AETitle"><span class="txt">BMIPACS</span></td>
+											<td>
+												<ul class="txt buttons list-unstyled">
+													<li><a href="#"><i class="icon-download"></i></a></li>
+													<li><a href="#"><i class="icon-edit"></i></a></li>
+													<li><a href="#"><i class="icon-remove"></i></a></li>
+												</ul>
+											</td>
+										</tr>
+										<tr class="empty">
+											<td data-title="InstanceUid"><span class="txt"></span></td>
+											<td data-title="Last Update Time"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+											<td data-title="Size"><span class="txt"></span></td>
+											<td data-title="Modality"><span class="txt"></span></td>
+											<td data-title="Sender AETitle"><span class="txt"></span></td>
+											<td><span class="txt"></span></td>
+										</tr>
+										<tr class="empty">
+											<td data-title="InstanceUid"><span class="txt"></span></td>
+											<td data-title="Last Update Time"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+											<td data-title="Size"><span class="txt"></span></td>
+											<td data-title="Modality"><span class="txt"></span></td>
+											<td data-title="Sender AETitle"><span class="txt"></span></td>
+											<td><span class="txt"></span></td>
+										</tr>
+										<tr class="empty">
+											<td data-title="InstanceUid"><span class="txt"></span></td>
+											<td data-title="Last Update Time"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+											<td data-title="Size"><span class="txt"></span></td>
+											<td data-title="Modality"><span class="txt"></span></td>
+											<td data-title="Sender AETitle"><span class="txt"></span></td>
+											<td><span class="txt"></span></td>
+										</tr>
+										<tr class="empty">
+											<td data-title="InstanceUid"><span class="txt"></span></td>
+											<td data-title="Last Update Time"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+											<td data-title="Size"><span class="txt"></span></td>
+											<td data-title="Modality"><span class="txt"></span></td>
+											<td data-title="Sender AETitle"><span class="txt"></span></td>
+											<td><span class="txt"></span></td>
+										</tr>
+										<tr class="empty">
+											<td data-title="InstanceUid"><span class="txt"></span></td>
+											<td data-title="Last Update Time"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+											<td data-title="Size"><span class="txt"></span></td>
+											<td data-title="Modality"><span class="txt"></span></td>
+											<td data-title="Sender AETitle"><span class="txt"></span></td>
+											<td><span class="txt"></span></td>
+										</tr>
+										<tr class="empty">
+											<td data-title="InstanceUid"><span class="txt"></span></td>
+											<td data-title="Last Update Time"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+											<td data-title="Size"><span class="txt"></span></td>
+											<td data-title="Modality"><span class="txt"></span></td>
+											<td data-title="Sender AETitle"><span class="txt"></span></td>
+											<td><span class="txt"></span></td>
+										</tr>
+										<tr class="empty">
+											<td data-title="InstanceUid"><span class="txt"></span></td>
+											<td data-title="Last Update Time"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+											<td data-title="Size"><span class="txt"></span></td>
+											<td data-title="Modality"><span class="txt"></span></td>
+											<td data-title="Sender AETitle"><span class="txt"></span></td>
+											<td><span class="txt"></span></td>
+										</tr>
+										<tr class="empty">
+											<td data-title="InstanceUid"><span class="txt"></span></td>
+											<td data-title="Last Update Time"><span class="txt"><time datetime="2017-05-11"></time></span></td>
+											<td data-title="Size"><span class="txt"></span></td>
+											<td data-title="Modality"><span class="txt"></span></td>
+											<td data-title="Sender AETitle"><span class="txt"></span></td>
+											<td><span class="txt"></span></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="img-editor">
+								<a href="#" class="btn-img-close">CLOSE <i class="icon-close"></i></a>
+								<a href="#" class="menu-opener"><i class="icon-menu"></i></a>
+								<nav class="nav">
+									<ul>
+										<li><a href="#" data-title="Brightness"><i class="icon-setting"></i></a></li>
+										<li><a href="#" data-title="Invert"><i class="icon-invert"></i></a></li>
+										<li><a href="#" data-title="Zoom"><i class="icon-search"></i></a></li>
+										<li><a href="#" data-title="Move"><i class="icon-move"></i></a></li>
+										<li><a href="#" data-title="Dehaze"><i class="icon-menu"></i></a></li>
+									</ul>
+									<ul>
+										<li><a href="#" data-title="Vert"><i class="icon-resize"></i></a></li>
+										<li><a href="#" data-title="Undo"><i class="icon-arrow-left"></i></a></li>
+										<li><a href="#" data-title="Ajust"><i class="icon-adjust"></i></a></li>
+										<li><a href="#" data-title="circle"><i class="icon-circle"></i></a></li>
+										<li><a href="#" data-title="square"><i class="icon-square"></i></a></li>
+									</ul>
+									<ul class="view">
+										<li><a href="#" data-title="Play"><i class="icon-play"></i></a></li>
+										<li><a href="#" data-title="Stop"><i class="icon-stop"></i></a></li>
+										<li><a href="#" data-title="Grids"><i class="icon-grid"></i></a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="img-preview">
+								<div class="img-head">
+									<a href="#" class="btn-fullscreen">Full Screen</a>
+									<div class="numbers">
+										<span class="current-num">50</span>
+										<span class="total-num">250</span>
+									</div>
+									<div class="progress">
+										<span class="progress-bar" style="width: 20.93%;"></span>
+									</div>
+								</div>
+								<div class="img-holder">
+									<img src="images/img02.jpg" alt="image description">
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+				<a href="#" class="sidebar-opener">Patient <i class="icon-info"></i></a>
+				<aside id="sidebar">
+					<div class="author-info">
+						<div class="img-holder">
+							<img src="images/patient-img.jpg" alt="John DOE">
+						</div>
+						<h2><a href="#">John DOE <span class="age">(37y F)</span></a></h2>
+						<strong class="center">My radiology Centre</strong>
+					</div>
+					<ul class="author-contact">
+						<li><a class="email lightbox" href="#notification-popup">&#106;&#111;&#104;&#110;&#064;&#100;&#111;&#101;&#046;&#099;&#111;&#109;</a></li>
+						<li><a class="tel" href="tel:0452222222">04 5222 2222</a></li>
+					</ul>
+					<ul class="author-detail">
+						<li><a href="#"><i class="icon-report"></i>Report <span class="authorised">Authorised</span></a></li>
+						<li><a href="#"><i class="icon-gallery"></i>Images <span>35</span></a></li>
+						<li><a href="#"><i class="icon-download"></i>Download</a></li>
+						<li><a href="#"><i class="icon-share"></i>Share</a></li>
+						<li><a href="#"><i class="icon-activity"></i>Activity</a></li>
+						<li><a href="#"><i class="icon-manage"></i>Manage</a></li>
+						<li><a href="#"><i class="icon-referral"></i>Referral</a></li>
+						<li><a href="#"><i class="icon-attachments"></i>Attachments</a></li>
+					</ul>
+					<div class="widget author-history">
+						<h3>History</h3>
+						<div class="widget-holder">
+							<ul>
+								<li>
+									<strong class="depart"><span>US</span></strong>
+									<div class="text">
+										<h4><a href="#">Ultrasound pregnancy less than 12 weeks</a></h4>
+										<time datetime="2017-05-11">4 weeks ago</time>
+									</div>
+								</li>
+								<li>
+									<strong class="depart"><span>XR</span></strong>
+									<div class="text">
+										<h4><a href="#">XR billateral foot</a></h4>
+										<time datetime="2017-05-11">2 months ago</time>
+									</div>
+								</li>
+								<li>
+									<strong class="depart"><span>CT</span></strong>
+									<div class="text">
+										<h4><a href="#">CT IAM (Petrous) +/- Brain</a></h4>
+										<time datetime="2017-05-11">6 months ago</time>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="widget author-access">
+						<h3>User With Access</h3>
+						<div class="widget-holder">
+							<dl>
+								<dt><a href="#">John Doe</a></dt>
+								<dd>Patient</dd>
+								<dt><a href="#">Sam Smith</a></dt>
+								<dd>Referring Doctor</dd>
+							</dl>
+						</div>
+					</div>
+				</aside>
+			</main>
+			<footer id="footer">
+				<p>&copy; 2017 <a href="#">QUBS</a></p>
+			</footer>
+		</div>
+		<!-- inline lightbox structure example -->
+		<div class="popup-holder">
+			<form action="#" id="adv-search" class="lightbox form-popup">
+				<h3>Advanced Search</h3>
+				<div class="form-group">
+					<label for="fname">First Name</label>
+					<input type="text" id="fname">
+				</div>
+				<div class="form-group">
+					<label for="lname">Last Name</label>
+					<input type="text" id="lname">
+				</div>
+				<div class="form-group">
+					<label for="dob">Birthdate</label>
+					<input type="text" id="dob" data-datepicker="">
+				</div>
+				<div class="form-group">
+					<label for="study-date">Study Date</label>
+					<input type="text" id="study-date">
+				</div>
+				<div class="form-group">
+					<label for="description">Last Description</label>
+					<input type="text" id="description">
+				</div>
+				<div class="form-group">
+					<label for="patient-id">Patient ID</label>
+					<input type="text" id="patient-id">
+				</div>
+				<div class="form-group">
+					<label for="accession">Accession</label>
+					<input type="text" id="accession">
+				</div>
+				<button type="submit" class="btn blue">Search</button>
+			</form>
+			<form action="#" id="notification-popup" class="lightbox form-popup notification-popup">
+				<h3>John Doe</h3>
+				<a href="#" class="close"><i class="icon-close"></i></a>
+				<ul class="tabset">
+					<li class="tab-active"><a href="#email-tab">Email</a></li>
+					<li><a href="#sms-tab">SMS</a></li>
+					<li><a href="#link-tab">Link</a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="email-tab">
+						<div class="form-group">
+							<label for="notification-email">Enter email address</label>
+							<input type="email" id="notification-email">
+						</div>
+					</div>
+					<div id="sms-tab">
+						<div class="form-group">
+							<label for="notification-sms">Enter Message</label>
+							<textarea id="notification-sms"></textarea>
+						</div>
+					</div>
+					<div id="link-tab">
+						<div class="form-group">
+							<label for="notification-link">Enter Link</label>
+							<input type="url" id="notification-link">
+						</div>
+					</div>
+				</div>
+				<div class="btn-holder">
+					<button type="submit" class="btn blue">Send</button>
+				</div>
+			</form>
+			<div id="upload-file" class="lightbox upload-file">
+				<form action="#">
+					<a href="#" class="upload-area"><i class="icon-upload"></i> Drag and drop to upload</a>
+					<button type="submit" class="btn blue">Upload file</button>
+				</form>
+				<ul class="list-unstyled">
+					<li>
+						<a href="#" class="title"><i class="icon-video"></i> Kunfu panda.mov</a>
+						<div class="progress">
+							<span class="progress-bar" style="width: 46%;"></span>
+							<strong class="percentage">46%</strong>
+						</div>
+					</li>
+					<li>
+						<a href="#" class="title"><i class="icon-gallery"></i> My album_dc3322.png</a>
+						<div class="progress">
+							<span class="progress-bar" style="width: 67%;"></span>
+							<strong class="percentage">67%</strong>
+						</div>
+					</li>
+					<li>
+						<a href="#" class="title"><i class="icon-gallery"></i> My album_dc3321.png</a>
+						<div class="progress">
+							<span class="progress-bar" style="width: 81%;"></span>
+							<strong class="percentage">81%</strong>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

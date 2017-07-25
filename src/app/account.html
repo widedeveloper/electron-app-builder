@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QUBS</title>
+	<link media="all" rel="stylesheet" href="css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+
+	<script>
+		window.jQuery || document.write('<script src="js/jquery-1.12.4.min.js"><\/script>')
+	</script>
+	<script type="text/javascript" src="js/jquery.main.js" defer></script>
+	<script>
+	  window.intercomSettings = {
+	    app_id: "xcwvx5ob"
+	  };
+	</script>
+	<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/xcwvx5ob';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+	</script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<div class="w1">
+			<header id="header">
+				<div class="logo">
+					<a href="pacs.html"><img src="images/logo-white.svg" width="117" alt="QUBS"></a>
+				</div>
+				<a href="#" class="nav-opener"><span></span></a>
+				<nav id="nav">
+					<a href="#" class="author"></a>
+					<ul>
+						<li>
+							<a href="pacs.html" class="">Patients</a>
+							<!-- <ul class="dropdown">
+								<li><a href="#">Profile</a></li>
+								<li><a href="#">Billing</a></li>
+								<li><a href="#">Sites</a></li>
+								<li><a href="#">Settings</a></li>
+							</ul> -->
+						</li>
+						<li>
+							<a href="https://help.qubs.com/" class="">Help</a>
+							<!-- <ul class="dropdown">
+								<li><a href="#">Option 1</a></li>
+								<li><a href="#">Option 2</a></li>
+								<li><a href="#">Option 3</a></li>
+								<li><a href="#">Option 4</a></li>
+							</ul> -->
+						</li>
+						<li><a href="#" id="logout" class="logout">Logout</a></li>
+					</ul>
+				</nav>
+			</header>
+			<main id="main">
+				<div class="account-tabs container">
+					<ul class="tabset list-unstyled">
+						<li class="tab-active"><a href="#account-settings">Account Settings</a></li>
+						<li><a href="#provider-numbers">Provider Numbers</a></li>
+						<li><a href="#billing">Billing</a></li>
+						<li><a href="#subscriptions">Subscriptions</a></li>
+						<li><a href="#invoices">Invoices</a></li>
+					</ul>
+					<div class="tab-content accordion">
+						<div id="account-settings" class="account-settings">
+							<a href="#" class="opener">Account Settings</a>
+							<div class="slide">
+								<div class="box">
+									<h2>General Info</h2>
+									<div class="fields">
+										<div class="form-group">
+											<label for="fname">First Name</label>
+											<input type="text" id="fname" placeholder="John">
+										</div>
+										<div class="form-group">
+											<label for="lname">Last Name</label>
+											<input type="text" id="lname" placeholder="Doe">
+										</div>
+										<div class="form-group">
+											<label for="speciality">Speciality</label>
+											<select id="speciality">
+												<option>General Practitioner</option>												 
+												<option>Specialist</option>
+												<option>Obstetrics and Gynaecology</option>
+												<option>Cardiologist</option>
+												<option>Hepatologist</option>
+												<option>Gastrologist</option>
+												<option>Dental Practitioner</option>
+												<option>Chiropractor</option>
+												<option>Obstetrician</option>
+												<option>Gynaecologist</option>
+												<option>Orthopaedic Surgeon</option>
+												<option>Physician</option>
+												<option>Cardiologist</option>
+												<option>Osteopath</option>
+												<option>Hematologist</option>
+												<option>Oral Surgeon</option>
+												<option>Gastroentorologist</option>
+												<option>Other</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="box">
+									<h2>Contact Info</h2>
+									<div class="fields">
+										<div class="form-group">
+											<label for="mobile">Mobile Number</label>
+											<input type="tel" id="mobile">
+										</div>
+										<div class="form-group">
+											<label for="email">Email</label>
+											<input type="email" id="email">
+										</div>
+									</div>
+								</div>
+								<div class="box">
+									<h2>Change Password</h2>
+									<form action="#" id="chang_pw_form" />
+										<div class="fields">
+										
+											<div class="form-group">
+												<label for="current-password">Current Password</label>
+												<input type="password" name="current_password" id="current_password">
+											</div>
+											<div class="form-group">
+												<label for="new-password">New Password</label>
+												<input type="password" name="new_password" id="new_password">
+											</div>
+											<div class="form-group">
+												<label for="repeat-password">Repeat Password</label>
+												<input type="password" name="repeat_password" id="repeat_password">
+											</div>
+										</div>
+										<button type="button" id="change_pw_btn" class="btn">CHANGE</button>
+									</form>
+								</div>
+								<div class="btn-holder">
+									<button type="button" class="btn">SAVE CHANGES</button>
+								</div>
+							</div>
+						</div>
+						<div id="provider-numbers" class="provider-numbers">
+							<a href="#" class="opener">Provider Numbers</a>
+							<div class="slide">
+								<h2>Provider Numbers</h2>
+								<div class="table-holder">
+									<table class="table responsive-table">
+										<thead>
+											<tr>
+												<th>Provider Number</th>
+												<th>Access Granted</th>
+												<!--<th>Clinic Name</th>
+												<th>Phone</th>
+												<th>Fax</th>
+												<th>Healthlink ID</th>
+												<th>Address</th>
+												-->
+												<th></th>
+											</tr>
+										</thead>
+
+										<tbody id="providernumbers-table">
+											<tr>
+												<td data-title="Provider Number"><span class="txt"><a href="#">John Doe</a></span></td>
+												<td data-title="Clinic Name"><span class="txt">Health Clinic</span></td>
+												<td data-title="Phone"><span class="txt"><a href="tel:0894349620">08 9434 9620</a></span></td>
+												<td data-title="Fax"><span class="txt"><a href="fax:0894349620">08 9434 9620</a></span></td>
+												<td data-title="Healthlink ID"><span class="txt"><a href="#">eastvic08</a></span></td>
+												<td data-title="Address"><span class="txt">2 riverway salter point WA 6102</span></td>
+												<td data-title="remove"><span class="txt"><a href="#" class="remove"><i class="icon-remove"></i></a></span></td>
+											</tr>
+											<tr>
+												<td data-title="Provider Number"><span class="txt"><a href="#">John Doe</a></span></td>
+												<td data-title="Clinic Name"><span class="txt">Health Clinic</span></td>
+												<td data-title="Phone"><span class="txt"><a href="tel:0894349620">08 9434 9620</a></span></td>
+												<td data-title="Fax"><span class="txt"><a href="fax:0894349620">08 9434 9620</a></span></td>
+												<td data-title="Healthlink ID"><span class="txt"><a href="#">eastvic08</a></span></td>
+												<td data-title="Address"><span class="txt">2 riverway salter point WA 6102</span></td>
+												<td data-title="remove"><span class="txt"><a href="#" class="remove"><i class="icon-remove"></i></a></span></td>
+											</tr>
+											<tr class="empty">
+												<td data-title="Provider Number"><span class="txt"></span></td>
+												<td data-title="Clinic Name"><span class="txt"></span></td>
+												<td data-title="Phone"><span class="txt"></span></td>
+												<td data-title="Fax"><span class="txt"></span></td>
+												<td data-title="Healthlink ID"><span class="txt"></span></td>
+												<td data-title="Address"><span class="txt"></span></td>
+												<td data-title="remove"><span class="txt"></span></td>
+											</tr>
+											<tr class="empty">
+												<td data-title="Provider Number"><span class="txt"></span></td>
+												<td data-title="Clinic Name"><span class="txt"></span></td>
+												<td data-title="Phone"><span class="txt"></span></td>
+												<td data-title="Fax"><span class="txt"></span></td>
+												<td data-title="Healthlink ID"><span class="txt"></span></td>
+												<td data-title="Address"><span class="txt"></span></td>
+												<td data-title="remove"><span class="txt"></span></td>
+											</tr>
+											<tr class="empty">
+												<td data-title="Provider Number"><span class="txt"></span></td>
+												<td data-title="Clinic Name"><span class="txt"></span></td>
+												<td data-title="Phone"><span class="txt"></span></td>
+												<td data-title="Fax"><span class="txt"></span></td>
+												<td data-title="Healthlink ID"><span class="txt"></span></td>
+												<td data-title="Address"><span class="txt"></span></td>
+												<td data-title="remove"><span class="txt"></span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="text-right">
+									<a href="#add-details" class="btn lightbox">ADD</a>
+								</div>
+							</div>
+						</div>
+						<div id="billing" class="billing">
+							<a href="#" class="opener">Billing</a>
+							<div class="slide">
+								<div class="box">
+									<h2>Contact Info</h2>
+									<dl id="billingcontactinfo">
+
+									</dl>
+									<a href="#add-details" class="btn edit lightbox">EDIT</a>
+								</div>
+								<div class="box">
+									<h2>Payment Methods</h2>
+									<dl id="paymentinfo">
+
+									</dl>
+									<a href="#card-info" class="btn edit lightbox">EDIT</a>
+								</div>
+							</div>
+						</div>
+						<div id="subscriptions" class="subscriptions">
+							<a href="#" class="opener">Subscriptions</a>
+							<div class="slide">
+								<h2>Current Plan</h2>
+								<div class="plan">
+									<strong class="price" id="price">$2700</strong>
+									<strong class="duration" id="period">Month (ex gst)</strong>
+									<strong class="subhead" id="product">RIS/PACS</strong>
+									<ul id="featurelist">
+										<li>Fax Connector</li>
+										<li>SMS Connector</li>
+										<li>Healthlink Connector</li>
+										<li>WA Health Connector</li>
+									</ul>
+									<strong class="status" >Status: <span id="status">ACTIVE</span></strong>
+								</div>
+								<div class="plan-overview">
+									<h3>Current plan overview</h3>
+									<div class="progress">
+										<span class="progress-bar" style="width: 22.3%;"><span class="price">400</span></span>
+										<!--<span class="progress-bar red" style="width: 9.8%;"></span>-->
+									</div>
+								</div>
+								<div class="plan-detail">
+									<ul class="timing list-unstyled">
+										<li>
+											<h3>Current period</h3>
+											<time datetime="2017-05-10" class="value" id="currentperiod"></time>
+										</li>
+										<li>
+											<h4>Days Left</h4>
+											<time datetime="2017-05-10" class="value" id="days"></time>
+										</li>
+									</ul>
+									<ul class="price list-unstyled">
+										<li>
+											<h4>Total Appointments</h4>
+											<strong class="value">2700</strong>
+										</li>
+										<!--<li>
+											<h4>Last month Patients</h4>
+											<strong class="value">$700</strong>
+										</li>
+										<li>
+											<h4>Current Plan</h4>
+											<strong class="value">$2000</strong>
+										</li>-->
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="invoices" class="invoices">
+							<a href="#" class="opener">Invoices</a>
+							<div class="slide">
+								<h2>Invoices</h2>
+								<div class="table-holder">
+									<table class="table responsive-table">
+										<thead>
+											<tr>
+												<th>Date</th>
+												<th colspan="3">Amount Due</th>
+											</tr>
+										</thead>
+										<tr>
+											<td data-title="Date"><span class="txt"><time datetime="2017-05-08">December 5, 2014</time></span></td>
+											<td data-title="Amount Due"><span class="txt">$1,450.00</span></td>
+											<td data-title="File"><span class="txt"><a href="#" class="pdf"><i class="icon-pdf-file"></i></a></span></td>
+											<td data-title="Status"><span class="txt"><a href="#" class="btn">PAY</a></span></td>
+										</tr>
+										<tr>
+											<td data-title="Date"><span class="txt"><time datetime="2017-05-08">November 5, 2014</time></span></td>
+											<td data-title="Amount Due"><span class="txt">$1,450.00</span></td>
+											<td data-title="File"><span class="txt"><a href="#" class="pdf"><i class="icon-pdf-file"></i></a></span></td>
+											<td data-title="Status"><span class="txt"><time datetime="2017-05-08" class="paid">PAID <span>10/11/14</span></time>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td data-title="Date"><span class="txt"><time datetime="2017-05-08">October 5, 2014</time></span></td>
+											<td data-title="Amount Due"><span class="txt">$1,450.00</span></td>
+											<td data-title="File"><span class="txt"><a href="#" class="pdf"><i class="icon-pdf-file"></i></a></span></td>
+											<td data-title="Status"><span class="txt"><time datetime="2017-05-08" class="paid">PAID <span>10/10/14</span></time>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td data-title="Date"><span class="txt"><time datetime="2017-05-08">September 5, 2014</time></span></td>
+											<td data-title="Amount Due"><span class="txt">$1,450.00</span></td>
+											<td data-title="File"><span class="txt"><a href="#" class="pdf"><i class="icon-pdf-file"></i></a></span></td>
+											<td data-title="Status"><span class="txt"><time datetime="2017-05-08" class="paid">PAID <span>10/09/14</span></time>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td data-title="Date"><span class="txt"><time datetime="2017-05-08">August 5, 2014</time></span></td>
+											<td data-title="Amount Due"><span class="txt">$1,450.00</span></td>
+											<td data-title="File"><span class="txt"><a href="#" class="pdf"><i class="icon-pdf-file"></i></a></span></td>
+											<td data-title="Status"><span class="txt"><time datetime="2017-05-08" class="paid">PAID <span>10/08/14</span></time>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td data-title="Date"><span class="txt"><time datetime="2017-05-08">July 5, 2014</time></span></td>
+											<td data-title="Amount Due"><span class="txt">$1,450.00</span></td>
+											<td data-title="File"><span class="txt"><a href="#" class="pdf"><i class="icon-pdf-file"></i></a></span></td>
+											<td data-title="Status"><span class="txt"><time datetime="2017-05-08" class="paid">PAID <span>10/07/14</span></time>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td data-title="Date"><span class="txt"><time datetime="2017-05-08">May 5, 2014</time></span></td>
+											<td data-title="Amount Due"><span class="txt">$1,450.00</span></td>
+											<td data-title="File"><span class="txt"><a href="#" class="pdf"><i class="icon-pdf-file"></i></a></span></td>
+											<td data-title="Status"><span class="txt"><time datetime="2017-05-08" class="paid">PAID <span>10/05/14</span></time>
+												</span>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			<footer id="footer">
+				<p>&copy; 2017 <a href="#">QUBS</a></p>
+			</footer>
+		</div>
+		<!-- inline lightbox structure example -->
+		<div class="popup-holder">
+			<form action="#" id="add-details" class="lightbox form-popup">
+				<h3>Provider Details</h3>
+				<div class="form-group">
+					<label for="Number">Provider Number</label>
+					<input type="text" id="Number">
+				</div>
+				<div class="form-group">
+					<label for="clinic-name">Clinic Name</label>
+					<input type="text" id="clinic-name">
+				</div>
+				<div class="form-group">
+					<label for="clicnic-phone">Clicnic Phone</label>
+					<input type="tel" id="clicnic-phone">
+				</div>
+				<div class="form-group">
+					<label for="clicnic-fax">Clicnic Fax</label>
+					<input type="tel" id="clicnic-fax">
+				</div>
+				<div class="form-group">
+					<label for="address">Address</label>
+					<input type="text" id="address">
+				</div>
+				<div class="form-group">
+					<label for="suburb">Suburb</label>
+					<input type="text" id="suburb">
+				</div>
+				<div class="form-group">
+					<label for="state">State</label>
+					<select id="state">
+						<option>Select Option 1</option>
+						<option>Select Option 2</option>
+						<option>Select Option 3</option>
+						<option>Select Option 4</option>
+						<option>Select Option 5</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="postcode">Postcode</label>
+					<input type="text" id="postcode">
+				</div>
+				<button type="submit" class="btn blue">Save</button>
+			</form>
+			<form action="#" id="card-info" class="lightbox form-popup card-info form-validation">
+				<h3>Credit Card Info</h3>
+				<div class="form-group">
+					<label for="card-name">Name On Card</label>
+					<input type="text" id="card-name">
+				</div>
+				<div class="form-group">
+					<label for="card-no">Card N<sup>o</sup></label>
+					<input type="text" id="card-no" data-min="16" data-max="16" placeholder="**** **** **** ****" class="card-no has-icon" data-required="true"
+					 data-type="number">
+					<i class="icon-card"></i>
+					<span class="help-text">number + data-required="true"</span>
+				</div>
+				<div class="card-valid">
+					<div class="form-group">
+						<label for="month">Month</label>
+						<select id="month">
+							<option class="hideme">MM</option>
+							<option>01</option>
+							<option>02</option>
+							<option>03</option>
+							<option>04</option>
+							<option>05</option>
+							<option>06</option>
+							<option>07</option>
+							<option>08</option>
+							<option>09</option>
+							<option>10</option>
+							<option>11</option>
+							<option>12</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="year">Year</label>
+						<select id="year">
+							<option class="hideme">YYYY</option>
+							<option>2017</option>
+							<option>2018</option>
+							<option>2019</option>
+							<option>2020</option>
+							<option>2021</option>
+							<option>2022</option>
+							<option>2023</option>
+							<option>2024</option>
+							<option>2025</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="cvv">CVV Number</label>
+						<input type="text" id="cvv" placeholder="CVV" class="has-icon">
+						<i class="icon-info"></i>
+					</div>
+				</div>
+				<button type="submit" class="btn blue">Save</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- include aws -->
+	<script type="text/javascript" src="js/aws/aws-cognito-sdk.min.js"></script>
+	<script type="text/javascript" src="js/aws/amazon-cognito-identity.min.js"></script>
+
+	<script type="text/javascript" src="js/qubs/login.js"></script>
+	<script type="text/javascript" src="js/qubs/account.js"></script>
+
+</body>
+
+</html>

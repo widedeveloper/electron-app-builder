@@ -1,0 +1,88 @@
+@media print{
+	* {
+		background: $white !important;
+		color: $black !important;
+	}
+	#sidebar,
+	#nav,
+	.sidebar-opener,
+	.report-nav,
+	.search-form,
+	.search-opener,
+	.nav-opener,
+	.popup-holder,
+	#ui-datepicker-div,
+	.manage-patient {
+		display:none;
+	}
+	.clearfix:after {
+		display: none;
+	}
+	#wrapper{
+		min-height:1px;
+		overflow:visible;
+	}
+	#header {
+		width:100%;
+		height: auto;
+		padding: 0;
+		
+		.logo {
+			display: block;
+			float: none;
+			padding: 0;
+			margin: 0 auto 10px;
+			
+			img {
+				display: none;
+				
+				&.black {
+					display: block;
+				}
+			}
+		}
+	}
+	.flex-box {
+		display: block !important;
+	}
+	#main {
+		min-height: 1px;
+		overflow: hidden;
+	}
+	#content {
+		width: 100%;
+	}
+	.report {
+		width: auto;
+		margin: 0;
+		max-width:none;
+		padding: 5px 15px 5px;
+		border: 2px solid #000;
+		box-shadow:none;
+		
+		.not-authorised,
+		strong.status {
+			padding: 5px;
+			margin: 0 0 10px;
+			text-align: center;
+			position: static;
+		}
+		table {
+			max-width: inherit;
+			margin: 0;
+			
+			td {
+				width: auto;
+				padding: 5px 5px 5px 0 !important;
+				text-align: left;
+			}
+		}
+		p {
+			margin: 0 0 10px;
+		}
+	}
+	#footer {
+		text-align: center;
+		position: relative;
+	}
+}
