@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QUBS - Reset Password</title>
+	<link media="all" rel="stylesheet" href="css/main.css">
+	<link media="all" rel="stylesheet" href="css/qubs.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	
+	<script>
+		window.jQuery || document.write('<script src="js/jquery-1.12.4.min.js"><\/script>')
+	</script>
+	<script type="text/javascript" src="js/jquery.main.js" defer></script>
+	
+</head>
+
+<body>
+	<div id="wrapper" class="login-page">
+		<form id="login-form" class="login-form form-validation">
+			<div class="logo">
+				<a href=""><img src="images/logo.svg" alt="QUBS"></a>
+			</div>
+
+			<div class="unable" id="info" style="visibility: hidden;">
+            <h2 id="msg">Unable to Sign in</h2>
+          </div>
+
+          <div class="sk-folding-cube" id="progress" style="display: none;">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+          </div>
+
+
+          <!--form method="post" action="#"-->
+          <div class="form-group form-material floating">
+            <input type="email" id="email" class="form-control" name="email" />
+            <label class="floating-label">Email</label>
+          </div>
+          <div class="form-group form-material floating">
+            <input type="text" id="confirmationcode" class="form-control" name="confirmationcode" />
+            <label class="floating-label">Confirmation Code</label>
+          </div>
+          <div class="form-group clearfix">
+          </div>
+          <button type="submit" id="confButton" class="btn btn-primary btn-block btn-lg margin-top-40">Confirm</button>
+          <!--/form-->
+          </br>
+          </br>
+          <div id="info2">
+            Click <button id="resend" onclick="resendCode()"> Resend Confirmation</button> if you haven't recived the confirmation code.
+          </div>
+
+
+
+			
+			<p>&copy; 2017 <a href="index.html">QUBS</a></p>
+			<!--<a href="#new-password-popup" class="btn lightbox">ADD</a> -->
+
+
+		</form>
+
+	</div>
+
+	<!-- include aws -->
+	<script type="text/javascript" src="js/aws/aws-cognito-sdk.min.js"></script>
+	<script type="text/javascript" src="js/aws/amazon-cognito-identity.min.js"></script>
+
+
+	<script type="text/javascript" src="js/jquery.main.js" defer></script>
+	<script type="text/javascript" src="js/qubs/login.js"></script>
+  <script type="text/javascript" src="js/qubs/confirm.js"></script>
+  <script>
+    var email = document.getElementById('email');
+    var confCode = document.getElementById('confirmationcode');
+    var confButton = document.getElementById('confButton');
+    var info = document.getElementById('info');
+    confButton.addEventListener('click', confirm);
+    var progress = document.getElementById('progress');
+
+    function confirm(e) {
+      e.preventDefault();
+      cognitoConfirmSignup(email.value, confCode.value, info, progress)
+    }
+  </script>
+</body>
+
+</html>

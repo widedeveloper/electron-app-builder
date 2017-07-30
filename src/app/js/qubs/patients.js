@@ -22,6 +22,7 @@ var AccessionTextBox  ;
 var FromDateTextBox ;
 var ToDateTextBox ;
 
+var intercomStarted = false;
 
 $(document).ready(function () {
 
@@ -156,6 +157,8 @@ $(document).ready(function () {
      //signout
     var logoutbutton = document.getElementById("logout");
     logoutbutton.addEventListener("click", function (event) {
+        window.Intercom('shutdown');
+        intercomStarted == false;
         logoutWithAccessToken(null, logout);
     });
 
@@ -182,27 +185,28 @@ $(document).ready(function () {
     jQuery('.pager').children().remove();
    
     runWithAccessToken(searchParams, searchStudies);
-    /*runWithAccessToken({
-        patientId: 101050,
-        companyDomain: "bmi.qubs.com",
-        from: 0,
-        size: size
-    }, searchStudies);*/
-    /*
-        searchStudies(null, {
-            patientId: 101050,
-            companyDomain: "bmi.qubs.com",
-            from: 0,
-            size: 10
-        });*/
-
-
-        //signout
-    
 });
 // 
 
+function startIntercom(user) {
+   // console.log(user);
+    window.Intercom('boot', {
+        app_id: 'xcwvx5ob',
+        email: user.username,
+        phone: user.phone,
+        user_hash: user.hash,
+        "clinic": user.clinic,
+        "referred": user.referedCompanyDomain,
+        "speciality":user.speciality,        
+        custom_launcher_selector: '#pacs',
+        name: user.firstname + " " + user.lastname, // Full name 
+        created_at: user.userCreateTimeStamp // Signup date as a Unix timestamp
+    });    
+}
 
+function sendIntercomEvent(eventName, metadata) { 
+    window.Intercom('trackEvent', eventName, metadata);
+}
 //get user details
 function getUserDetails(userAccessToken, placeholder) {
 
@@ -218,6 +222,10 @@ function getUserDetails(userAccessToken, placeholder) {
                 userData = JSON.parse(this.responseText);
                 var firstname = userData.user.firstname;
                 $(".author").html(firstname.toUpperCase());
+                //start intercom
+                if (intercomStarted == false){
+                    startIntercom(userData.user);
+                }
                
 
             } else {
@@ -635,6 +643,7 @@ function searchStudies(userAccessToken, inputDataObject) {
                 studyRowElement.addClass("row-highlight");
                
                 loadSidebar(study);
+                console.log("STUDY",study.companyLogo);
             }
         });
 
@@ -732,7 +741,8 @@ function searchStudies(userAccessToken, inputDataObject) {
                 $("#study-report").on('click touchstart', function () {
                     holder_reset();
                     //$('body').addClass('refferal-opened');
-                    runWithAccessToken(study.qubsStudyInstanceUid, getReport);
+                    // runWithAccessToken(study.qubsStudyInstanceUid, getReport);
+                    runWithAccessToken(study, getReport);
                     
                 });
 
@@ -777,7 +787,8 @@ function searchStudies(userAccessToken, inputDataObject) {
 
                 $("#study-referral").on('click touchstart', function () {
                     holder_reset();
-                    runWithAccessToken(study.qubsStudyInstanceUid, getReferrals);
+                    runWithAccessToken(study, getReferrals);
+                    // runWithAccessToken(study.qubsStudyInstanceUid, getReferrals);
                    
 
                    // $('body').addClass('img-opened');
@@ -1106,7 +1117,7 @@ function showTableEmptyStates(show) {
 
 //get zip url and download study
 function downloadZip(userAccessToken, study) {
-
+    console.log("Downloading: ", study);
     toastr.options = {
         "closeButton": false,
         "debug": false,
@@ -1135,9 +1146,18 @@ function downloadZip(userAccessToken, study) {
     xhr.onerror = function (err) {
         console.log("** An error occurred during the transaction", err);
         toastr["error"]("An error occurred during the transaction", err);
+        var intercomMetadata = {
+            "patient": study.patientFirstName + " " +  study.patientLastName ,
+            "patientId": study.patientId,
+            "accession": study.accessionNumber,
+            "qubsStudyInstanceUid": study.qubsStudyInstanceUid,
+            "company": study.company,
+            "modality": study.modality,
+            "studyDescription": study.studyDescription,
+            "error": err
+        }
+        sendIntercomEvent("downloaded-zip-error", intercomMetadata);
     };
-
-
 
     xhr.timeout = 25000;
     xhr.ontimeout = function (e) {
@@ -1159,7 +1179,18 @@ function downloadZip(userAccessToken, study) {
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         }
+        var intercomMetadata = {
+            "patient": study.patientFirstName + " " +  study.patientLastName ,
+            "patientId": study.patientId,
+            "accession": study.accessionNumber,
+            "qubsStudyInstanceUid": study.qubsStudyInstanceUid,
+            "company": study.company,
+            "modality": study.modality,
+            "studyDescription": study.studyDescription,
+            "note": "Download link will be emailed to user"
 
+        }
+        sendIntercomEvent("downloaded-zip-large", intercomMetadata);
 
         toastr["success"]("This is a large file, we will email you a download link in next 5 mins", study.patientName);
     };
@@ -1199,6 +1230,16 @@ function downloadZip(userAccessToken, study) {
 
 
             toastr["success"]("Download started", study.patientName);
+            var intercomMetadata = {
+                "patient": study.patientFirstName + " " +  study.patientLastName ,
+                "patientId": study.patientId,
+                "accession": study.accessionNumber,
+                "qubsStudyInstanceUid": study.qubsStudyInstanceUid,
+                "company": study.company,
+                "modality": study.modality,
+                "studyDescription": study.studyDescription
+            }
+            sendIntercomEvent("downloaded-zip", intercomMetadata);
 
         }
     });
@@ -1213,7 +1254,8 @@ function downloadZip(userAccessToken, study) {
 }
 
 //get referrals from RIS
-function getReferrals(userAccessToken, qubsStudyInstanceUid) {
+// function getReferrals(userAccessToken, qubsStudyInstanceUid) {
+function getReferrals(userAccessToken, study) {
 
 
     var xhr = new XMLHttpRequest();
@@ -1227,6 +1269,16 @@ function getReferrals(userAccessToken, qubsStudyInstanceUid) {
 
                 referralData = JSON.parse(this.responseText);
                 loadReferralsToUI(referralData);
+                var intercomMetadata = {
+                    "patient": study.patientFirstName + " " +  study.patientLastName ,
+                    "patientId": study.patientId,
+                    "accession": study.accessionNumber,
+                    "qubsStudyInstanceUid": study.qubsStudyInstanceUid,
+                    "company": study.company,
+                    "modality": study.modality,
+                    "studyDescription": study.studyDescription
+                }
+                sendIntercomEvent("viewed-referral", intercomMetadata);
 
             } else {
 
@@ -1261,7 +1313,8 @@ function getReferrals(userAccessToken, qubsStudyInstanceUid) {
         xhr.send(publicTokenJson);
     } else {
 
-        xhr.open("GET", api_studies_referrals_url + "/" + encodeURI(qubsStudyInstanceUid) + "/referrals"); //secure api
+        // xhr.open("GET", api_studies_referrals_url + "/" + encodeURI(qubsStudyInstanceUid) + "/referrals"); //secure api
+        xhr.open("GET", api_studies_referrals_url + "/" + encodeURI(study.qubsStudyInstanceUid) + "/referrals"); //secure api
         xhr.setRequestHeader("content-type", "application/json");
         xhr.setRequestHeader("authorization", userAccessToken);
         xhr.send(null);
@@ -1382,7 +1435,8 @@ function getReferrals(userAccessToken, qubsStudyInstanceUid) {
 }
 
 //get report as html for a study
-function getReport(userAccessToken, qubsStudyInstanceUid) {
+// function getReport(userAccessToken, qubsStudyInstanceUid) {
+function getReport(userAccessToken, study) {
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = false;
 
@@ -1394,6 +1448,16 @@ function getReport(userAccessToken, qubsStudyInstanceUid) {
 
                 reportData = JSON.parse(this.responseText);
                 loadReportToUI(reportData);
+                var intercomMetadata = {
+                    "patient": study.patientFirstName + " " +  study.patientLastName ,
+                    "patientId": study.patientId,
+                    "accession": study.accessionNumber,
+                    "qubsStudyInstanceUid": study.qubsStudyInstanceUid,
+                    "company": study.company,
+                    "modality": study.modality,
+                    "studyDescription": study.studyDescription
+                }
+                sendIntercomEvent("viewed-report", intercomMetadata);
 
             } else {
                 loadReportToUI("No_data");
@@ -1429,7 +1493,8 @@ function getReport(userAccessToken, qubsStudyInstanceUid) {
 
     } else {
 
-        xhr.open("GET", api_studies_report_url + "/" + encodeURI(qubsStudyInstanceUid) + "/report"); //secure api
+        // xhr.open("GET", api_studies_report_url + "/" + encodeURI(qubsStudyInstanceUid) + "/report"); //secure api
+         xhr.open("GET", api_studies_report_url + "/" + encodeURI(study.qubsStudyInstanceUid) + "/report"); //secure api
         xhr.setRequestHeader("content-type", "application/json");
         xhr.setRequestHeader("authorization", userAccessToken);
         xhr.send(null);

@@ -7,6 +7,7 @@
 	<title>QUBS - SignUp</title>
 	<link media="all" rel="stylesheet" href="css/bootstrap.css">
 	<link media="all" rel="stylesheet" href="css/register.css">
+	<link media="all" rel="stylesheet" href="css/qubs.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -43,7 +44,7 @@
 		</header>
 			<section id = "select-role" class="content" >
 			<div  style="padding:30px 0;">
-				<input type = "hidden" name="user_type" />
+				<input type = "hidden" name="user_type" id="user_type" />
 				<div class="row">
 					<div class="title">
 						<a href="" >I am a:</a>
@@ -76,7 +77,7 @@
 							<div class="user_type"><a href="#">REFERRING DOCTOR</a></div>
 
 							<div class="desc">Get access to view your report and images of your patients onli</div>
-							<button type="button" usertype="patients" class="btn btn-lg select_user incre_width">SELECT</button>
+							<button type="button" usertype="doctor" class="btn btn-lg select_user incre_width">SELECT</button>
 							<button type="button" usertype="doctor" class="btn btn-lg select_user min-width">REFERRING DOCTOR</button>
 						</div>
 
@@ -91,7 +92,7 @@
 							<div class="user_type"><a href="#">SPECIALIST</a></div>
 
 							<div class="desc">Get access to view reports and images of patients.</div>
-							<button type="button" usertype="patients" class="btn btn-lg select_user incre_width">SELECT</button>
+							<button type="button" usertype="specialty" class="btn btn-lg select_user incre_width">SELECT</button>
 							<button type="button" usertype="specialty" class="btn btn-lg select_user min-width">SPECIALIST</button>
 						</div>
 
@@ -111,7 +112,7 @@
 
 				    <div class="right-side col-lg-8" >
 				    	<div class="lk-logo">
-							<img src="images/radiology_logo.png" style=""/>
+							<img src="images/company-logos/bunbury-medical-imaging.png" style=""/>
 						</div>
 						<div class="row">
 							<div class="form-group mail-input-box">
@@ -173,7 +174,7 @@
 
 				    <div class="right-side col-lg-8" >
 				    	<div class="lk-logo">
-							<img src="images/radiology_logo.png" style=""/>
+							<img src="images/company-logos/bunbury-medical-imaging.png" style=""/>
 						</div>
 						<div class="row">
 							<div class="form-group mail-input-box">
@@ -213,11 +214,27 @@
 							                <div class="form-group">
 							                  	<div class="col-sm-4">
 							                    	<select class="form-control" id="specialty" name="specialty">
-									                    <option value="">Select Specialty</option>
-									                    <option value="1">Specialty 1</option>
-									                    <option value="2">Specialty 2</option>
-									                    <option value="3">Specialty 3</option>
-									                    <option value="4">Specialty 4</option>
+									                    <option value="0">Select Specialty</option>
+									                    <option value="General Practitioner">General Practitioner</option>
+									                    <option value="Specialist">Specialist</option>
+									                    <option value="Obstetrics and Gynaecology">Obstetrics and Gynaecology</option>
+														<option value="Cardiologist">Cardiologist</option>
+														<option value="Hepatologist">Hepatologist</option>
+														<option value="Gastrologist">Gastrologist</option>
+														<option value="Dental Practitioner">Dental Practitioner</option>
+														<option value="Chiropractor">Chiropractor</option>
+									                    <option value="Podiatrist">Podiatrist</option>
+									                    <option value="Obstetrician">Obstetrician</option>
+									                    <option value="Gynaecologist">Gynaecologist</option>
+														<option value="Orthopaedic Surgeon">Orthopaedic Surgeon</option>
+														<option value="Physician">Physician</option>
+														<option value="Physiotherapist">Physiotherapist</option>
+														<option value="Osteopath">Osteopath</option>
+														<option value="Hematologist">Hematologist</option>
+														<option value="Oral Surgeon">Oral Surgeon</option>
+														<option value="Gastroentorologist">Gastroentorologist</option>
+														<option value="Other">Other</option>
+																			
 									                </select>
 							                 	 </div>
 							                </div>
@@ -255,7 +272,7 @@
 
 				    <div class="right-side col-lg-8" >
 				    	<div class="lk-logo">
-							<img src="images/radiology_logo.png" style=""/>
+							<img src="images/company-logos/bunbury-medical-imaging.png" style=""/>
 						</div>
 						<div class="row">
 							<div class="form-group mail-input-box">
@@ -307,10 +324,13 @@
 							                  	<div class="">
 							                    	<select class="form-control" id="state" name="state">
 									                    <option value="">State</option>
-									                    <option value="1">State 1</option>
-									                    <option value="2">State 2</option>
-									                    <option value="3">State 3</option>
-									                    <option value="4">State 4</option>
+									                    <option value="Australian Capital Territory">Australian Capital Territory</option>
+									                    <option value="Northern Territory">Northern Territory</option>
+									                    <option value="Queensland">Queensland</option>
+														<option value="South Australia">South Australia</option>
+														<option value="Tasmania">Tasmania</option>
+														<option value="Victoria">Victoria</option>
+														<option value="Western Australia">Western Australia</option>
 									                </select>
 							                 	 </div>
 							                </div>
@@ -360,45 +380,51 @@
 
 				    <div class="right-side col-lg-8" >
 				    	<div class="lk-logo">
-							<img src="images/radiology_logo.png" style=""/>
+							<img src="images/company-logos/bunbury-medical-imaging.png" style=""/>
 						</div>
 						<div class="row">
 							<div class="form-group mail-input-box">
 								
 								<div class="box box-info">
 						            <div class="box-header with-border title">
-						              <h3 class="box-title margin-bottom-30">Create Password</h3>
+										<h3 class="box-title margin-bottom-30">Create Password</h3>
 						            </div>
 						        
 						            <div class="form-horizontal input-area" >
-						              <div class="box-body">
-						                <div class="form-group">
-						                  <div class="col-sm-4">
-						                    <input type="password" name="password" class="form-control  " id="password" placeholder="Password">
-						                  </div>
-						                  <div class="col-sm-5 pass_match_alert">
-							                   <div class="alert alert-danger alert-dismissible alert-error" >
-									                <span><i class="icon fa fa-close"></i> Passwords Match</span>
-							                	</div>
-							                </div>
-						                </div>
+						             	 <div class="box-body">
+						               		<div class="form-group">
+						                 		<div class="col-sm-4">
+						                   			 <input type="password" name="password" class="form-control  " id="password" placeholder="Password">
+						                 		</div>
+												<div class="col-sm-5 pass_match_alert">
+													<div class="alert alert-danger alert-dismissible alert-error" >
+														<span><i class="icon fa fa-close"></i> Passwords Match</span>
+													</div>
+												</div>
+											</div>
 
-						                <div class="form-group">
-						                  <div class="col-sm-4">
-						                    <input type="password" class="form-control " name="repassword" id="repassword" placeholder="Re-enter Password">
-						                  </div>
-						                  <div class="col-sm-5 pass_len_alert">
-							                   <div class="alert alert-success alert-dismissible alert-error" >
-									                <span><i class="icon fa fa-check"></i> Longer than 8 Characters</span>
-							                	</div>
-							               </div>
-						                </div>
+											<div class="form-group">
+												<div class="col-sm-4">
+													<input type="password" class="form-control " name="repassword" id="repassword" placeholder="Re-enter Password">
+												</div>
+												<div class="col-sm-5 pass_len_alert">
+													<div class="alert alert-success alert-dismissible alert-error" >
+														<span><i class="icon fa fa-check"></i> Longer than 8 Characters</span>
+													</div>
+												</div>
+											</div>
 						          
-						            </div>
-						        </div>
+										</div>
+										<div class="sk-folding-cube" id="progress" style="display: none;">
+											<div class="sk-cube1 sk-cube"></div>
+											<div class="sk-cube2 sk-cube"></div>
+											<div class="sk-cube4 sk-cube"></div>
+											<div class="sk-cube3 sk-cube"></div>
+										</div>
+									</div>
 			           
 								<hr>
-							</div>
+								</div>
 
 							</div>
 						</div>
@@ -444,7 +470,11 @@
 		// first page === select user
 		$(".select_user").click(function(){
 			var usertype = $(this).attr("usertype");
+			
 			$("input[name=user_type]").val(usertype);
+			if($("input[name=user_type]").val()=="patients"){
+				$("#specialty").css("display","none");
+			}
 			$("#select-role").css('display','none');
 			$("#email_regist").css('display','block');
 		});
@@ -461,17 +491,25 @@
 		$(".email_prev").click(function(){
 			$("#email_regist").css('display','none');
 			$("#select-role").css('display','block');
+			$("#specialty").css("display","block");
 		});
 
 		//user detail register page
 		$(".detail_next").click(function(){
 
 			if(user_detail_validation()){
-				$("#user_detail").css('display','none');
-				$("#provider_detail").css('display','block');
+				if($("input[name=user_type]").val()=="patients"){
+					$("#user_detail").css('display','none');
+					$("#create_account").css('display','block');
+				}else{
+					$("#user_detail").css('display','none');
+					$("#provider_detail").css('display','block');
+				}
+				
 			}
 
 		});
+				
 		$(".detail_prev").click(function(){
 			$("#user_detail").css('display','none');
 			$("#email_regist").css('display','block');
@@ -498,18 +536,31 @@
 		});
 
 		$(".create_prev").click(function(){
-			$("#provider_detail").css('display','block');
-			$("#create_account").css('display','none');
+
+			if($("input[name=user_type]").val()=="patients"){
+				$("#user_detail").css('display','block');
+				$("#create_account").css('display','none');
+			}else{
+				$("#provider_detail").css('display','block');
+				$("#create_account").css('display','none');
+			}
+			
 		});
 	});
 	</script>
 	<!-- inline lightbox structure example -->	
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/qubs/login.js"></script>
 	<script type="text/javascript" src="js/qubs/register.js"></script>
 
+
 	<!-- include aws -->
+
+
 	<script type="text/javascript" src="js/aws/aws-cognito-sdk.min.js"></script>
 	<script type="text/javascript" src="js/aws/amazon-cognito-identity.min.js"></script>
+	<script type="text/javascript" src="js/aws/aws-sdk.min.js"></script>
+	
 
 </body>
 

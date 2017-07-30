@@ -168,6 +168,8 @@
             flex-grow: 1;
   }
   
+
+
   .manage-patient .img-preview .img-head {
     font-size: 16px;
     color: #fff;
@@ -309,12 +311,12 @@
       width: 112px;
       height: 111px;
     }
-    .table tr:hover td {
+    /* .table tr:hover td {
       background: #fafcfc;
     }
     .table tr:nth-child(2n):hover td {
       background: #edf3f5;
-    }
+    } */
     .manage-patient .img-bar, .manage-patient .thumbs, .refferal-result .img-bar, .refferal-result .thumbs {
       margin: 0 0px 15px;
     }
@@ -324,8 +326,10 @@
     
     
     .img-opened .manage-patient .img-preview {
-      width: calc(100% - 154px);
+      /* width: calc(100% - 154px); */
+      width: calc(100% - 237px);
     }
+    
     .manage-patient .img-bar .thumbnails {
       display: block;
     }
@@ -341,7 +345,8 @@
   
   @media only screen and (min-width: 1150px) {
     .img-opened .manage-patient .img-preview {
-      width: auto;
+      /* width: auto; */
+      width: calc(100% - 237px);
     }
      .img-opened .manage-patient .img-bar .csthumbnail {
       width: 158px;
@@ -350,6 +355,8 @@
     
   }
   
+ 
+
   @media only screen and (max-width: 768px) {
     .img-opened #main {
       background: #0d0d0d;
@@ -362,12 +369,12 @@
     }
   }
 
-.img-editor .nav ul.view li.layout{
-  postion:relative !important;
-}
-.img-editor .nav ul.view li.layout ul li{
-  padding-top: 8px; 
-}
+  .img-editor .nav ul.view li.layout{
+    postion:relative !important;
+  }
+  .img-editor .nav ul.view li.layout ul li{
+    padding-top: 8px; 
+  }
 
 
   .img-editor .nav ul.view li.layout ul li:hover{
@@ -405,3 +412,30 @@
 .grid_view{
   display: block !important;
 }
+  .manage-patient .img-preview{
+    position: relative;
+  }
+.manage-patient .img-preview .image-layout{
+  float: left;
+  border: solid 1px #171717;
+  position: relative;
+}
+
+/* //reset form
+ */
+ .unable {
+    background: #fae1e1;
+    margin: 28px 0 32px;
+    padding: 19px 32px 19px 28px;
+    border: #f8cccc 1px solid;
+    border-radius: 5px;
+}
+  .unable h2 {
+    font-family: 'Open Sans',sans-serif;
+    font-size: 20px;
+    line-height: 20px;
+    color: #aa2124;
+    font-weight: 400;
+    padding: 0 0 0 25px;
+}
+

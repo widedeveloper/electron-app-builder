@@ -53,10 +53,12 @@ function cognitoAuthentication(email, password, info, progress, newPassword) {
         };
        
         var cognitoUser = new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userData);
-        console.log("CognitoUser:",cogintoUser);
+      
+
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: function (result) {
                 console.log("Successfully funciton",result);
+               
                 console.log('access token + ' + result.getAccessToken().getJwtToken());
 
                 AWSCognito.config.credentials = new AWSCognito.CognitoIdentityCredentials({
@@ -101,6 +103,8 @@ function cognitoAuthentication(email, password, info, progress, newPassword) {
                         console.log('Successfully logged!');
                     }
                 });
+
+
             },
 
 
@@ -159,7 +163,7 @@ function runWithAccessToken(callbackData, callback) {
 
     var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
     var cognitoUser = userPool.getCurrentUser();
-    //console.log("BBBBBBBBBBBBBBB",cognitoUser);
+  
     if (cognitoUser != null) {
         cognitoUser.getSession(function (err, session) {
             if (err) {
@@ -232,24 +236,13 @@ function logoutWithAccessToken(callbackData, callback) {
             console.log('session validity: ' + session.isValid());
             if (!session.isValid()) {
                 console.error('Invalid User Session');
-
             } else {
                 userAccessToken = session.getIdToken().getJwtToken();
                 //execute function
                 //callback(userAccessToken, callbackData);
-                // cognitoUser.forgetDevice({
-                //     onSuccess: function (result) {
-                //         console.log('call result: ' + result);
-                //     },
-                //     onFailure: function(err) {
-                //         alert(err);
-                //     }
-                // });
                 cognitoUser.signOut();
-                
                 callback(userAccessToken, callbackData);
             }
-
         });
     } else {
         callback(null, callbackData);

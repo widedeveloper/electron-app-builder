@@ -127,20 +127,215 @@ function provider_detail_validation(){
 
  // get the user register account information
  function create_json_user_data(){
+    var progress = document.getElementById('progress');
+    
+
+    var user_data = [];
+    var user_type = document.getElementById('user_type').value;
+    
  	var email = document.getElementById('email').value;
  	var firstname = document.getElementById('firstname').value;
  	var lastname = document.getElementById('lastname').value;
- 	var mobile = document.getElementById('mobile').value;
+    var mobile = document.getElementById('mobile').value;
+ 	var password = document.getElementById('password').value;
+    var repassword = document.getElementById('repassword').value;
+    
+
+	 
  	var specialty = document.getElementById('specialty').value;
- 	var email = document.getElementById('email').value;
- 	var email = document.getElementById('email').value;
- 	var email = document.getElementById('email').value;
- 	var email = document.getElementById('email').value;
- 	var email = document.getElementById('email').value;
- 	var email = document.getElementById('email').value;
- 	alert(email);
+	var providerno = document.getElementById('provider_number').value;
+	var clinic_name = document.getElementById('clinic_name').value;
+	var clinic_phone = document.getElementById('clinic_phone').value;
+	var clinic_fax = document.getElementById('clinic_fax').value;
+	var clinic_address = document.getElementById('clinic_address').value;
+	var suburb = document.getElementById('suburb').value;
+	var state = document.getElementById('state').value;
+	var postal_code = document.getElementById('postal_code').value;	
+
+	
+    cognitoSignup(email, password, repassword,  progress, firstname, lastname,mobile, specialty, providerno,
+         clinic_name, clinic_phone, clinic_fax, clinic_address, suburb, state, postal_code)
  }
 
+
+
+ 
+function extractDomain() {
+    var url = window.location.href;
+    var domain;
+    //find & remove protocol (http, ftp, etc.) and get domain
+    if (url.indexOf("://") > -1) {
+        domain = url.split('/')[2];
+    } else {
+        domain = url.split('/')[0];
+    }
+
+    //find & remove port number
+    domain = domain.split(':')[0];
+
+    return domain;
+}
+
+
+
+function  cognitoSignup(email, password, repassword,  progress, firstName, lastName,phone, specialty, providerNo,
+         clinic, clinicphone, clinicfax, clinicaddress, clinicsuburb, clinicstate, clinicpostcode) {
+
+        var input = {
+            email: email,
+            password: password,
+        };
+        //Signup starts here
+        // Cognito Identity Pool Id
+        // Cognito Identity Pool Id
+        AWSCognito.config.region = cognito_region;
+        AWSCognito.config.credentials = new AWSCognito.CognitoIdentityCredentials({
+            IdentityPoolId: cognito_identity_pool_id,
+        });
+
+        // Cognito User Pool Id
+        AWSCognito.config.region = cognito_region;
+        AWSCognito.config.credentials = new AWSCognito.CognitoIdentityCredentials({
+            IdentityPoolId: cognito_identity_pool_id
+        });
+
+        var poolData = {
+            UserPoolId: cognito_user_pool_id, // your user pool id here
+            ClientId: cognito_user_pool_client_id // your client id here
+        };
+        var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
+        var userData = {
+            Username: email, // your username here
+            Pool: userPool
+        };
+
+///////////////////////////////////////
+        var attributeList = [];
+
+        var dataEmail = {
+        Name: 'email',
+        Value: email // your email here
+        };
+
+        var dataFirstname = {
+        Name: 'family_name',
+        Value: firstName
+        };
+        var dataLastname = {
+        Name: 'given_name',
+        Value: lastName
+        };
+        var dataClinic = {
+        Name: 'custom:clinic',
+        Value: clinic
+        };
+        var dataPhone = {
+        Name: 'phone_number',
+        Value: '+61' + phone
+        };
+        var dataProviderno = {
+        Name: 'custom:providerno',
+        Value: providerNo
+        };
+        var companydomain = {
+        Name: 'custom:companydomain',
+        Value: extractDomain()
+        };
+
+
+        var dataSpecialty = {
+        Name: 'specialty',
+        Value: specialty
+        };
+
+        var dataClinicphone = {
+        Name: 'clinicphone',
+        Value: clinicphone
+        };
+
+
+        var dataClinicfax = {
+        Name: 'clinicfax',
+        Value: clinicfax
+        };
+
+        var dataClinicaddress = {
+        Name: 'clinicaddress',
+        Value: clinicaddress
+        };
+
+        var dataClinicsuburb = {
+        Name: 'clinicsuburb',
+        Value: clinicsuburb
+        };
+
+        var dataClinicstate = {
+        Name: 'clinicstate',
+        Value: clinicstate
+        };
+
+        var dataClinicpostcode = {
+        Name: 'clinicpostcode',
+        Value: clinicpostcode
+        };
+///////////////////////////////////////
+	
+
+        var attributeEmail = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataEmail);
+        var attributeFamilyName = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataLastname);
+        var attributeGivenName = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataFirstname);
+        var attributeProviderNo = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataProviderno);
+        var attributeClinic = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataClinic);
+        var attributePhone = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataPhone);
+        var attributecompanydomain = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(companydomain);
+
+        var attributeSpecialty = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataSpecialty);
+        var attributeClinicphone = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataClinicphone);
+        var attributeClinicfax = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataClinicfax);
+        var attributeClinicaddress = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataClinicaddress);
+        var attributeClinicsuburb = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataClinicsuburb);
+        var attributeClinicstate = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataClinicstate);
+        var attributeClinicpostcode = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataClinicpostcode);
+       
+
+
+
+        attributeList.push(attributeEmail);
+        attributeList.push(attributeFamilyName);
+        attributeList.push(attributeGivenName);
+        attributeList.push(attributeProviderNo);
+        attributeList.push(attributeClinic);
+        attributeList.push(attributePhone);
+        attributeList.push(attributecompanydomain);
+
+        attributeList.push(attributeSpecialty);
+        attributeList.push(attributeClinicphone);
+        attributeList.push(attributeClinicfax);
+        attributeList.push(attributeClinicaddress);
+        attributeList.push(attributeClinicsuburb);
+        attributeList.push(attributeClinicstate);
+        attributeList.push(attributeClinicpostcode);
+
+console.log(attributeList);
+        var cognitoUser;
+        userPool.signUp(email, password, attributeList, null, function(err, result) {
+            if (err) {
+                alert(err);
+                // info.innerHTML = 'User <b>not</b> created. ' + err.message;
+                // info.style.visibility = 'visible'
+                // progress.style.display = 'none';
+                return;
+            }
+            cognitoUser = result.user;
+            console.log('user name is ' + cognitoUser.getUsername());
+            // info.innerHTML = 'User ' + cognitoUser.getUsername() + ' created. Please check your email to validate the user and enable login.';
+            // info.style.visibility = 'visible'
+            window.location = 'confirm.html?verifyemail=' + email;
+        });
+        //Signup ends here
+  
+
+}
 
 
 

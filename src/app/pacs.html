@@ -16,13 +16,8 @@
 	<script>
 		window.jQuery || document.write('<script src="js/jquery-1.12.4.min.js"><\/script>')
 	</script>
+	<script src="js/qubs/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/jquery.main.js" defer></script>
-	<script>
-	  window.intercomSettings = {
-	    app_id: "xcwvx5ob"
-	  };
-	</script>
-	<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/xcwvx5ob';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
 	
 </head>
 
@@ -202,30 +197,35 @@
 									</ul>
 								</nav>
 							</div>
-
-							<div class="img-preview">
-								<div class="img-head">
-									<a href="#" class="btn-fullscreen">Full Screen</a>
-									<div class="numbers">
-										<span class="current-num" id="current-num">1</span>
-										<span class="total-num" id="total-num">0</span>
-									</div>
-									<div class="progress" id="progress-bar-holder">
-										<span class="progress-bar" id="progress-bar" style="width: 0%; display:none;"></span>
-									</div>
-									<div id="loadProgress">Loading please wait</div>
-								</div>
-
-								<div class="img-holder">
-									<div class="dicom-img-holder" id="dicom-img-holder" oncontextmenu="return false" class='disable-selection noIbar' unselectable='on' onselectstart='return false;' onmousedown='return false;'>
-										<div class="dicom-img" id="dicomImage">
+							
+							<div class="img-preview" > 
+								<a href="#" class="btn-fullscreen" style="z-index:100000">Full Screen</a>
+								<div class="image-layout" id="img-layout0" >
+									<div class="img-head">
+										
+										<div class="numbers">
+											<span class="current-num" id="current-num">1</span>
+											<span class="total-num" id="total-num">0</span>
 										</div>
-
+										<div class="progress" id="progress-bar-holder">
+											<span class="progress-bar" id="progress-bar" style="width: 0%; display:none;"></span>
+										</div>
+										<div id="loadProgress">Loading please wait</div>
 									</div>
+
+									<div class="img-holder">
+										<div class="dicom-img-holder" id="dicom-img-holder" oncontextmenu="return false" class='disable-selection noIbar' unselectable='on' onselectstart='return false;' onmousedown='return false;'>
+											<div class="dicom-img" id="dicomImage">
+											</div>
+
+										</div>
+									</div>
+
 								</div>
-
+							
+								
 							</div>
-
+						
 							<div class="img-layout-preview">
 
 							</div>
@@ -244,7 +244,7 @@
 					<div id="sidebar-details" style="display:none;">
 						<div class="author-info">
 							<div class="img-holder">
-								<img src="images/patient-img.jpg" alt="John DOE">
+								<img src="images/company-logos/bunbury-medical-imaging.png" alt="John DOE">
 							</div>
 							<h2 id="patient-name"> John DOE <span class="age">(37y F)</span></h2>
 							<strong class="center" id="company-name">My radiology Centre</strong>
@@ -440,6 +440,26 @@
 	<script type="text/javascript" src="js/qubs/studies.js"></script>
 
 	<script type="text/javascript" src="js/toastr/toastr.min.js"></script>
+	<script>
+		window.intercomSettings = {
+			app_id: "xcwvx5ob"
+			
+		};
+
+	</script>
+	<script>
+		$(function () {
+			var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', intercomSettings); } else {
+				var d = document; var i = function () { i.c(arguments) }; i.q = []; i.c = function (args) { i.q.push(args) }; w.Intercom = i; 
+				function l() {
+					var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true;
+					s.src = 'https://widget.intercom.io/widget/xcwvx5ob';
+					var x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+				} if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); }		
+			}		
+		});
+
+	</script>
 
 </body>
 

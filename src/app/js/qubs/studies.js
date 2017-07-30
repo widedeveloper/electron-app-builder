@@ -1,20 +1,9 @@
- var api_studies_url = "https://hrf0u1oorb.execute-api.ap-southeast-2.amazonaws.com/development/studies";
-
+var api_studies_url = "https://hrf0u1oorb.execute-api.ap-southeast-2.amazonaws.com/development/studies";
+var study;
+var column=1;
+var row=1;
 
  $(document).ready(function() {
-
-     /*
-     var config = {
-         webWorkerPath: 'js/cornerstone/cornerstoneWADOImageLoaderWebWorker.js',
-         taskConfiguration: {
-             'decodeTask': {
-                 codecsPath: 'cornerstoneWADOImageLoaderCodecs.js'
-             }
-         }
-     };
-     cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
-
-*/
 
      var config = {
          maxWebWorkers: navigator.hardwareConcurrency || 1,
@@ -32,12 +21,7 @@
              }
          }
      };
-
-     console.log(config);
-
      cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
-
-
 
     //image layout
     var GridButton = $(".img-editor .nav ul.view li.layout");
@@ -50,9 +34,30 @@
         }
         
     });
-   
+    init_layout_set();
+    $('.image-layout').droppable({
+        drop: function(evt, ui) {
+            var stackIndex = ui.draggable.attr("index");
+            element_id = $(this).attr("id");
+            element = $("#"+element_id+" #dicomImage").get(0);         
+            loadStudy(element,stackIndex);            
+        }
+    });  
+    $(".img-editor").find('.choose-layout a').on('click touchstart',function(){
+        
+        var type = $(this).text();
+        clone_image_viewer(type);
+    });
 
  });
+
+ 
+  function init_layout_set(){
+       $(".img-preview").css("height",$(window).height()-$("#header").height());console.log("llll",$(".img-preview").height());
+        $(".image-layout").css("width","100%");
+        $(".image-layout").css("height","100%");
+        
+    }
 
 
 
@@ -76,8 +81,8 @@
     
  }
 
- function openStudyForViewing(userAccessToken, study) {
-
+ function openStudyForViewing(userAccessToken, study1) {
+   
      resetImageViewer();
 
      //get data from server
@@ -89,16 +94,28 @@
      xhr.addEventListener("readystatechange", function() {
          if (this.readyState === 4) {
              var data = JSON.parse(this.responseText);
-             //console.log(data);
              //load thumbnails first
-             loadThumbnails(data);
-             loadStudy(data, 0);
+             study = data;
+             loadThumbnails();
+             loadStudy($('#img-layout0 #dicomImage').get(0), 0);
+             var intercomMetadata = {
+                 "patient": study.patientFirstName + " " +  study.patientLastName ,
+                 "patientId": study.patientId,
+                 "accession": study.accessionNumber,
+                 "qubsStudyInstanceUid": study.qubsStudyInstanceUid,
+                 "company": study1.company,
+                 "modality": study.modality,
+                 "studyDescription": study.studyDescription,
+                 "images": study.instanceCount
+             }
+             //console.log("intercomMetadata", intercomMetadata);
+             sendIntercomEvent("viewed-images", intercomMetadata);
          } else {
 
          }
      });
 
-     xhr.open("GET", api_studies_url + "/" + study.qubsStudyInstanceUid); //secure api
+     xhr.open("GET", api_studies_url + "/" + study1.qubsStudyInstanceUid); //secure api
      xhr.setRequestHeader("content-type", "application/json");
      xhr.setRequestHeader("authorization", userAccessToken);
      xhr.send(null);
@@ -109,69 +126,72 @@
      //click the close button in image-study screen
 
      jQuery(".btn-img-close").bind('click', function(){
+        
+        var image_layout_length = $(".image-layout").length;
+        for(var i=1; i<image_layout_length; i++ ){
+            $("#img-layout"+i).remove();
+        }
+        init_layout_set();
         $("#content .patient-list").fadeIn(300);
+        
      });
  }
 
 
- function loadThumbnails(study) {
-
+ function loadThumbnails() {
      var seriesList = $('#seriesList').find('.thumbnails')[0];
-     // var seriesList = $('#seriesList').find('.thumbnails_ul');
-     // var seriesList = $('<ul style="display: inherit"></ul>').appendTo(seriesList);
-     //create a thumbnail per series and on thumbnail click load the instances (images) for that series
      var seriesIndex = 0;
      study.series.forEach(function(series, stackIndex) {
-
-   
-     var seriesDescription = "";
-        if (checkNested(series, "seriesDescription")) {
-            seriesDescription =  study.studyDescription ;
-        } else {
-            seriesDescription =  "" ;
-        }
-
-
-         var seriesEntry = 
-             '<div class="cell" style="width:100px"><a oncontextmenu="return false" unselectable="on" onselectstart="return false;" onmousedown="return false;">' +
-             '<div class="csthumbnail"' +
-             'oncontextmenu="return false"' +
-             'unselectable="on"' +
-             'onselectstart="return false;"' +
-             'onmousedown="return false;"></div>' +
-             "<div class='text-center small'>" + seriesDescription + '</div></a></div>';
+        var seriesDescription = "";
+            if (checkNested(series, "seriesDescription")) {
+                seriesDescription =  study.studyDescription ;
+            } else {
+                seriesDescription =  "" ;
+            }
+            var seriesEntry = 
+                '<div class="cell" style="width:100px">' +
+                '<a draggable = "true" class="list-group-iteme list-group-item ui-draggable ui-draggable-handle" index="'+seriesIndex+'"'+
+                'oncontextmenu="return false" unselectable="on" onselectstart="return false;" onmousedown="return false;">' +
+                '<div class="csthumbnail "' +
+                'oncontextmenu="return false"' +
+                'unselectable="on"' +
+                'onselectstart="return false;"' +
+                'onmousedown="return false;"></div>' +
+                "<div class='text-center small'>" + seriesDescription + '</div></a></div>';
 
 
-         // Add to series list
-         var seriesElement = $(seriesEntry).appendTo(seriesList);
+            // Add to series list
+            var seriesElement = $(seriesEntry).appendTo(seriesList);
+            var seriesElement = $(seriesElement).find('a')[0];
+            // Find thumbnail
+            var thumbnail = $(seriesElement).find('div')[0];
+            
 
-         // Find thumbnail
-         var thumbnail = $(seriesElement).find('div')[0];
+            cornerstone.enable(thumbnail);
 
-         cornerstone.enable(thumbnail);
+            // Have cornerstone load the thumbnail image
+            var imageId = "dicomweb:" + series.instances[0].imageId;
+            cornerstone.loadAndCacheImage(imageId).then(function(image) {
+                // Make the first thumbnail active
+                if (series.seriesIndex === 0) {
+                    $(seriesElement).find('div')[0].addClass('active');
+                }
+                    console.log("Thum",$(seriesElement));
+                // Display the image
+                cornerstone.displayImage(thumbnail, image);
+                $(seriesElement).draggable({
+                    start: function(event, ui) { $(this).css("z-index", 10000000); },
+                    helper: "clone",
+                    cursor: 'move'
+                });
+            });
 
-         // Have cornerstone load the thumbnail image
-         var imageId = "dicomweb:" + series.instances[0].imageId;
-         cornerstone.loadAndCacheImage(imageId).then(function(image) {
-             // Make the first thumbnail active
-             if (series.seriesIndex === 0) {
-                 $(seriesElement).addClass('active');
-             }
-             // Display the image
-             cornerstone.displayImage(thumbnail, image);
-             //$(seriesElement).draggable({
-             //    helper: "clone"
-             // });
-         });
-
-         // Handle thumbnail click
-         $(seriesElement).on('click touchstart', function() {
-             loadStudy(study, stackIndex);
-             console.log('click touchstart');
-         });
-
-         seriesIndex++;
-     }, this);
+            // Handle thumbnail click
+            $(seriesElement).on('click touchstart', function() {
+                loadStudy($('#img-layout0 #dicomImage').get(0), stackIndex);
+            });
+            seriesIndex++;
+        }, this);
 
       resizeThumbnailsViewer();
 
@@ -188,23 +208,11 @@
         var full_serieslist_width;
         var full_seriesHolder_width;
         var window_height = $(window).height();
-        //var thumb_width = $(".csthumb_div").width();
         var thumb_count = $(".cell").length;
 
-        // if(window_width <= 1007){
-        //     var height = $(".manage-patient .img-bar .thumbnails a").height();
-        //     $("#seriesHolder").height(height+20);
-            
-        // }else{
-        //     $("#seriesHolder").height(window_height);
-        // }
-
         if(window_width>=1007){
-           
-
-           $("#seriesList").width(237);
-           $("#seriesHolder").width(237);
-           
+            $("#seriesList").width(237);
+            $("#seriesHolder").width(237);
             if($("#seriesList").height()<$(window).height()){
                 $("#seriesHolder").height($("#seriesList").height()+100);
             }else{
@@ -212,249 +220,263 @@
             }
            
         }else if(window_width<1007 ){
-           
-            // $("#seriesList").addClass("min_width_list");
             var serieslist_width = $(".cell").width()*thumb_count;
-
             if(parseFloat(serieslist_width) < parseFloat(window_width)){
-               
                  $("#seriesList").width(window_width);
-            }else{
-               
+            }else{               
                 $("#seriesList").width(serieslist_width);
             }
-            
-           
+
             $("#seriesHolder").width(window_width-30);
-            
             if($("#seriesList").height()<150){
-                $("#seriesHolder").height($("#seriesList").height()+30);
-                
+                $("#seriesHolder").height($("#seriesList").height()+30);                
             }else{
                  $("#seriesHolder").height(150);
             }
-           
         }
-
      }
-
  }
 
- function loadStudy(study, stackIndex) {
+var init = function (lay_index) {
+        var self=this;
+        var str= '<div class="image-layout" id="img-layout'+lay_index+'" ><div class="img-head">' +
+            '<div class="numbers"><span class="current-num" id="current-num">1</span><span class="total-num" id="total-num">0</span>' +
+            '</div><div class="progress" id="progress-bar-holder"><span class="progress-bar" id="progress-bar" style="width: 0%; display:none;">' +
+            '</span></div><div id="loadProgress"></div></div><div class="img-holder">' +
+            '<div class="dicom-img-holder" id="dicom-img-holder" oncontextmenu="return false;" class="disable-selection noIbar" unselectable="on" ' +
+            'onselectstart="return false;" onmousedown="return false;"><div class="dicom-img" id="dicomImage"></div></div></div></div>';
+        var newDiv=$.parseHTML(str);
 
-
-
-     var element = $('#dicomImage').get(0);
-
-    // console.log($('#dicomImage canvas').get(0));
-
-    // ************************************************************************************************//
-    // when select the layout type
-    $(".img-editor").find('.choose-layout a').click(function(){
-            var type = $(this).text();
-            alert(type);
-
-            imageViewer.setLayout(type);
-            initViewports();
-            resizeStudyViewer();
-            if (previousUsed.length > 0) {
-                previousUsed = previousUsed.slice(0, imageViewer.viewports.length);
-                var item = 0;
-                previousUsed.forEach(function(v){
-                    useItemStack(item++, v);
-                });
+        $(".img-preview").append(newDiv);
+        $(newDiv).droppable({
+            drop: function (evt, ui) {
+                var stackIndex = ui.draggable.attr("index");
+                
+                self.element=$(newDiv).find("#dicomImage").get(0);
+                loadStudy(self.element,stackIndex)
             }
-
-            //return false;
         });
+    };
 
+function clone_image_viewer(type){
+    var element;
+    var image_layout_length = $(".image-layout").length;
+    for(var i=0; i<image_layout_length; i++ ){
+        $("#img-layout"+i).remove();
+    }
+    var type_arr = type.split('x');
+    column = type_arr[0];
+    row = type_arr[1];
+    
+    var count = row * column; 
+    for(j=0;j<count;j++){       
+        init (j);
+
+    }
+    var initial_height = $(".img-preview").height();
+    var layout_width = (100/ column)+ "%";
+    var layout_height = (initial_height / row) + "px";
+    $(".image-layout").css("width",layout_width);
+    $(".image-layout").css("height",layout_height);
+    // resizeStudyViewer();
+
+    
+    element = $("#img-layout0 #dicomImage").get(0);         
+    loadStudy(element,0);   
+}
+    
+
+    
+
+    
+
+//   var element;
+ var lay_index = 0;
+
+ 
+ function loadStudy(element, stackIndex) {
     // *********************************************************************************************************
      // Listen for changes to the viewport so we can update the text overlays in the corner
-     function onViewportUpdated(e) {
-         var viewport = cornerstone.getViewport(e.target)
-         $('#mrbottomleft').text("WW/WC: " + Math.round(viewport.voi.windowWidth) + "/" + Math.round(viewport.voi.windowCenter));
-         $('#mrbottomright').text("Zoom: " + viewport.scale.toFixed(2));
-     };
+        function onViewportUpdated(e) {
+            var viewport = cornerstone.getViewport(e.target)
+            $('#mrbottomleft').text("WW/WC: " + Math.round(viewport.voi.windowWidth) + "/" + Math.round(viewport.voi.windowCenter));
+            $('#mrbottomright').text("Zoom: " + viewport.scale.toFixed(2));
+        };
 
-     $(element).on("CornerstoneImageRendered", onViewportUpdated);
+        $(element).on("CornerstoneImageRendered", onViewportUpdated);
 
-     $(element).on("CornerstoneNewImage", onNewImage);
+        $(element).on("CornerstoneNewImage", onNewImage);
 
      // On new image (displayed?)
-     function onNewImage(e, eventData) {
+        function onNewImage(e, eventData) {
 
 
-         var toolData = cornerstoneTools.getToolState(element, 'stack');
-         if (toolData === undefined || toolData.data === undefined || toolData.data.length === 0) {
-             return;
-         }
-         var stack = toolData.data[0];
+            var toolData = cornerstoneTools.getToolState(element, 'stack');
+            if (toolData === undefined || toolData.data === undefined || toolData.data.length === 0) {
+                return;
+            }
+            var stack = toolData.data[0];
 
-         // Update Image number overlay 
-         $('#current-num').text((stack.currentImageIdIndex + 1));
-         $('#total-num').text(stack.imageIds.length);
+            // Update Image number overlay 
+            $('#current-num').text((stack.currentImageIdIndex + 1));
+            $('#total-num').text(stack.imageIds.length);
+        }
 
+        var imageIds = [];
+        study.series[stackIndex].instances.forEach(function(instance) {
+            imageIds.push("wadouri:" + instance.imageId)
+        }, this);
 
-     }
+        var stack = {
+            currentImageIdIndex: 0,
+            imageIds: imageIds
+        };
 
+        // Deep copy the imageIds
+        var loadProgress = {
+            "imageIds": stack.imageIds.slice(0),
+            "total": stack.imageIds.length,
+            "remaining": stack.imageIds.length,
+            "percentLoaded": 0,
+        };
 
-     var imageIds = [];
-     study.series[stackIndex].instances.forEach(function(instance) {
-         imageIds.push("wadouri:" + instance.imageId)
-     }, this);
+        var totalImagesCount = imageIds.length; //store total images to load to display in progress bar
+        function onImageLoaded(event, args) {
+           
+            var imageId = args.image.imageId;
+            var imageIds = loadProgress["imageIds"];
 
+            // Remove all instances, in case the stack repeats imageIds
+            for (var i = imageIds.length - 1; i >= 0; i--) {
+                if (imageIds[i] === imageId) {
+                    imageIds.splice(i, 1);
+                }
+            }
 
-     var stack = {
-         currentImageIdIndex: 0,
-         imageIds: imageIds
-     };
+            // Populate the load progress object
+            loadProgress["remaining"] = imageIds.length;
+            loadProgress["percentLoaded"] = parseInt(100 - loadProgress["remaining"] / loadProgress["total"] * 100, 10);
 
+            if ((loadProgress["remaining"] / loadProgress["total"]) === 0) {
+                console.timeEnd("Loading");
+            }
 
-     // Deep copy the imageIds
-     var loadProgress = {
-         "imageIds": stack.imageIds.slice(0),
-         "total": stack.imageIds.length,
-         "remaining": stack.imageIds.length,
-         "percentLoaded": 0,
-     };
-
-     var totalImagesCount = imageIds.length; //store total images to load to display in progress bar
-     function onImageLoaded(event, args) {
-         var imageId = args.image.imageId;
-         var imageIds = loadProgress["imageIds"];
-
-
-         // Remove all instances, in case the stack repeats imageIds
-         for (var i = imageIds.length - 1; i >= 0; i--) {
-             if (imageIds[i] === imageId) {
-                 imageIds.splice(i, 1);
-             }
-         }
-
-         // Populate the load progress object
-         loadProgress["remaining"] = imageIds.length;
-         loadProgress["percentLoaded"] = parseInt(100 - loadProgress["remaining"] / loadProgress["total"] * 100, 10);
-
-         if ((loadProgress["remaining"] / loadProgress["total"]) === 0) {
-             console.timeEnd("Loading");
-         }
-
-         // Write to a span in the DOM
-         var currentValueSpan = document.getElementById("loadProgress");
-         currentValueSpan.textContent = loadProgress["percentLoaded"] + '%';
+            // Write to a span in the DOM
+            var currentValueSpan = document.getElementById("loadProgress");
+            currentValueSpan.textContent = loadProgress["percentLoaded"] + '%';
 
 
-         var totalImages = document.getElementById("total-num");
-         totalImages.textContent = loadProgress["total"];
+            var totalImages = document.getElementById("total-num");
+            totalImages.textContent = loadProgress["total"];
 
-         var progressBar = document.getElementById("progress-bar");
-         progressBar.style = 'width: ' + loadProgress["percentLoaded"] + '%;'
+            var progressBar = document.getElementById("progress-bar");
+            progressBar.style = 'width: ' + loadProgress["percentLoaded"] + '%;'
 
-         var progressBarHolder = document.getElementById("progress-bar-holder");
-         var currentValueSpan = document.getElementById("loadProgress");
+            var progressBarHolder = document.getElementById("progress-bar-holder");
+            var currentValueSpan = document.getElementById("loadProgress");
 
-         if (loadProgress["percentLoaded"] == 100) {
-             //load complete hide progress bar
-             progressBarHolder.style.display = 'none';
-             currentValueSpan.style.display = 'none';
-         } else {
-             progressBarHolder.style.display = 'block';
-             currentValueSpan.style.display = 'block';
-         }
+            if (loadProgress["percentLoaded"] == 100) {
+                //load complete hide progress bar
+                progressBarHolder.style.display = 'none';
+                currentValueSpan.style.display = 'none';
+            } else {
+                progressBarHolder.style.display = 'block';
+                currentValueSpan.style.display = 'block';
+            }
 
-         //  console.timeEnd(JSON.stringify( loadProgress));
+            //  console.timeEnd(JSON.stringify( loadProgress));
 
-     }
+        }
 
-     // Image loading events are bound to the cornerstone object, not the element
-     $(cornerstone).on("CornerstoneImageLoaded", onImageLoaded);
+        // Image loading events are bound to the cornerstone object, not the element
+        $(cornerstone).on("CornerstoneImageLoaded", onImageLoaded);
 
-     $(cornerstone).on("CornerstoneImageCacheFull", function(cacheInfo) {
-         console.log(cacheInfo);
-     });
+        $(cornerstone).on("CornerstoneImageCacheFull", function(cacheInfo) {
+            console.log(cacheInfo);
+        });
 
-     // image enable the dicomImage element and the mouse inputs
-     console.time("Loading");
+        // image enable the dicomImage element and the mouse inputs
+        console.time("Loading");
 
-     var container = element.parentNode;
+        var container = element.parentNode;
 
-     $('#fullscreen').click(function(e) {
-         if (!document.fullscreenElement && !document.mozFullScreenElement &&
-             !document.webkitFullscreenElement && !document.msFullscreenElement) {
-             if (container.requestFullscreen) {
-                 container.requestFullscreen();
-             } else if (container.msRequestFullscreen) {
-                 container.msRequestFullscreen();
-             } else if (container.mozRequestFullScreen) {
-                 container.mozRequestFullScreen();
-             } else if (container.webkitRequestFullscreen) {
-                 container.webkitRequestFullscreen();
-             }
-         }
-     });
+        $('#fullscreen').click(function(e) {
+            if (!document.fullscreenElement && !document.mozFullScreenElement &&
+                !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                } else if (container.mozRequestFullScreen) {
+                    container.mozRequestFullScreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                }
+            }
+        });
 
-     $(document).on("webkitfullscreenchange mozfullscreenchange fullscreenchange", function() {
-         if (!document.fullscreenElement && !document.mozFullScreenElement &&
-             !document.webkitFullscreenElement && !document.msFullscreenElement) {
-             $(container).width(256);
-             $(container).height(256);
-             $(element).width(256);
-             $(element).height(256);
-         } else {
-             $(container).width($(window).width());
-             $(container).height($(window).height());
-             $(element).width($(container).width());
-             $(element).height($(container).height());
-         }
-         cornerstone.resize(element, true);
-     });
+        $(document).on("webkitfullscreenchange mozfullscreenchange fullscreenchange", function() {
+            if (!document.fullscreenElement && !document.mozFullScreenElement &&
+                !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                $(container).width(256);
+                $(container).height(256);
+                $(element).width(256);
+                $(element).height(256);
+            } else {
+                $(container).width($(window).width());
+                $(container).height($(window).height());
+                $(element).width($(container).width());
+                $(element).height($(container).height());
+            }
+            cornerstone.resize(element, true);
+        });
 
-     $(window).on("resize orientationchange", function() {
-         if (document.fullscreenElement || document.mozFullScreenElement ||
-             document.webkitFullscreenElement || document.msFullscreenElement) {
-             $(container).width($(window).width());
-             $(container).height($(window).height());
-             $(element).width($(container).width());
-             $(element).height($(container).height());
-             cornerstone.resize(element, true);
-         }
-     });
+        $(window).on("resize orientationchange", function() {
+            if (document.fullscreenElement || document.mozFullScreenElement ||
+                document.webkitFullscreenElement || document.msFullscreenElement) {
+                $(container).width($(window).width());
+                $(container).height($(window).height());
+                $(element).width($(container).width());
+                $(element).height($(container).height());
+                cornerstone.resize(element, true);
+            }
+        });
 
      // Call resize main on window resize
      $(window).resize(function() {
          resizeStudyViewer();
      });
-
+     
      //this function needs to chage
      function resizeStudyViewer() {
         var window_width = $(window).width();
         var initial_width = $(".img-holder").width();
-
-        //var left_width = $("#seriesHolder").width();
-        //var side_width = $("#sidebar").width();
-
-
+        var initial_height = $(window).height() - $("#header").height();
+        var left_width = $("#seriesHolder").width();
+        var side_width = $("#sidebar").width();
         var height;
-        var width;
+        var width = initial_width;
         
-         width = initial_width;
-         height = $(window).height()-200;
+         height = $(".image-layout").height()- $(".img-head").height()-40;
          if(window_width>1000 && window_width<1400){
-           
-            //width = $(window).width() - parseFloat(left_width) - parseFloat(side_width)-200;
+            $(".image-layout").css("width",(100 / column)+"%");
+            height = $(".image-layout").height() - $(".img-head").height()-40;
+            //width = $(window).width() - parseFloat(left_width) - parseFloat(side_width)-230;
             width= initial_width - 50;
+
+           
+
          }else if (window_width<1000){
-            height = $(window).height() - 400;
+            height = $(".image-layout").height() - $(".img-head").height()-40;
+            $(".image-layout").css("width","100%");
+            // width = $(window).width() - parseFloat(left_width) - parseFloat(side_width)-230;
          }
-        
+        // width = $(".image-layout").width();
          $('#dicomImage').height(height);
          $('#dicom-img-holder').height(height);
 
          $('#dicomImage').width(width);
-         //$('#dicom-img-holder').width(width););
          $('#dicom-img-holder').width(width);
-
-
 
          $(container).width(width);
          $(container).height(height);
