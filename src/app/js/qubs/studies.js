@@ -148,6 +148,11 @@ var row=1;
             } else {
                 seriesDescription =  "" ;
             }
+          
+          
+            if(seriesDescription == undefined){
+                seriesDescription =  "" ;
+            }
             var seriesEntry = 
                 '<div class="cell" style="width:100px">' +
                 '<a draggable = "true" class="list-group-iteme list-group-item ui-draggable ui-draggable-handle" index="'+seriesIndex+'"'+
@@ -211,7 +216,7 @@ var row=1;
         var thumb_count = $(".cell").length;
 
         if(window_width>=1007){
-            $("#seriesList").width(237);
+            $("#seriesList").width(159);
             $("#seriesHolder").width(237);
             if($("#seriesList").height()<$(window).height()){
                 $("#seriesHolder").height($("#seriesList").height()+100);
@@ -713,7 +718,6 @@ function clone_image_viewer(type){
 //http://stackoverflow.com/questions/2631001/javascript-test-for-existence-of-nested-object-key
 function checkNested(obj /*, level1, level2, ... levelN*/ ) {
     var args = Array.prototype.slice.call(arguments, 1);
-
     for (var i = 0; i < args.length; i++) {
         if (!obj || !obj.hasOwnProperty(args[i])) {
             return false;

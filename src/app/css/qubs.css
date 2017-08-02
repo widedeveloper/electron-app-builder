@@ -439,3 +439,11 @@
     padding: 0 0 0 25px;
 }
 
+/* //user request page */
+.nav_page{
+  text-align: center;
+}
+
+.nav_page .btn {
+  font-size: 15px;
+}

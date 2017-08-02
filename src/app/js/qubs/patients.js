@@ -40,8 +40,8 @@ $(document).ready(function () {
 
     //firstname enter press
     document.getElementById("search-first-name").addEventListener("keyup", function (event) {
-       
-        event.preventDefault();
+        pagenum = 1;
+               event.preventDefault();
         if (event.keyCode == 13) {
             serach_data_Geneal();
             var firstnum = 0;
@@ -55,7 +55,7 @@ $(document).ready(function () {
 
     //lastname enter press
     document.getElementById("search-last-name").addEventListener("keyup", function (event) {
-     
+        pagenum = 1;
         event.preventDefault();
         if (event.keyCode == 13) {
            
@@ -71,6 +71,7 @@ $(document).ready(function () {
     var patientSearchButton = document.getElementById("patient-search-button");
 
     patientSearchButton.addEventListener("click", function (event) {
+        pagenum = 1;
         serach_data_Geneal();
         console.log("search button");
         event.preventDefault();
@@ -84,6 +85,7 @@ $(document).ready(function () {
     //Advanced search 
     var AdvancedSearchButton = document.getElementById("advanced-search-button");
     AdvancedSearchButton.addEventListener("click", function (event) {
+        pagenum = 1;
         serach_data_Advanced();
         event.preventDefault();
         var firstnum = 0;
@@ -110,15 +112,19 @@ $(document).ready(function () {
     //Period search ex: This week, last week, this month, last month.
     var PeriodSearchButton = document.getElementById("period_search");
     PeriodSearchButton.addEventListener("change", function (event) {
+        
+        pagenum = 1;
         event.preventDefault();
         var curr = new Date; // get current date
         var type = this.value;
         switch (type){
             case 'n_week':  // Current Week
-                var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-                var last = first + 6; // last day is the first day + 6
-                var firstday = new Date(curr.setDate(first));
-                var lastday = new Date(curr.setDate(last));
+                var from = curr.setTime(curr.getTime() - 24 * 60 * 60 * 1000);
+                var to = curr.setTime(curr.getTime() - (curr.getDay() ? curr.getDay() : 7) * 24 * 60 * 60 * 1000 +  6 * 24 * 60 * 60 * 1000);
+                
+                var firstday = new Date(from);
+                var lastday = new Date(to);
+                
                 break;
             case 'l_week'://Last Week
                 var to = curr.setTime(curr.getTime() - (curr.getDay() ? curr.getDay() : 7) * 24 * 60 * 60 * 1000);
@@ -173,10 +179,11 @@ $(document).ready(function () {
     };
     //initial search(by default display this week data.)
     var curr = new Date;
-    var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-    var last = first + 6; // last day is the first day + 6
-    var firstday = new Date(curr.setDate(first));
-    var lastday = new Date(curr.setDate(last));
+    var from = curr.setTime(curr.getTime() - 24 * 60 * 60 * 1000);
+    var to = curr.setTime(curr.getTime() - (curr.getDay() ? curr.getDay() : 7) * 24 * 60 * 60 * 1000 +  6 * 24 * 60 * 60 * 1000);
+    
+    var firstday = new Date(from);
+    var lastday = new Date(to);
     fromdate = firstday.yyyymmdd();
     todate = lastday.yyyymmdd();
     serach_data_Period(fromdate,todate);
@@ -390,7 +397,7 @@ function searchStudies(userAccessToken, inputDataObject) {
     //var paramStr = jQuery.param(params);
     var paramStr = jQuery.param(inputDataObject);
 
-    console.log(inputDataObject);
+    console.log("Input object",paramStr);
     $("#patients-table tr").remove();
 
     var loaderIndicator = document.getElementById("patients-loading-indicator");

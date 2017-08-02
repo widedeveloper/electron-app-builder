@@ -161,8 +161,10 @@ function getUserDetails(userAccessToken, placeholder) {
 
 
     function loadUserDetailsToUI(userData) {
-        console.log(userData);
-
+        
+        var Tabpanel_ul = $("#main .container ul.tabset");
+        var usertype = userData.user.userType;
+        
         document.getElementById("fname").value = userData.user.firstname;
         document.getElementById("lname").value = userData.user.lastname;
         $("#speciality").val(userData.user.clinic).change();
@@ -175,6 +177,29 @@ function getUserDetails(userAccessToken, placeholder) {
         //display the first name
         var firstname = userData.user.firstname;
         $(".author").html(firstname.toUpperCase());
+
+        
+        // usertype = "clinicadmin";
+        switch (usertype){
+            case "clinicadmin" :
+                berak;
+            case "referrer" :
+                Tabpanel_ul.find("li:nth-child(3)").css("display","none");Tabpanel_ul.find("li:nth-child(3) a").removeAttr("href");
+                Tabpanel_ul.find("li:nth-child(4)").css("display","none");Tabpanel_ul.find("li:nth-child(4) a").removeAttr("href");
+                Tabpanel_ul.find("li:nth-child(5)").css("display","none");Tabpanel_ul.find("li:nth-child(5) a").removeAttr("href");
+                break;
+            case "patient" : 
+                Tabpanel_ul.find("li:nth-child(2)").css("display","none");Tabpanel_ul.find("li:nth-child(2) a").removeAttr("href");
+                Tabpanel_ul.find("li:nth-child(3)").css("display","none");Tabpanel_ul.find("li:nth-child(3) a").removeAttr("href");
+                Tabpanel_ul.find("li:nth-child(4)").css("display","none");Tabpanel_ul.find("li:nth-child(4) a").removeAttr("href");
+                Tabpanel_ul.find("li:nth-child(5)").css("display","none");Tabpanel_ul.find("li:nth-child(5) a").removeAttr("href");
+               
+                break;
+            default : 
+                break;
+        }
+            
+        
      
 
 

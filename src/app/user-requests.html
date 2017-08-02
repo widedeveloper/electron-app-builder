@@ -60,12 +60,7 @@
 						</li>
 						<li>
 							<a href="https://help.qubs.com/" class="">Help</a>
-							<!-- <ul class="dropdown">
-								<li><a href="#">Option 1</a></li>
-								<li><a href="#">Option 2</a></li>
-								<li><a href="#">Option 3</a></li>
-								<li><a href="#">Option 4</a></li>
-							</ul> -->
+							
 						</li>
 						<li><a href="#" class="logout" id="logout">Logout</a></li>
 					</ul>
@@ -76,24 +71,21 @@
 					<section class="patient-list">
 						<header class="header">
 							<h1></h1>
-							<select id="period_search">
-								<option value="n_week">This Week</option>
-								<option value="l_week">Last Week</option>
-								<option value="n_month">This Month</option>
-								<option value="l_month">Last Month</option>
+							<select id="companyDomain">
+								<option value="bmi.qubs.com">bmi.qubs.com</option> 
+								<option value="mrc.qubs.com">mrc.qubs.com</option>								
 							</select>
 						</header>
 						<table class="table responsive-table">
 							<thead>
 								<tr>
-									<th>Patient Name</th>
-									<th>Patient ID</th>
-									<th>Birthdate</th>
-									<th>Descriptions</th>
-									<th>Accession</th>
-									<th>Date</th>
-									<th>Modality</th>
-									<th>Images</th>
+									<th >Username</th>
+									<th>First name</th>
+									<th>Last Name</th>
+									<th>Phone</th>
+									<th>Provider No</th>
+									<th>clinic</th>
+									<th>status</th>
 								</tr>
 							</thead>
 							<tbody id="patients-table">
@@ -127,7 +119,7 @@
 							</div>
 						</div>
 
-						<div class="pager">
+						<div class="nav_page">
 							<!-- <a href="#" class="prev disabled"><i class="icon-arrow-left"></i></a>
 							<ul>
 								<li class="active"><a href="#">1</a></li>
@@ -252,12 +244,11 @@
 							<li id="phone"><a class="tel" href="tel:0452222222">04 5222 2222</a></li>
 						</ul>
 						<ul class="author-detail">
-							<li><a id="study-report" href="javascript:void(0)"><i class="icon-report"></i>Report<span id="reportButton" class="authorised">Authorised</span></a></li>
-							<li><a id="study-images" href="javascript:void(0)"><i class="icon-gallery"></i>Images<span id="imageCount">35</span></a></li>
+							<li><a id="grant-access" href="javascript:void(0)"><i class="icon-report"></i>Grant access</a></li>
+							<li><a id="remove-access" href="javascript:void(0)"><i class="icon-gallery"></i>Remove access</a></li>
 
-							<li><a id="study-download" href="javascript:void(0)"><i class="icon-download"></i>Download</a></li>
-							<li><a id="study-referral" href="javascript:void(0)"><i class="icon-attachments"></i>Referral</a></li>
-							<li><a id="study-share" href="#"><i class="icon-share"></i>Share</a></li>
+							<li><a id="add-providerno" href="javascript:void(0)"><i class="icon-download"></i>Add provider number</a></li>
+							<li><a id="edit" href="javascript:void(0)"><i class="icon-attachments"></i>Edit</a></li>
 
 							<!--
 							<li><a id="study-activity" href="javascript:void(0)"><i class="icon-activity"></i>Activity</a></li>
@@ -265,42 +256,19 @@
 							-->
 
 						</ul>
-						<div class="widget author-history">
-							<h3>History</h3>
+						<div class="widget providernumbers">
+							<h3>Provide Numbers</h3>
 							<div class="widget-holder">
-								<ul id="patient-history">
-									<li>
-										<strong class="depart"><span>US</span></strong>
-										<div class="text">
-											<h4><a href="#">Ultrasound pregnancy less than 12 weeks</a></h4>
-											<time datetime="2017-05-11">4 weeks ago</time>
-										</div>
-									</li>
-									<li>
-										<strong class="depart"><span>XR</span></strong>
-										<div class="text">
-											<h4><a href="#">XR billateral foot</a></h4>
-											<time datetime="2017-05-11">2 months ago</time>
-										</div>
-									</li>
-									<li>
-										<strong class="depart"><span>CT</span></strong>
-										<div class="text">
-											<h4><a href="#">CT IAM (Petrous) +/- Brain</a></h4>
-											<time datetime="2017-05-11">6 months ago</time>
-										</div>
-									</li>
-								</ul>
+								<dl id="providerno">
+									<dt>Patient</dt>
+								</dl>
 							</div>
 						</div>
-						<div class="widget author-access">
-							<h3>Users</h3>
+						<div class="widget permissions">
+							<h3>permissions</h3>
 							<div class="widget-holder">
-								<dl id="usersList">
+								<dl id="permissionlist">
 									<dt><a href="#">John Doe</a></dt>
-									<dd>Patient</dd>
-									<dt><a href="#">Sam Smith</a></dt>
-									<dd>Referring Doctor</dd>
 								</dl>
 							</div>
 						</div>
@@ -391,7 +359,7 @@
 	<script type="text/javascript" src="js/aws/amazon-cognito-identity.min.js"></script>
 
 	<script type="text/javascript" src="js/qubs/login.js"></script>
-	<script type="text/javascript" src="js/qubs/patients.js"></script>
+	<script type="text/javascript" src="js/qubs/userRequests.js"></script>
 
 
 	<!-- include the hammer.js library for touch gestures-->
@@ -435,7 +403,6 @@
 	<!-- include the cornerstoneWADOImageLoader library -->
 	<script src="js/cornerstone/cornerstoneWADOImageLoader.js"></script>
 
-	<script type="text/javascript" src="js/qubs/studies.js"></script>
 
 	<script type="text/javascript" src="js/toastr/toastr.min.js"></script>
 	<script>
